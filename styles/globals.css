@@ -1,0 +1,800 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ─────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --font-hero-title:
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino,
+    "Times New Roman", serif;
+  --font-hero-subheading: "DM Sans", system-ui, sans-serif;
+}
+
+body {
+  background: #eeebe6;
+  color: #1c1c1e;
+  font-family: "DM Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────── */
+.font-display {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.font-serif-italic {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+
+.app-title-font {
+  font-family: var(--font-hero-title);
+}
+
+.app-subheading-font {
+  font-family: var(--font-hero-subheading);
+}
+
+/* ─── Trail animation (for globe section if used) ─────────────────── */
+@keyframes trail-loop {
+  0% {
+    stroke-dashoffset: 800;
+    opacity: 1;
+  }
+  42% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  72% {
+    stroke-dashoffset: 0;
+    opacity: 0.9;
+  }
+  88% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 800;
+    opacity: 0;
+  }
+}
+
+@keyframes dot-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 250% center;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────── */
+.btn-dark {
+  background: #1c1c1e;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-dark:hover {
+  background: #2c2c2e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.btn-dark-outline {
+  background: transparent;
+  color: #1c1c1e;
+  border: 1.5px solid #1c1c1e;
+  border-radius: 100px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn-dark-outline:hover {
+  background: #1c1c1e;
+  color: white;
+}
+
+.btn-flame {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-flame:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(249, 115, 22, 0.5);
+}
+
+/* ─── Cards ───────────────────────────────────────────────────────── */
+.card-white {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.card-white:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+}
+
+.card-sand {
+  background: #f5f3ef;
+  border-radius: 20px;
+  border: 1px solid #e5e0d8;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.card-sand:hover {
+  transform: translateY(-5px);
+  border-color: #d0c9be;
+}
+
+/* ─── Dest card hover ──────────────────────────────────────────────── */
+.dest-card-light {
+  transition:
+    transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.35s ease;
+}
+
+.dest-card-light:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16) !important;
+}
+
+/* ─── Nav link underline ─────────────────────────────────────────── */
+.nav-link-light {
+  position: relative;
+}
+
+.nav-link-light::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #1c1c1e;
+  transition: width 0.3s ease;
+}
+
+.nav-link-light:hover::after {
+  width: 100%;
+}
+
+/* ─── Phase card hover ─────────────────────────────────────────────── */
+.phase-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.phase-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+}
+
+/* ─── Gradient text (for dark CTA section) ─────────────────────────── */
+.gradient-heading-flame {
+  background: linear-gradient(
+    115deg,
+    #fff 0%,
+    #fcd34d 30%,
+    #f97316 55%,
+    #fb923c 75%,
+    #fff 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 6s linear infinite;
+}
+
+/* ─── Hide scrollbar ─────────────────────────────────────────────── */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Dark section (CTA + footer) ────────────────────────────────── */
+.dark-section {
+  background: #111111;
+  color: #f8f4ee;
+}
+
+/* ─── Scrollbar (light mode) ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f3ef;
+}
+::-webkit-scrollbar-thumb {
+  background: #d0c9be;
+  border-radius: 3px;
+}
+
+/* ─── Dot pulse for SVG ───────────────────────────────────────────── */
+.dot-anim-1 {
+  animation: dot-breathe 2.5s ease-in-out infinite;
+}
+.dot-anim-2 {
+  animation: dot-breathe 2.5s ease-in-out infinite 0.6s;
+}
+.dot-anim-3 {
+  animation: dot-breathe 2.5s ease-in-out infinite 1.2s;
+}
+.dot-anim-4 {
+  animation: dot-breathe 2.5s ease-in-out infinite 1.8s;
+}
+
+/* ─── Hero carousel responsive ────────────────────────────────────── */
+.carousel-animate {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-carousel .dest-card-light {
+  transition:
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.8s ease;
+}
+
+@keyframes carousel-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(0.85);
+  }
+}
+
+.hero-carousel .dest-card-light {
+  animation: carousel-slide-in 0.8s ease-out;
+}
+
+.phase-slick-carousel .slick-list {
+  margin: 0 -10px;
+  overflow: visible;
+}
+
+.phase-slick-carousel .slick-slide {
+  padding: 0 10px;
+}
+
+.phase-slick-carousel .slick-dots {
+  bottom: -34px;
+}
+
+.phase-slick-carousel .slick-dots li button:before {
+  color: #1c1c1e;
+  opacity: 0.2;
+}
+
+.phase-slick-carousel .slick-dots li.slick-active button:before {
+  color: #f97316;
+  opacity: 1;
+}
+
+@media (max-width: 980px) {
+  .phase-slick-carousel .slick-slide > div > div {
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .phase-slick-carousel {
+    overflow: hidden;
+  }
+
+  .phase-slick-carousel .slick-list {
+    margin: 0 -8px;
+    overflow: hidden;
+  }
+
+  .phase-slick-carousel .slick-slide {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .phase-slick-carousel {
+    max-width: 100% !important;
+    padding: 0 4px;
+    overflow: hidden;
+  }
+
+  .phase-slick-carousel .slick-list {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .phase-slick-carousel .slick-slide {
+    padding: 0 4px;
+  }
+
+  .phase-slick-carousel .slick-dots {
+    bottom: -28px;
+  }
+}
+
+/* ─── Review Carousel ──────────────────────────────────────────────── */
+.review-slick-carousel .slick-list {
+  margin: 0 -10px;
+  overflow: visible;
+}
+
+.review-slick-carousel .slick-slide {
+  padding: 0 10px;
+}
+
+.review-slick-carousel .slick-dots {
+  bottom: -34px;
+}
+
+.review-slick-carousel .slick-dots li button:before {
+  color: #1c1c1e;
+  opacity: 0.2;
+}
+
+.review-slick-carousel .slick-dots li.slick-active button:before {
+  color: #f97316;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .review-slick-carousel .slick-list {
+    margin: 0 -8px;
+  }
+
+  .review-slick-carousel .slick-slide {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-slick-carousel {
+    max-width: 100% !important;
+    padding: 0 4px;
+  }
+
+  .review-slick-carousel .slick-list {
+    margin: 0;
+  }
+
+  .review-slick-carousel .slick-slide {
+    padding: 0 4px;
+  }
+
+  .review-slick-carousel .slick-dots {
+    bottom: -28px;
+  }
+}
+/* ─── Destination Carousel Styles ─────────────────────────────────── */
+.destination-slick-carousel .slick-list {
+  margin: 0 -8px;
+  overflow: visible;
+}
+
+.destination-slick-carousel .slick-slide {
+  padding: 0 8px;
+}
+
+.destination-slick-carousel .slick-dots {
+  bottom: -34px;
+}
+
+.destination-slick-carousel .slick-dots li button:before {
+  color: #1c1c1e;
+  opacity: 0.2;
+}
+
+.destination-slick-carousel .slick-dots li.slick-active button:before {
+  color: #f97316;
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .destination-slick-carousel {
+    max-width: 100% !important;
+    padding: 0 4px;
+  }
+
+  .destination-slick-carousel .slick-list {
+    margin: 0;
+  }
+
+  .destination-slick-carousel .slick-slide {
+    padding: 0 4px;
+  }
+
+  .destination-slick-carousel .slick-dots {
+    bottom: -28px;
+  }
+}
+/* ─── Horizontal Carousel with Scroll Snap ────────────────────────── */
+.view-carousel-strip {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 0 48px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  scroll-behavior: smooth;
+}
+
+.view-carousel-strip::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.view-carousel-card {
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+  height: 240px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .view-carousel-strip {
+    padding: 0 32px;
+    gap: 16px;
+  }
+
+  .view-carousel-card {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .view-carousel-strip {
+    padding: 0 24px;
+    gap: 14px;
+  }
+
+  .view-carousel-card {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .view-carousel-strip {
+    padding: 0 20px;
+    gap: 12px;
+  }
+
+  .view-carousel-card {
+    width: calc(100vw - 80px);
+    min-width: calc(100vw - 80px);
+    max-width: calc(100vw - 80px);
+    height: 250px;
+  }
+}
+
+.view-mobile-carousel-window {
+  display: none;
+}
+
+.view-mobile-carousel-track {
+  display: flex;
+  gap: 14px;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Explore Destinations Grid Responsive ────────────────────────── */
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.destinations-desktop {
+  display: grid;
+}
+
+.destinations-mobile {
+  display: none;
+}
+
+.dest-card-featured {
+  grid-row: span 2;
+}
+
+.dest-card-image {
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.dest-card-image-regular {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.dest-card-full-description {
+  display: block;
+}
+
+.dest-card-short-description {
+  display: none;
+}
+
+/* ─── Traveler Reviews Grid Responsive ──────────────────────────── */
+.reviews-desktop {
+  display: grid;
+}
+
+.reviews-mobile {
+  display: none;
+}
+
+/* ─── Pricing Grid Responsive ───────────────────────────────────── */
+.pricing-desktop {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.pricing-mobile {
+  display: none;
+}
+
+/* ─── Hero top section responsive ─────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-inner {
+    padding: 0 24px !important;
+  }
+
+  .hero-top-content {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+    margin-bottom: 52px !important;
+  }
+
+  .hero-right {
+    text-align: left !important;
+    padding-top: 0 !important;
+  }
+
+  .hero-right-copy {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-feature-chips {
+    align-items: flex-start !important;
+  }
+
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 20px !important;
+  }
+
+  .hero-segment-wrap {
+    margin-top: 16px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-inner {
+    padding: 0 16px !important;
+  }
+
+  .hero-top-tag {
+    padding-top: 30px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-left,
+  .hero-right {
+    padding-top: 0 !important;
+  }
+
+  .hero-left-copy,
+  .hero-right-copy {
+    max-width: 100% !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 22px !important;
+  }
+
+  .hero-download-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  .hero-right-title {
+    margin-bottom: 14px !important;
+  }
+
+  .hero-feature-chip {
+    font-size: 11px !important;
+    padding: 6px 12px !important;
+  }
+
+  .hero-stats {
+    gap: 16px !important;
+  }
+
+  .hero-segment-wrap {
+    margin-top: 8px !important;
+  }
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+  .destinations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: Carousel instead of grid */
+@media (max-width: 768px) {
+  .phase-slick-carousel {
+    margin-top: 20px !important;
+  }
+
+  .destinations-desktop {
+    display: none;
+  }
+
+  .destinations-mobile {
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .destinations-mobile .phase-slick-carousel {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .destinations-mobile .phase-slick-carousel .slick-list {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  .destinations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dest-card-featured {
+    grid-row: auto;
+  }
+
+  .dest-card-image {
+    height: 160px;
+  }
+
+  .dest-card-full-description {
+    display: none;
+  }
+
+  .dest-card-short-description {
+    display: block;
+  }
+
+  /* ─── Reviews Mobile ─────────────────────────────────────────────── */
+  .reviews-desktop {
+    display: none;
+  }
+
+  .reviews-mobile {
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .reviews-mobile .phase-slick-carousel {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .reviews-mobile .phase-slick-carousel .slick-list {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  /* ─── Pricing Mobile ─────────────────────────────────────────────── */
+  .pricing-desktop {
+    display: none !important;
+  }
+
+  .pricing-mobile {
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .pricing-mobile .phase-slick-carousel {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .pricing-mobile .phase-slick-carousel .slick-list {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+}
