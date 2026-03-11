@@ -72,23 +72,19 @@ export default function WaitlistSection() {
         >
           <SectionLabel text="Early Access" accent />
           <h2
-            className="app-title-font"
+            className="app-title-font app-type-heading"
             style={{
               fontSize: "clamp(40px, 5.5vw, 72px)",
-              fontWeight: "800",
               color: "#1f2f33",
               lineHeight: 0.95,
-              letterSpacing: "-0.025em",
               marginBottom: "10px",
             }}
           >
             Ready to Travel
           </h2>
           <h2
-            className="app-title-font"
+            className="app-title-font app-type-heading"
             style={{
-              fontStyle: "italic",
-              fontWeight: "600",
               fontSize: "clamp(36px, 5vw, 66px)",
               lineHeight: 1,
               marginBottom: "28px",
@@ -98,11 +94,9 @@ export default function WaitlistSection() {
             Smarter?
           </h2>
           <p
-            className="app-subheading-font"
+            className="app-subheading-font app-type-subheading"
             style={{
-              fontSize: "16px",
               color: "#6d645b",
-              lineHeight: 1.75,
               marginBottom: "44px",
             }}
           >

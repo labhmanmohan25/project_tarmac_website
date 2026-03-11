@@ -7,6 +7,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <link rel="icon" href="/favicon.ico?v=2" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

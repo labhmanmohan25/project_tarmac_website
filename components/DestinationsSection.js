@@ -81,13 +81,10 @@ export default function DestinationsSection() {
         >
           <div>
             <h2
-              className="app-title-font"
+              className="app-title-font app-type-heading"
               style={{
                 fontSize: "clamp(36px, 4vw, 54px)",
-                fontWeight: "800",
                 color: "#1c1c1e",
-                lineHeight: 1,
-                letterSpacing: "-0.025em",
               }}
             >
               Where Will You
@@ -96,15 +93,15 @@ export default function DestinationsSection() {
             </h2>
           </div>
           <p
-            className="app-subheading-font"
+            className="app-subheading-font app-type-subheading"
             style={{
-              fontSize: "14px",
               color: "#888",
               maxWidth: "280px",
-              lineHeight: 1.65,
+              fontSize: "clamp(12px, 1.1vw, 16px)",
+              fontStyle: "italic",
             }}
           >
-            500+ destinations curated by our AI — each with a detailed,
+            destinations curated by our AI — each with a detailed,
             personalized itinerary built just for your group.
           </p>
         </div>
@@ -272,12 +269,9 @@ export default function DestinationsSection() {
                   </div>
                   {idx === 0 && (
                     <p
-                      className="dest-card-full-description"
+                      className="dest-card-full-description app-type-body"
                       style={{
-                        fontSize: "13px",
                         color: "#666",
-                        lineHeight: "1.5",
-                        fontFamily: '"DM Sans", sans-serif',
                         marginTop: "16px",
                       }}
                     >

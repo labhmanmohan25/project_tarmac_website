@@ -58,13 +58,10 @@ export default function Team() {
           >
             <div style={{ textAlign: "center" }}>
               <h2
-                className="app-title-font"
+                className="app-title-font app-type-heading"
                 style={{
                   fontSize: "clamp(28px, 3.5vw, 42px)",
-                  fontWeight: "800",
                   color: "#1c1c1e",
-                  lineHeight: 1.0,
-                  letterSpacing: "-0.025em",
                   marginBottom: "16px",
                 }}
               >
@@ -99,10 +96,10 @@ export default function Team() {
                 >
                   <div>
                     <p
+                      className="app-type-heading"
                       style={{
-                        fontFamily: '"Bricolage Grotesque", sans-serif',
                         fontSize: "28px",
-                        fontWeight: "700",
+                        fontWeight: "500",
                         color: "#1c1c1e",
                         margin: "0 0 4px 0",
                         textAlign: "center",
@@ -111,11 +108,11 @@ export default function Team() {
                       {founder.name}
                     </p>
                     <p
+                      className="app-type-subheading"
                       style={{
                         fontSize: "16px",
                         color: "#F97316",
-                        fontFamily: '"Bricolage Grotesque", sans-serif',
-                        fontWeight: "600",
+                        fontWeight: "500",
                         margin: "0 0 12px 0",
                         textAlign: "center",
                       }}
@@ -123,25 +120,20 @@ export default function Team() {
                       {founder.role}
                     </p>
                     <p
+                      className="app-type-label"
                       style={{
-                        fontSize: "11px",
                         color: "#999",
-                        fontFamily: '"DM Sans", sans-serif',
                         marginBottom: "16px",
                         fontWeight: "500",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.5px",
                         textAlign: "center",
                       }}
                     >
                       {founder.pastExperience}
                     </p>
                     <p
+                      className="app-type-body"
                       style={{
-                        fontSize: "14px",
                         color: "#555",
-                        lineHeight: 1.7,
-                        fontFamily: '"DM Sans", sans-serif',
                         marginBottom: "16px",
                         maxWidth: "500px",
                         textAlign: "center",
@@ -175,22 +167,29 @@ export default function Team() {
                         </span>
                       ))}
                     </div>
-                    <a
-                      href={founder.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
+                    <div
                       style={{
-                        display: "inline-flex",
                         marginTop: "18px",
-                        color: "#0a66c2",
-                        fontFamily: '"DM Sans", sans-serif',
-                        fontSize: "14px",
-                        fontWeight: "600",
-                        textDecoration: "none",
+                        display: "flex",
+                        justifyContent: "center",
                       }}
                     >
-                      Connect on LinkedIn
-                    </a>
+                      <a
+                        href={founder.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          color: "#0a66c2",
+                          fontFamily: '"DM Sans", sans-serif',
+                          fontSize: "14px",
+                          fontWeight: "600",
+                          textDecoration: "none",
+                        }}
+                      >
+                        Connect on LinkedIn
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}

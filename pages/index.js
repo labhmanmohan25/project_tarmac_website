@@ -20,7 +20,7 @@ export default function Home() {
           content="AI-powered travel app managing the full trip lifecycle. From planning to landing — and beyond."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico?v=2" />
       </Head>
 
       <Header />

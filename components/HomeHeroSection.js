@@ -1,108 +1,10 @@
 import { SITE_LINKS } from "../lib/siteLinks";
 
 export default function HomeHeroSection() {
-  const destinationBubbles = [
-    {
-      name: "Bali",
-      image:
-        "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80",
-      size: 178,
-      bottom: "6%",
-      left: "-1%",
-      delay: "0s",
-      duration: "8.4s",
-    },
-    {
-      name: "Bangkok, Thailand",
-      image:
-        "https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=900&q=80",
-      size: 92,
-      bottom: "28%",
-      left: "31%",
-      delay: "0.4s",
-      duration: "7s",
-    },
-    {
-      name: "Phuket, Thailand",
-      image:
-        "https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=900&q=80",
-      size: 112,
-      bottom: "17%",
-      left: "3%",
-      delay: "0.2s",
-      duration: "9.2s",
-    },
-    {
-      name: "Rome",
-      image:
-        "https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=700&q=80",
-      size: 134,
-      bottom: "12%",
-      right: "18%",
-      delay: "0.8s",
-      duration: "8.5s",
-    },
-    {
-      name: "Dubai",
-      image:
-        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80",
-      size: 198,
-      bottom: "2%",
-      right: "-1.5%",
-      delay: "0.35s",
-      duration: "9s",
-    },
-    {
-      name: "Paris",
-      image:
-        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=80",
-      size: 182,
-      bottom: "4%",
-      left: "34%",
-      delay: "0.9s",
-      duration: "8.8s",
-    },
-    {
-      name: "Santorini",
-      image:
-        "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=700&q=80",
-      size: 104,
-      bottom: "24%",
-      left: "24%",
-      delay: "0.5s",
-      duration: "7.8s",
-    },
-    {
-      name: "Swiss Alps",
-      image:
-        "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80",
-      size: 118,
-      bottom: "22%",
-      right: "5%",
-      delay: "1s",
-      duration: "8.1s",
-    },
-    {
-      name: "New York",
-      image:
-        "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=700&q=80",
-      size: 96,
-      bottom: "30%",
-      right: "30%",
-      delay: "0.7s",
-      duration: "7.5s",
-    },
-    {
-      name: "Maldives",
-      image:
-        "https://images.unsplash.com/photo-1578922746465-3a80a228f223?auto=format&fit=crop&w=900&q=80",
-      size: 146,
-      bottom: "8%",
-      right: "21%",
-      delay: "0.15s",
-      duration: "9.4s",
-    },
-  ];
+  const handleEmailClick = (event) => {
+    event.preventDefault();
+    window.location.href = SITE_LINKS.email;
+  };
 
   return (
     <section
@@ -112,7 +14,7 @@ export default function HomeHeroSection() {
         position: "relative",
         overflow: "hidden",
         background: "#ececec",
-        minHeight: "74vh",
+        minHeight: "100vh",
         paddingTop: "72px",
         paddingBottom: "56px",
         display: "flex",
@@ -129,22 +31,6 @@ export default function HomeHeroSection() {
         aria-hidden="true"
       />
 
-      <div className="hero-bubble-layer" aria-hidden="true">
-        {destinationBubbles.map((bubble) => (
-          <div
-            key={bubble.name}
-            className="hero-destination-bubble"
-            style={{
-              width: `${bubble.size}px`,
-              height: `${bubble.size}px`,
-              backgroundImage: `url(${bubble.image})`,
-              animationDuration: bubble.duration,
-              animationDelay: bubble.delay,
-            }}
-          />
-        ))}
-      </div>
-
       <div
         className="hero-inner"
         style={{
@@ -158,32 +44,27 @@ export default function HomeHeroSection() {
         }}
       >
         <h1
-          className="hero-main-title app-title-font"
+          className="hero-main-title app-title-font app-type-heading"
           style={{
             fontSize: "clamp(42px, 6.6vw, 74px)",
-            fontWeight: "500",
             color: "#171717",
-            lineHeight: 1.04,
-            letterSpacing: "-0.02em",
             margin: "0 0 14px",
           }}
         >
-          Your Trip. Handled.
+          Your <span className="ai-loader-wrapper">Trip<div className="ai-loader"></div></span>. Handled.
           <br />
           Start to Finish.
         </h1>
 
         <p
-          className="hero-tagline app-subheading-font"
+          className="hero-tagline app-subheading-font app-type-subheading"
           style={{
-            fontSize: "clamp(16px, 1.8vw, 26px)",
             color: "#4a4a4a",
-            lineHeight: 1.45,
             maxWidth: "650px",
             margin: "0 auto 26px",
           }}
         >
-          Most travel apps ghost you the moment you land. Tarmac stays — one AI
+          One AI
           that plans the trip, navigates the chaos, and settles the bill. Before
           you leave, while you're there, and after you're home.
         </p>
@@ -260,7 +141,7 @@ export default function HomeHeroSection() {
               alignItems: "center",
               justifyContent: "center",
               gap: "10px",
-              marginBottom: "32px",
+              marginBottom: "0",
             }}
           >
             <a
@@ -314,6 +195,7 @@ export default function HomeHeroSection() {
             </a>
             <a
               href={SITE_LINKS.email}
+              onClick={handleEmailClick}
               aria-label="Email"
               className="hero-social-btn"
               style={{
@@ -381,68 +263,94 @@ export default function HomeHeroSection() {
       </div>
 
       <style jsx>{`
-        .hero-bubble-layer {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 260px;
-          display: flex;
-          align-items: flex-end;
-          justify-content: center;
-          gap: 18px;
-          padding: 0 16px 42px;
-          pointer-events: none;
-          z-index: 1;
+        @keyframes aiLoaderSpin {
+          0% {
+            transform: translate(-50%, -50%) rotate(0deg) scale(1);
+          }
+          33% {
+            transform: translate(-50%, -50%) rotate(120deg) scale(1.1);
+          }
+          66% {
+            transform: translate(-50%, -50%) rotate(240deg) scale(0.95);
+          }
+          100% {
+            transform: translate(-50%, -50%) rotate(360deg) scale(1);
+          }
         }
 
-        .hero-destination-bubble {
+        @keyframes aiLoaderShapeShift {
+          0% {
+            border-radius: 50% 50% 50% 50%;
+          }
+          25% {
+            border-radius: 20% 80% 60% 40%;
+          }
+          50% {
+            border-radius: 60% 40% 30% 70%;
+          }
+          75% {
+            border-radius: 40% 60% 70% 30%;
+          }
+          100% {
+            border-radius: 50% 50% 50% 50%;
+          }
+        }
+
+        @keyframes aiLoaderColorShift {
+          0% {
+            background: conic-gradient(#fbbf24, #f59e0b, #fbbf24);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
+          }
+          25% {
+            background: conic-gradient(#f59e0b, #f97316, #f59e0b);
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
+          }
+          50% {
+            background: conic-gradient(#f97316, #ff8c00, #f97316);
+            box-shadow: 0 0 30px rgba(249, 115, 22, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
+          }
+          75% {
+            background: conic-gradient(#ff8c00, #fbbf24, #ff8c00);
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
+          }
+          100% {
+            background: conic-gradient(#fbbf24, #f59e0b, #fbbf24);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
+          }
+        }
+
+        @keyframes aiLoaderWave {
+          0% {
+            filter: blur(8px);
+          }
+          25% {
+            filter: blur(12px);
+          }
+          50% {
+            filter: blur(6px);
+          }
+          75% {
+            filter: blur(10px);
+          }
+          100% {
+            filter: blur(8px);
+          }
+        }
+
+        .ai-loader-wrapper {
           position: relative;
-          flex: 0 0 auto;
-          border-radius: 999px;
-          background-size: cover;
-          background-position: center;
-          box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
-          filter: saturate(1.08);
-          animation-name: heroBubbleFloat;
-          animation-timing-function: ease-in-out;
-          animation-iteration-count: infinite;
+          display: inline-block;
         }
 
-        @media (max-width: 1320px) {
-          .hero-bubble-layer {
-            gap: 14px;
-          }
-
-          .hero-destination-bubble:nth-child(n + 9) {
-            display: none;
-          }
-        }
-
-        @media (max-width: 1120px) {
-          .hero-bubble-layer {
-            gap: 12px;
-          }
-
-          .hero-destination-bubble:nth-child(n + 7) {
-            display: none;
-          }
-        }
-
-        @media (max-width: 920px) {
-          .hero-bubble-layer {
-            gap: 10px;
-            height: 190px;
-          }
-
-          .hero-destination-bubble {
-            transform: scale(0.74);
-            transform-origin: bottom center;
-          }
-
-          .hero-destination-bubble:nth-child(n + 5) {
-            display: none;
-          }
+        .ai-loader {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: -1;
+          width: 140%;
+          height: 140%;
+          animation: aiLoaderSpin 10s ease-in-out infinite, aiLoaderColorShift 6s ease-in-out infinite, aiLoaderShapeShift 8s ease-in-out infinite, aiLoaderWave 4s ease-in-out infinite;
+          opacity: 0.75;
         }
 
         .hero-ambient-glow {
@@ -478,25 +386,11 @@ export default function HomeHeroSection() {
           );
         }
 
-        @keyframes heroBubbleFloat {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-14px);
-          }
-        }
-
         @media (max-width: 768px) {
           .hero-section {
             min-height: 62vh;
             padding-top: 90px !important;
             padding-bottom: 40px !important;
-          }
-
-          .hero-bubble-layer {
-            display: none;
           }
 
           .hero-main-title {

@@ -1,19 +1,19 @@
 const phases = [
   {
     number: "01",
-    title: "PLAN &\nBOOK EASILY",
+    title: "Plan &\nBook Easily",
     description:
       "Checks everyone's calendars, runs the group poll, and builds the plan without tab chaos. Book stays, activities, and transport in one thread.",
   },
   {
     number: "02",
-    title: "TRAVEL WITH\nLIVE\nADJUSTMENTS",
+    title: "Travel\nReal-Time",
     description:
       "Your agent tracks time, weather, and location in real time. Missed a stop or delayed flight? It reroutes instantly and keeps everyone synced.",
   },
   {
     number: "03",
-    title: "WRAP UP\nSTRESS-FREE",
+    title: "Wrap Up\nStress-Free",
     description:
       "Expenses are grouped, split, and finalized from the trip chat. No spreadsheets, no awkward follow-ups, and next-trip recommendations are ready.",
   },
@@ -23,8 +23,8 @@ export default function HowItWorksSection() {
   return (
     <section id="features" className="how-simple-section">
       <div className="how-simple-inner">
-        <h2 className="how-simple-title">HOW IT WORKS</h2>
-        <p className="how-simple-subtitle">
+        <h2 className="how-simple-title app-type-heading">How It Works</h2>
+        <p className="how-simple-subtitle app-type-body">
           From inspiration to booking, we've simplified every step so you can
           focus on enjoying the journey, not the planning.
         </p>
@@ -42,17 +42,12 @@ export default function HowItWorksSection() {
             >
               <div className="how-simple-ticket-top">
                 <span className="how-simple-number">{phase.number}</span>
-                <h3
-                  className="how-simple-heading"
-                  style={
-                    phase.number === "02" ? { maxWidth: "none" } : undefined
-                  }
-                >
+                <h3 className="how-simple-heading app-type-card-heading">
                   {phase.title}
                 </h3>
               </div>
 
-              <p className="how-simple-line">{phase.description}</p>
+              <p className="how-simple-line app-type-body">{phase.description}</p>
             </article>
           ))}
         </div>
@@ -72,22 +67,20 @@ export default function HowItWorksSection() {
         .how-simple-title {
           margin: 0;
           text-align: center;
-          font-family: var(--font-hero-title);
-          font-size: clamp(56px, 9vw, 92px);
-          line-height: 0.9;
-          letter-spacing: 0.01em;
+          font-size: clamp(38px, 6vw, 58px);
+          line-height: 1.02;
+          letter-spacing: -0.01em;
           color: #0d0d0d;
         }
 
         .how-simple-subtitle {
           margin: 24px auto 0;
-          font-family: var(--font-hero-subheading);
-          font-size: clamp(17px, 2vw, 33px);
-          line-height: 1.3;
+          font-size: clamp(16px, 1.9vw, 24px);
+          font-weight: 400;
+          line-height: 1.55;
           text-align: center;
           color: #3f3f44;
-          max-width: 40ch;
-          font-weight: 500;
+          max-width: 52ch;
         }
 
         .how-simple-list {
@@ -160,23 +153,19 @@ export default function HowItWorksSection() {
 
         .how-simple-heading {
           margin: 0;
-          font-family: "Bebas Neue", "Impact", sans-serif;
-          font-size: clamp(34px, 2.8vw, 46px);
-          font-weight: 700;
-          letter-spacing: 0.01em;
-          line-height: 0.94;
+          font-size: clamp(26px, 2.4vw, 38px);
+          line-height: 1.02;
           color: #ecf4ff;
           white-space: pre-line;
           max-width: 8ch;
-          text-transform: uppercase;
         }
 
         .how-simple-line {
           margin: 30px 0 0;
           color: #deebff;
-          font-family: "DM Sans", sans-serif;
-          font-size: clamp(16px, 1.25vw, 18px);
-          line-height: 1.45;
+          font-size: clamp(14px, 1.1vw, 16px);
+          font-weight: 400;
+          line-height: 1.6;
           position: relative;
           z-index: 3;
         }
@@ -214,7 +203,7 @@ export default function HowItWorksSection() {
           }
 
           .how-simple-heading {
-            font-size: clamp(30px, 10vw, 42px);
+            font-size: clamp(22px, 7vw, 30px);
           }
 
           .how-simple-line {

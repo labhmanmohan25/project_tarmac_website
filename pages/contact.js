@@ -34,10 +34,10 @@ export default function Contact() {
       <Layout>
         <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="app-title-font text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="app-title-font app-type-heading text-4xl text-gray-900 mb-4">
               Get In Touch
             </h1>
-            <p className="app-subheading-font text-lg text-gray-600">
+            <p className="app-subheading-font app-type-subheading text-lg text-gray-600">
               We'd love to hear from you. Send us a message and we'll respond as
               soon as possible.
             </p>
@@ -45,49 +45,49 @@ export default function Contact() {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="app-title-font text-2xl font-semibold text-gray-900 mb-6">
+              <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-6">
                 Contact Information
               </h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-medium text-gray-900">Email</h3>
+                  <h3 className="app-type-body-strong text-gray-900">Email</h3>
                   <a
                     href={SITE_LINKS.email}
-                    className="text-gray-600 hover:text-gray-900"
+                    className="app-type-body text-gray-600 hover:text-gray-900"
                   >
                     manmohan.labh@travelwithtarmac.com
                   </a>
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900">Instagram</h3>
+                  <h3 className="app-type-body-strong text-gray-900">Instagram</h3>
                   <a
                     href={SITE_LINKS.instagram}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-gray-600 hover:text-gray-900"
+                    className="app-type-body text-gray-600 hover:text-gray-900"
                   >
                     @travel.with.tarmac
                   </a>
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900">LinkedIn</h3>
+                  <h3 className="app-type-body-strong text-gray-900">LinkedIn</h3>
                   <a
                     href={SITE_LINKS.linkedinCompany}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-gray-600 hover:text-gray-900"
+                    className="app-type-body text-gray-600 hover:text-gray-900"
                   >
                     Travel With Tarmac
                   </a>
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900">Download</h3>
+                  <h3 className="app-type-body-strong text-gray-900">Download</h3>
                   <div className="flex flex-col gap-2">
                     <a
                       href={SITE_LINKS.appStore}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="app-type-body text-gray-600 hover:text-gray-900"
                     >
                       App Store
                     </a>
@@ -95,7 +95,7 @@ export default function Contact() {
                       href={SITE_LINKS.googlePlay}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-gray-600 hover:text-gray-900"
+                      className="app-type-body text-gray-600 hover:text-gray-900"
                     >
                       Google Play
                     </a>

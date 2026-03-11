@@ -11,12 +11,17 @@ const footerColumns = [
     title: "Legal",
     links: [
       { label: "Privacy Policy", href: SITE_LINKS.privacyPolicy },
-      { label: "Terms of Service", href: SITE_LINKS.termsOfService },
+      { label: "Terms & Conditions", href: SITE_LINKS.termsOfService },
     ],
   },
 ];
 
 export default function Footer() {
+  const handleEmailClick = (event) => {
+    event.preventDefault();
+    window.location.href = SITE_LINKS.email;
+  };
+
   return (
     <footer style={{ background: "#111111", color: "#f8f4ee" }}>
       <style jsx>{`
@@ -169,8 +174,9 @@ export default function Footer() {
                 <a
                   key={s.label}
                   href={s.href}
-                  target="_blank"
-                  rel="noreferrer"
+                  onClick={s.label === "Email" ? handleEmailClick : undefined}
+                  target={s.label === "Email" ? undefined : "_blank"}
+                  rel={s.label === "Email" ? undefined : "noreferrer"}
                   aria-label={s.label}
                   style={{
                     width: "36px",
@@ -201,14 +207,10 @@ export default function Footer() {
           {footerColumns.map((col) => (
             <div key={col.title} className="footer-column">
               <h4
+                className="app-type-label"
                 style={{
                   color: "white",
-                  fontSize: "12px",
-                  fontWeight: "500",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
                   marginBottom: "16px",
-                  fontFamily: '"DM Sans", sans-serif',
                 }}
               >
                 {col.title}
@@ -263,10 +265,9 @@ export default function Footer() {
         }}
       >
         <p
+          className="app-type-body"
           style={{
             color: "rgba(255,255,255,0.25)",
-            fontSize: "13px",
-            fontFamily: '"DM Sans", sans-serif',
           }}
         >
           © 2025 TARMAC. All rights reserved.
@@ -274,13 +275,13 @@ export default function Footer() {
         <div className="bottom-links" style={{ display: "flex", gap: "24px" }}>
           {[
             { label: "Privacy Policy", href: SITE_LINKS.privacyPolicy },
-            { label: "Terms of Service", href: SITE_LINKS.termsOfService },
+            { label: "Terms & Conditions", href: SITE_LINKS.termsOfService },
           ].map((item) => (
             <a
               key={item.label}
               href={item.href}
-              target="_blank"
-              rel="noreferrer"
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noreferrer" : undefined}
               style={{
                 color: "rgba(255,255,255,0.25)",
                 fontSize: "13px",

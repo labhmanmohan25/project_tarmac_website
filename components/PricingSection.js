@@ -13,13 +13,6 @@ const pricingTiers = [
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
     desc: "Best for short escapes and focused trips up to one week.",
-    features: [
-      "Full trip planning",
-      "AI itinerary planning",
-      "All AI travel features",
-      "Real-time alerts",
-      "Group coordination",
-    ],
     dark: false,
   },
   {
@@ -32,13 +25,6 @@ const pricingTiers = [
     image:
       "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=80",
     desc: "Built for longer vacations with room for changes on the go.",
-    features: [
-      "Full trip planning",
-      "AI itinerary planning",
-      "All AI travel features",
-      "Real-time alerts",
-      "Priority replanning",
-    ],
     dark: true,
     badge: "Most Popular",
   },
@@ -52,13 +38,6 @@ const pricingTiers = [
     image:
       "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80",
     desc: "Ideal for extended journeys and multi-city adventures.",
-    features: [
-      "Full trip planning",
-      "AI itinerary planning",
-      "All AI travel features",
-      "Real-time alerts",
-      "Advanced multi-city planning",
-    ],
     dark: false,
   },
 ];
@@ -79,31 +58,15 @@ export default function PricingSection() {
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "56px" }}>
           <h2
-            className="app-title-font"
+            className="app-title-font app-type-heading"
             style={{
               fontSize: "clamp(32px, 4vw, 52px)",
-              fontWeight: "800",
               color: "#1c1c1e",
-              lineHeight: 1,
-              letterSpacing: "-0.025em",
               marginBottom: "16px",
             }}
           >
             Simple, Per-Trip Pricing
           </h2>
-          <p
-            className="app-subheading-font"
-            style={{
-              fontSize: "15px",
-              color: "#5d6971",
-              maxWidth: "460px",
-              margin: "0 auto",
-              lineHeight: 1.7,
-            }}
-          >
-            Choose a travel pass based on your trip length. All passes include
-            full planning and all AI features.
-          </p>
         </div>
 
         <div
@@ -135,7 +98,7 @@ export default function PricingSection() {
               >
                 <div
                   style={{
-                    height: "148px",
+                    height: "110px",
                     backgroundImage: `url(${tier.image})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
@@ -161,7 +124,7 @@ export default function PricingSection() {
                     {tier.badge}
                   </div>
                 )}
-                <div style={{ padding: "30px" }}>
+                <div style={{ padding: "22px" }}>
                   <p
                     style={{
                       fontSize: "11px",
@@ -186,7 +149,7 @@ export default function PricingSection() {
                     <span
                       style={{
                         fontFamily: '"Bricolage Grotesque", sans-serif',
-                        fontSize: "48px",
+                        fontSize: "42px",
                         fontWeight: "800",
                         color: tier.dark ? "white" : tier.accent,
                         letterSpacing: "-0.03em",
@@ -213,7 +176,7 @@ export default function PricingSection() {
                         : "1px solid rgba(93,105,113,0.14)",
                       borderRadius: "14px",
                       padding: "12px",
-                      marginBottom: "14px",
+                      marginBottom: "12px",
                       background: tier.dark
                         ? "rgba(255,255,255,0.06)"
                         : "#ffffff",
@@ -326,8 +289,30 @@ export default function PricingSection() {
                   </div>
 
                   <p
+                    className="app-type-body"
                     style={{
-                      margin: "0 0 12px",
+                      color: tier.dark ? "rgba(255,255,255,0.76)" : "#5f6b73",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    {tier.desc}
+                  </p>
+
+                  <p
+                    style={{
+                      margin: "0 0 14px",
+                      fontSize: "12px",
+                      fontWeight: "600",
+                      color: tier.dark ? "rgba(255,255,255,0.86)" : "#405058",
+                      fontFamily: '"DM Sans", sans-serif',
+                    }}
+                  >
+                    Includes all AI travel planning features.
+                  </p>
+
+                  <p
+                    style={{
+                      margin: "0 0 16px",
                       fontFamily: '"DM Sans", sans-serif',
                       fontSize: "13px",
                       fontWeight: "700",
@@ -336,60 +321,6 @@ export default function PricingSection() {
                   >
                     Total: ${totalPrice}
                   </p>
-                  <p
-                    style={{
-                      fontSize: "13px",
-                      color: tier.dark ? "rgba(255,255,255,0.76)" : "#5f6b73",
-                      lineHeight: 1.6,
-                      marginBottom: "24px",
-                      fontFamily: '"DM Sans", sans-serif',
-                    }}
-                  >
-                    {tier.desc}
-                  </p>
-
-                  <ul
-                    style={{
-                      listStyle: "none",
-                      padding: 0,
-                      margin: "0 0 28px",
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "10px",
-                    }}
-                  >
-                    {tier.features.map((feat) => (
-                      <li
-                        key={feat}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "10px",
-                          fontSize: "13px",
-                          color: tier.dark
-                            ? "rgba(255,255,255,0.84)"
-                            : "#405058",
-                          fontFamily: '"DM Sans", sans-serif',
-                        }}
-                      >
-                        <svg
-                          width="14"
-                          height="14"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke={tier.dark ? "#ffd36f" : tier.accent}
-                          strokeWidth={2.5}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M4.5 12.75l6 6 9-13.5"
-                          />
-                        </svg>
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
 
                   <button
                     style={{
@@ -450,7 +381,7 @@ export default function PricingSection() {
                 >
                   <div
                     style={{
-                      height: "112px",
+                      height: "92px",
                       backgroundImage: `url(${tier.image})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
@@ -525,60 +456,26 @@ export default function PricingSection() {
                     </div>
 
                     <p
+                      className="app-type-body"
                       style={{
-                        fontSize: "12px",
                         color: tier.dark ? "rgba(255,255,255,0.76)" : "#5f6b73",
-                        lineHeight: 1.5,
-                        marginBottom: "12px",
-                        fontFamily: '"DM Sans", sans-serif',
+                        marginBottom: "8px",
                       }}
                     >
                       {tier.desc}
                     </p>
 
-                    <ul
+                    <p
                       style={{
-                        listStyle: "none",
-                        padding: 0,
-                        margin: "0 0 14px",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "6px",
-                        flex: 1,
+                        margin: "0 0 10px",
+                        fontSize: "11px",
+                        fontWeight: "600",
+                        color: tier.dark ? "rgba(255,255,255,0.84)" : "#405058",
+                        fontFamily: '"DM Sans", sans-serif',
                       }}
                     >
-                      {tier.features.slice(0, 3).map((feat) => (
-                        <li
-                          key={feat}
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "8px",
-                            fontSize: "11px",
-                            color: tier.dark
-                              ? "rgba(255,255,255,0.84)"
-                              : "#405058",
-                            fontFamily: '"DM Sans", sans-serif',
-                          }}
-                        >
-                          <svg
-                            width="11"
-                            height="11"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke={tier.dark ? "#ffd36f" : tier.accent}
-                            strokeWidth={2.5}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M4.5 12.75l6 6 9-13.5"
-                            />
-                          </svg>
-                          {feat}
-                        </li>
-                      ))}
-                    </ul>
+                      Includes all AI travel planning features.
+                    </p>
 
                     <div
                       style={{
@@ -739,75 +636,6 @@ export default function PricingSection() {
           />
         </div>
 
-        <div
-          className="pricing-enterprise"
-          style={{
-            marginTop: "20px",
-            borderRadius: "24px",
-            padding: "24px",
-            background: "#fff7ee",
-            boxShadow: "0 14px 32px rgba(24,58,84,0.08)",
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "14px",
-          }}
-        >
-          <div style={{ flex: "1 1 280px" }}>
-            <p
-              style={{
-                fontSize: "11px",
-                fontWeight: "700",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "#a56c43",
-                marginBottom: "8px",
-                fontFamily: '"DM Sans", sans-serif',
-              }}
-            >
-              Enterprise Plan
-            </p>
-            <h3
-              style={{
-                margin: 0,
-                color: "#1c1c1e",
-                fontFamily: '"Bricolage Grotesque", sans-serif',
-                fontSize: "clamp(24px, 2.8vw, 34px)",
-                lineHeight: 1.05,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Coming Soon
-            </h3>
-            <p
-              style={{
-                margin: "10px 0 0",
-                color: "#66615a",
-                fontFamily: '"DM Sans", sans-serif',
-                fontSize: "14px",
-              }}
-            >
-              Custom pricing, controls, and support for travel teams and
-              organizations.
-            </p>
-          </div>
-
-          <span
-            style={{
-              background: "#F97316",
-              color: "white",
-              borderRadius: "999px",
-              padding: "10px 16px",
-              fontSize: "12px",
-              fontWeight: "700",
-              fontFamily: '"DM Sans", sans-serif',
-              whiteSpace: "nowrap",
-            }}
-          >
-            Join Enterprise Waitlist
-          </span>
-        </div>
       </div>
 
       <style jsx>{`
@@ -825,11 +653,6 @@ export default function PricingSection() {
             padding-bottom: 16px !important;
           }
 
-          .pricing-enterprise {
-            padding: 22px 18px !important;
-            border-radius: 16px !important;
-            margin-top: 16px !important;
-          }
         }
       `}</style>
     </section>

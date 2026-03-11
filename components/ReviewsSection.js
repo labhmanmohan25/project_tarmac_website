@@ -58,22 +58,17 @@ export default function ReviewsSection() {
         >
           <div style={{ maxWidth: "560px" }}>
             <h2
-              className="app-title-font"
+              className="app-title-font app-type-heading"
               style={{
                 fontSize: "clamp(32px, 4vw, 52px)",
-                fontWeight: "800",
                 color: "#1c1c1e",
-                lineHeight: 1,
-                letterSpacing: "-0.025em",
               }}
             >
               Loved by Explorers
               <br />
               <span
-                className="app-title-font"
+                className="app-title-font app-type-heading"
                 style={{
-                  fontStyle: "italic",
-                  fontWeight: "600",
                   fontSize: "0.9em",
                   color: "#b45f2a",
                 }}
@@ -82,11 +77,9 @@ export default function ReviewsSection() {
               </span>
             </h2>
             <p
-              className="app-subheading-font"
+              className="app-subheading-font app-type-subheading"
               style={{
-                fontSize: "15px",
                 color: "#6e6256",
-                lineHeight: 1.7,
                 marginTop: "18px",
               }}
             >
@@ -169,14 +162,13 @@ export default function ReviewsSection() {
                   </div>
 
                   <p
+                    className="app-type-body"
                     style={{
                       fontSize: "14px",
                       color: rev.featured
                         ? "rgba(255,255,255,0.84)"
                         : "#584a3d",
-                      lineHeight: 1.75,
                       marginBottom: "22px",
-                      fontFamily: '"DM Sans", sans-serif',
                     }}
                   >
                     &ldquo;{rev.text}&rdquo;
@@ -293,14 +285,13 @@ export default function ReviewsSection() {
                   </div>
 
                   <p
+                    className="app-type-body"
                     style={{
                       fontSize: "13px",
                       color: rev.featured
                         ? "rgba(255,255,255,0.84)"
                         : "#584a3d",
-                      lineHeight: 1.6,
                       marginBottom: "16px",
-                      fontFamily: '"DM Sans", sans-serif',
                       flex: 1,
                     }}
                   >
