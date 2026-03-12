@@ -1,13 +1,17 @@
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HomeHeroSection from "../components/HomeHeroSection";
-import HeroPhaseSection from "../components/HeroPhaseSection";
-import HowItWorksSection from "../components/HowItWorksSection";
-import DestinationsSection from "../components/DestinationsSection";
-import ReviewsSection from "../components/ReviewsSection";
-import PricingSection from "../components/PricingSection";
-import WaitlistSection from "../components/WaitlistSection";
+import LazySection from "../components/LazySection";
+
+// Code-split the heaviest component into its own JS chunk
+const HeroPhaseSection = dynamic(() => import("../components/HeroPhaseSection"), { ssr: true });
+const HowItWorksSection = dynamic(() => import("../components/HowItWorksSection"), { ssr: true });
+const DestinationsSection = dynamic(() => import("../components/DestinationsSection"), { ssr: true });
+const ReviewsSection = dynamic(() => import("../components/ReviewsSection"), { ssr: true });
+const PricingSection = dynamic(() => import("../components/PricingSection"), { ssr: true });
+const WaitlistSection = dynamic(() => import("../components/WaitlistSection"), { ssr: true });
 
 /* ─── Main Page ──────────────────────────────────────────────────── */
 export default function Home() {
@@ -26,12 +30,30 @@ export default function Home() {
       <Header />
 
       <HomeHeroSection />
-      <HeroPhaseSection />
-      <HowItWorksSection />
-      <DestinationsSection />
-      <ReviewsSection />
-      <PricingSection />
-      <WaitlistSection />
+
+      <LazySection minHeight={700} rootMargin="800px 0px">
+        <HeroPhaseSection />
+      </LazySection>
+
+      <LazySection minHeight={500} rootMargin="600px 0px">
+        <HowItWorksSection />
+      </LazySection>
+
+      <LazySection minHeight={500} rootMargin="600px 0px">
+        <DestinationsSection />
+      </LazySection>
+
+      <LazySection minHeight={500} rootMargin="600px 0px">
+        <ReviewsSection />
+      </LazySection>
+
+      <LazySection minHeight={500} rootMargin="600px 0px">
+        <PricingSection />
+      </LazySection>
+
+      <LazySection minHeight={300} rootMargin="400px 0px">
+        <WaitlistSection />
+      </LazySection>
 
       <Footer />
     </>
