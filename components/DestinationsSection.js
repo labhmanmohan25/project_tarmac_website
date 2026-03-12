@@ -1,5 +1,4 @@
 import PhaseCarousel from "./PhaseCarousel";
-import SectionLabel from "./SectionLabel";
 
 const destCards = [
   {
@@ -289,7 +288,7 @@ export default function DestinationsSection() {
             slides={destCards}
             cardWidth={280}
             cardGap={12}
-            autoplay={true}
+            autoplay={false}
             autoplaySpeed={2500}
             showDots={false}
             showArrows={false}

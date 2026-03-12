@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
+import LazySection from "../components/LazySection";
 
 export default function PrivacyPolicy() {
   return (
@@ -20,7 +21,8 @@ export default function PrivacyPolicy() {
             use, and protect your information when you use our Service.
           </p>
 
-          <section className="mb-8">
+          <LazySection minHeight={340}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               1. Information We Collect
             </h2>
@@ -48,9 +50,11 @@ export default function PrivacyPolicy() {
               We may store cookies or local storage to remember preferences and
               improve performance.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={220}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               2. How We Use Your Information
             </h2>
@@ -66,9 +70,11 @@ export default function PrivacyPolicy() {
                 Send optional updates or notifications (only with your consent).
               </li>
             </ul>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={210}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               3. How We Share Your Information
             </h2>
@@ -77,27 +83,33 @@ export default function PrivacyPolicy() {
               <li>Service providers that support hosting, analytics, or error tracking.</li>
               <li>Legal authorities if required by law.</li>
             </ul>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={150}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">4. Data Security</h2>
             <p className="app-type-body text-gray-700 leading-relaxed">
               We use reasonable technical and organizational measures to protect
               your data. However, no method of transmission over the internet is
               100% secure.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={150}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">5. Your Choices</h2>
             <ul className="app-type-body text-gray-700 list-disc pl-6 space-y-1">
               <li>You can update or delete your account at any time.</li>
               <li>You can disable location permissions at any time.</li>
               <li>You may request a copy of your data by contacting us.</li>
             </ul>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={760}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">6. Account Deletion</h2>
             <p className="app-type-body text-gray-700 leading-relaxed mb-4">
               We respect your right to delete your account and associated data.
@@ -180,18 +192,22 @@ export default function PrivacyPolicy() {
               communications with our support team. After the retention period,
               all remaining data will be permanently deleted.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={120}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               7. Children's Privacy
             </h2>
             <p className="app-type-body text-gray-700 leading-relaxed">
               Tarmac is not intended for users under the age of 13.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={120}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               8. Third-Party Services
             </h2>
@@ -200,9 +216,11 @@ export default function PrivacyPolicy() {
               that we do not operate. We are not responsible for their privacy
               practices.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={120}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               9. Changes to This Policy
             </h2>
@@ -210,9 +228,11 @@ export default function PrivacyPolicy() {
               We may update this Privacy Policy from time to time. Continued use
               of the Service means you accept the updated policy.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section>
+          <LazySection minHeight={120}>
+            <section>
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">10. Contact Us</h2>
             <p className="app-type-body text-gray-700 leading-relaxed">
               For questions or requests, contact:{" "}
@@ -223,7 +243,8 @@ export default function PrivacyPolicy() {
                 manmohan.labh@travelwithtarmac.com
               </a>
             </p>
-          </section>
+            </section>
+          </LazySection>
         </div>
       </Layout>
     </>

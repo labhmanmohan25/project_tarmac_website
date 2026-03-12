@@ -1,5 +1,4 @@
 import PhaseCarousel from "./PhaseCarousel";
-import SectionLabel from "./SectionLabel";
 
 const reviews = [
   {
@@ -234,7 +233,7 @@ export default function ReviewsSection() {
             slides={reviews}
             cardWidth={300}
             cardGap={12}
-            autoplay={true}
+            autoplay={false}
             autoplaySpeed={2800}
             showDots={false}
             showArrows={false}

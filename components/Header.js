@@ -7,9 +7,34 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    let frameId = null;
+
+    const updateScrollState = () => {
+      const nextScrolled = window.scrollY > 20;
+      setScrolled((previousValue) =>
+        previousValue === nextScrolled ? previousValue : nextScrolled,
+      );
+      frameId = null;
+    };
+
+    const handleScroll = () => {
+      if (frameId !== null) {
+        return;
+      }
+
+      frameId = window.requestAnimationFrame(updateScrollState);
+    };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
   }, []);
 
   return (
@@ -20,11 +45,13 @@ export default function Header() {
         left: 0,
         right: 0,
         zIndex: 50,
-        transition: "all 0.4s ease",
-        background: scrolled ? "rgba(238,235,230,0.88)" : "transparent",
-        backdropFilter: scrolled ? "blur(16px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(0,0,0,0.06)" : "none",
+        transition:
+          "background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
+        background: scrolled ? "rgba(238,235,230,0.94)" : "rgba(238,235,230,0.74)",
+        borderBottom: scrolled
+          ? "1px solid rgba(0,0,0,0.06)"
+          : "1px solid transparent",
+        boxShadow: scrolled ? "0 8px 24px rgba(28, 28, 30, 0.05)" : "none",
       }}
     >
       <style jsx>{`

@@ -265,75 +265,10 @@ export default function HomeHeroSection() {
       <style jsx>{`
         @keyframes aiLoaderSpin {
           0% {
-            transform: translate(-50%, -50%) rotate(0deg) scale(1);
-          }
-          33% {
-            transform: translate(-50%, -50%) rotate(120deg) scale(1.1);
-          }
-          66% {
-            transform: translate(-50%, -50%) rotate(240deg) scale(0.95);
+            transform: translate(-50%, -50%) rotate(0deg);
           }
           100% {
-            transform: translate(-50%, -50%) rotate(360deg) scale(1);
-          }
-        }
-
-        @keyframes aiLoaderShapeShift {
-          0% {
-            border-radius: 50% 50% 50% 50%;
-          }
-          25% {
-            border-radius: 20% 80% 60% 40%;
-          }
-          50% {
-            border-radius: 60% 40% 30% 70%;
-          }
-          75% {
-            border-radius: 40% 60% 70% 30%;
-          }
-          100% {
-            border-radius: 50% 50% 50% 50%;
-          }
-        }
-
-        @keyframes aiLoaderColorShift {
-          0% {
-            background: conic-gradient(#fbbf24, #f59e0b, #fbbf24);
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
-          }
-          25% {
-            background: conic-gradient(#f59e0b, #f97316, #f59e0b);
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
-          }
-          50% {
-            background: conic-gradient(#f97316, #ff8c00, #f97316);
-            box-shadow: 0 0 30px rgba(249, 115, 22, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
-          }
-          75% {
-            background: conic-gradient(#ff8c00, #fbbf24, #ff8c00);
-            box-shadow: 0 0 30px rgba(255, 140, 0, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
-          }
-          100% {
-            background: conic-gradient(#fbbf24, #f59e0b, #fbbf24);
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.6), inset 0 0 60px rgba(255, 153, 0, 0.3);
-          }
-        }
-
-        @keyframes aiLoaderWave {
-          0% {
-            filter: blur(8px);
-          }
-          25% {
-            filter: blur(12px);
-          }
-          50% {
-            filter: blur(6px);
-          }
-          75% {
-            filter: blur(10px);
-          }
-          100% {
-            filter: blur(8px);
+            transform: translate(-50%, -50%) rotate(360deg);
           }
         }
 
@@ -347,42 +282,50 @@ export default function HomeHeroSection() {
           top: 50%;
           left: 50%;
           z-index: -1;
-          width: 140%;
-          height: 140%;
-          animation: aiLoaderSpin 10s ease-in-out infinite, aiLoaderColorShift 6s ease-in-out infinite, aiLoaderShapeShift 8s ease-in-out infinite, aiLoaderWave 4s ease-in-out infinite;
-          opacity: 0.75;
+          width: 130%;
+          height: 130%;
+          border-radius: 50%;
+          background: conic-gradient(
+            from 180deg,
+            rgba(251, 191, 36, 0.48),
+            rgba(249, 115, 22, 0.7),
+            rgba(251, 191, 36, 0.48)
+          );
+          box-shadow: 0 0 22px rgba(249, 115, 22, 0.2);
+          animation: aiLoaderSpin 18s linear infinite;
+          opacity: 0.62;
+          will-change: transform;
         }
 
         .hero-ambient-glow {
           position: absolute;
           border-radius: 999px;
-          filter: blur(46px);
           z-index: 0;
-          opacity: 0.6;
+          opacity: 0.42;
           pointer-events: none;
         }
 
         .hero-ambient-glow--left {
-          width: 280px;
-          height: 280px;
+          width: 360px;
+          height: 360px;
           top: -80px;
           left: -30px;
           background: radial-gradient(
             circle,
             #ffbf8a 0%,
-            rgba(255, 191, 138, 0) 72%
+            rgba(255, 191, 138, 0) 70%
           );
         }
 
         .hero-ambient-glow--right {
-          width: 320px;
-          height: 320px;
+          width: 380px;
+          height: 380px;
           right: -70px;
           bottom: -90px;
           background: radial-gradient(
             circle,
             #9dd5ff 0%,
-            rgba(157, 213, 255, 0) 73%
+            rgba(157, 213, 255, 0) 71%
           );
         }
 
@@ -415,14 +358,14 @@ export default function HomeHeroSection() {
           }
 
           .hero-ambient-glow--left {
-            width: 220px;
-            height: 220px;
+            width: 240px;
+            height: 240px;
             left: -70px;
           }
 
           .hero-ambient-glow--right {
-            width: 220px;
-            height: 220px;
+            width: 240px;
+            height: 240px;
             right: -90px;
             bottom: -100px;
           }

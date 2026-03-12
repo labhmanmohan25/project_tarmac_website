@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PhaseCarousel from "./PhaseCarousel";
-import SectionLabel from "./SectionLabel";
 
 const pricingTiers = [
   {

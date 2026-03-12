@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
+import LazySection from "../components/LazySection";
 
 export default function TermsAndConditions() {
   return (
@@ -19,7 +20,8 @@ export default function TermsAndConditions() {
             you agree to these Terms of Service.
           </p>
 
-          <section className="mb-8">
+          <LazySection minHeight={220}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">1. Use of Service</h2>
             <p className="app-type-body text-gray-700 mb-3">
               You agree to use Tarmac only for lawful purposes and in
@@ -30,9 +32,11 @@ export default function TermsAndConditions() {
               <li>Attempt to reverse-engineer, copy, or resell the Service.</li>
               <li>Upload harmful content (malware, spam, abusive language).</li>
             </ul>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={220}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               2. Account Responsibilities
             </h2>
@@ -45,9 +49,11 @@ export default function TermsAndConditions() {
             <p className="app-type-body text-gray-700 leading-relaxed">
               We may suspend or terminate accounts violating these terms.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={200}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">3. User Content</h2>
             <p className="app-type-body text-gray-700 leading-relaxed mb-4">
               You retain ownership of the content you submit (photos, reviews,
@@ -58,9 +64,11 @@ export default function TermsAndConditions() {
               We reserve the right to remove content that violates guidelines or
               is inappropriate.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={140}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               4. XP, Badges, and Gamified Features
             </h2>
@@ -69,9 +77,11 @@ export default function TermsAndConditions() {
               entertainment and community engagement. We may modify, remove, or
               update these features without notice.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={140}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               5. Intellectual Property
             </h2>
@@ -80,9 +90,11 @@ export default function TermsAndConditions() {
               Tarmac are owned by Tarmac unless otherwise stated. You may not
               copy or reuse them without permission.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={130}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               6. Location-Based Features
             </h2>
@@ -90,9 +102,11 @@ export default function TermsAndConditions() {
               Some features require optional access to your device's location.
               You are responsible for granting or revoking permissions.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={210}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               7. Disclaimer of Warranties
             </h2>
@@ -105,9 +119,11 @@ export default function TermsAndConditions() {
               <li>Accuracy of travel data, maps, or XP calculations.</li>
               <li>Freedom from bugs or errors.</li>
             </ul>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={200}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">
               8. Limitation of Liability
             </h2>
@@ -122,25 +138,31 @@ export default function TermsAndConditions() {
                 Any damages resulting from use or inability to use the Service.
               </li>
             </ul>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={120}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">9. Termination</h2>
             <p className="app-type-body text-gray-700 leading-relaxed">
               We may suspend or terminate access to the Service at any time for
               violations or misuse.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section className="mb-8">
+          <LazySection minHeight={120}>
+            <section className="mb-8">
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">10. Changes to Terms</h2>
             <p className="app-type-body text-gray-700 leading-relaxed">
               We may modify these Terms at any time. Your continued use of the
               Service means you accept the updated terms.
             </p>
-          </section>
+            </section>
+          </LazySection>
 
-          <section>
+          <LazySection minHeight={120}>
+            <section>
             <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-4">11. Contact Us</h2>
             <p className="app-type-body text-gray-700 leading-relaxed">
               For support or clarification:{" "}
@@ -151,7 +173,8 @@ export default function TermsAndConditions() {
                 manmohan.labh@travelwithtarmac.com
               </a>
             </p>
-          </section>
+            </section>
+          </LazySection>
         </div>
       </Layout>
     </>

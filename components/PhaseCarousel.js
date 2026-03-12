@@ -38,6 +38,10 @@ export default function PhaseCarousel({
   const [visibleCards, setVisibleCards] = useState(1);
   const [containerWidth, setContainerWidth] = useState(0);
 
+  if (!slides.length) {
+    return null;
+  }
+
   useEffect(() => {
     const updateVisibleCards = () => {
       if (!containerRef.current) return;
@@ -55,11 +59,8 @@ export default function PhaseCarousel({
       observer.observe(containerRef.current);
     }
 
-    window.addEventListener("resize", updateVisibleCards);
-
     return () => {
       observer.disconnect();
-      window.removeEventListener("resize", updateVisibleCards);
     };
   }, [slides.length, cardWidth, cardGap]);
 

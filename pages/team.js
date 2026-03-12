@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import LazySection from "../components/LazySection";
 import { SITE_LINKS } from "../lib/siteLinks";
 
 const founders = [
@@ -65,135 +66,137 @@ export default function Team() {
                   marginBottom: "16px",
                 }}
               >
-                Built by Travelers,
+                Built for <em>Travelers</em>,
                 <br />
-                for Travelers
+                by <em>Travelers</em>
               </h2>
             </div>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "48px",
-                alignItems: "center",
-                width: "100%",
-              }}
-            >
-              {founders.map((founder) => (
-                <div
-                  key={founder.name}
-                  style={{
-                    padding: "0",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "16px",
-                    alignItems: "center",
-                    maxWidth: "600px",
-                    width: "100%",
-                    justifyContent: "center",
-                  }}
-                >
-                  <div>
-                    <p
-                      className="app-type-heading"
-                      style={{
-                        fontSize: "28px",
-                        fontWeight: "500",
-                        color: "#1c1c1e",
-                        margin: "0 0 4px 0",
-                        textAlign: "center",
-                      }}
-                    >
-                      {founder.name}
-                    </p>
-                    <p
-                      className="app-type-subheading"
-                      style={{
-                        fontSize: "16px",
-                        color: "#F97316",
-                        fontWeight: "500",
-                        margin: "0 0 12px 0",
-                        textAlign: "center",
-                      }}
-                    >
-                      {founder.role}
-                    </p>
-                    <p
-                      className="app-type-label"
-                      style={{
-                        color: "#999",
-                        marginBottom: "16px",
-                        fontWeight: "500",
-                        textAlign: "center",
-                      }}
-                    >
-                      {founder.pastExperience}
-                    </p>
-                    <p
-                      className="app-type-body"
-                      style={{
-                        color: "#555",
-                        marginBottom: "16px",
-                        maxWidth: "500px",
-                        textAlign: "center",
-                      }}
-                    >
-                      {founder.bio}
-                    </p>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: "8px",
-                        justifyContent: "center",
-                      }}
-                    >
-                      {founder.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          style={{
-                            fontSize: "11px",
-                            color: "#666",
-                            background: "#f9f7f3",
-                            borderRadius: "100px",
-                            padding: "4px 12px",
-                            fontFamily: '"DM Sans", sans-serif',
-                            border: "1px solid #e8e4de",
-                            fontWeight: "500",
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <div
-                      style={{
-                        marginTop: "18px",
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <a
-                        href={founder.linkedin}
-                        target="_blank"
-                        rel="noreferrer"
+            <LazySection minHeight={520}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "48px",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                {founders.map((founder) => (
+                  <div
+                    key={founder.name}
+                    style={{
+                      padding: "0",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "16px",
+                      alignItems: "center",
+                      maxWidth: "600px",
+                      width: "100%",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div>
+                      <p
+                        className="app-type-heading"
                         style={{
-                          display: "inline-flex",
-                          color: "#0a66c2",
-                          fontFamily: '"DM Sans", sans-serif',
-                          fontSize: "14px",
-                          fontWeight: "600",
-                          textDecoration: "none",
+                          fontSize: "28px",
+                          fontWeight: "500",
+                          color: "#1c1c1e",
+                          margin: "0 0 4px 0",
+                          textAlign: "center",
                         }}
                       >
-                        Connect on LinkedIn
-                      </a>
+                        {founder.name}
+                      </p>
+                      <p
+                        className="app-type-subheading"
+                        style={{
+                          fontSize: "16px",
+                          color: "#F97316",
+                          fontWeight: "500",
+                          margin: "0 0 12px 0",
+                          textAlign: "center",
+                        }}
+                      >
+                        {founder.role}
+                      </p>
+                      <p
+                        className="app-type-label"
+                        style={{
+                          color: "#999",
+                          marginBottom: "16px",
+                          fontWeight: "500",
+                          textAlign: "center",
+                        }}
+                      >
+                        {founder.pastExperience}
+                      </p>
+                      <p
+                        className="app-type-body"
+                        style={{
+                          color: "#555",
+                          marginBottom: "16px",
+                          maxWidth: "500px",
+                          textAlign: "center",
+                        }}
+                      >
+                        {founder.bio}
+                      </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: "8px",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {founder.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            style={{
+                              fontSize: "11px",
+                              color: "#666",
+                              background: "#f9f7f3",
+                              borderRadius: "100px",
+                              padding: "4px 12px",
+                              fontFamily: '"DM Sans", sans-serif',
+                              border: "1px solid #e8e4de",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div
+                        style={{
+                          marginTop: "18px",
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <a
+                          href={founder.linkedin}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            display: "inline-flex",
+                            color: "#0a66c2",
+                            fontFamily: '"DM Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: "600",
+                            textDecoration: "none",
+                          }}
+                        >
+                          Connect on LinkedIn
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </LazySection>
           </div>
         </div>
       </section>

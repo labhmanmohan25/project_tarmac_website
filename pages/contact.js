@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import { useState } from "react";
 import { SITE_LINKS } from "../lib/siteLinks";
+import LazySection from "../components/LazySection";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -43,132 +44,134 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-6">
-                Contact Information
-              </h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="app-type-body-strong text-gray-900">Email</h3>
-                  <a
-                    href={SITE_LINKS.email}
-                    className="app-type-body text-gray-600 hover:text-gray-900"
-                  >
-                    manmohan.labh@travelwithtarmac.com
-                  </a>
-                </div>
-                <div>
-                  <h3 className="app-type-body-strong text-gray-900">Instagram</h3>
-                  <a
-                    href={SITE_LINKS.instagram}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="app-type-body text-gray-600 hover:text-gray-900"
-                  >
-                    @travel.with.tarmac
-                  </a>
-                </div>
-                <div>
-                  <h3 className="app-type-body-strong text-gray-900">LinkedIn</h3>
-                  <a
-                    href={SITE_LINKS.linkedinCompany}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="app-type-body text-gray-600 hover:text-gray-900"
-                  >
-                    Travel With Tarmac
-                  </a>
-                </div>
-                <div>
-                  <h3 className="app-type-body-strong text-gray-900">Download</h3>
-                  <div className="flex flex-col gap-2">
+          <LazySection minHeight={700}>
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h2 className="app-title-font app-type-heading text-2xl text-gray-900 mb-6">
+                  Contact Information
+                </h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="app-type-body-strong text-gray-900">Email</h3>
                     <a
-                      href={SITE_LINKS.appStore}
+                      href={SITE_LINKS.email}
+                      className="app-type-body text-gray-600 hover:text-gray-900"
+                    >
+                      manmohan.labh@travelwithtarmac.com
+                    </a>
+                  </div>
+                  <div>
+                    <h3 className="app-type-body-strong text-gray-900">Instagram</h3>
+                    <a
+                      href={SITE_LINKS.instagram}
                       target="_blank"
                       rel="noreferrer"
                       className="app-type-body text-gray-600 hover:text-gray-900"
                     >
-                      App Store
+                      @travel.with.tarmac
                     </a>
+                  </div>
+                  <div>
+                    <h3 className="app-type-body-strong text-gray-900">LinkedIn</h3>
                     <a
-                      href={SITE_LINKS.googlePlay}
+                      href={SITE_LINKS.linkedinCompany}
                       target="_blank"
                       rel="noreferrer"
                       className="app-type-body text-gray-600 hover:text-gray-900"
                     >
-                      Google Play
+                      Travel With Tarmac
                     </a>
+                  </div>
+                  <div>
+                    <h3 className="app-type-body-strong text-gray-900">Download</h3>
+                    <div className="flex flex-col gap-2">
+                      <a
+                        href={SITE_LINKS.appStore}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="app-type-body text-gray-600 hover:text-gray-900"
+                      >
+                        App Store
+                      </a>
+                      <a
+                        href={SITE_LINKS.googlePlay}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="app-type-body text-gray-600 hover:text-gray-900"
+                      >
+                        Google Play
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <div>
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-6">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+
+                  <div className="mb-6">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+
+                  <div className="mb-6">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows="4"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
             </div>
-
-            <div>
-              <form onSubmit={handleSubmit}>
-                <div className="mb-6">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-
-                <div className="mb-6">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-
-                <div className="mb-6">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="4"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
-          </div>
+          </LazySection>
         </div>
       </Layout>
     </>
