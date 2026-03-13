@@ -196,7 +196,7 @@ export default function DestinationsSection() {
             autoplaySpeed={2500}
             showDots={false}
             showArrows={false}
-            pauseOnHover={true}
+            pauseOnHover={false}
             minHeight="auto"
             renderCard={(card) => (
               <div

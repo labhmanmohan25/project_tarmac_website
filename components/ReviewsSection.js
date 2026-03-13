@@ -227,7 +227,7 @@ export default function ReviewsSection() {
             autoplaySpeed={2800}
             showDots={false}
             showArrows={false}
-            pauseOnHover={true}
+            pauseOnHover={false}
             minHeight="auto"
             renderCard={(rev) => (
               <div

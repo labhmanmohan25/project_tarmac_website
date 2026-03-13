@@ -354,7 +354,7 @@ export default function PricingSection() {
             autoplay={false}
             showDots={false}
             showArrows={false}
-            pauseOnHover={true}
+            pauseOnHover={false}
             infinite={false}
             initialSlide={1}
             minHeight="auto"

@@ -28,7 +28,7 @@ export default function PhaseCarousel({
   speed = 650,
   showDots = false,
   showArrows = false,
-  pauseOnHover = true,
+  pauseOnHover = false,
   autoplay = true,
   minHeight = "293px",
   infinite = true,
