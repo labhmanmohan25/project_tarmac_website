@@ -76,6 +76,10 @@ export default function PricingSection() {
                   Estimated monthly cost: ${payPerTripMonthlyEstimate}
                 </p>
               </div>
+              <p className="plan-copy" style={{ marginTop: "10px" }}>
+                New accounts get the first 2 trip days free on their first
+                login.
+              </p>
             </div>
 
             <button
