@@ -107,10 +107,10 @@ export default function DestinationsSection() {
 
         <div className="destinations-desktop">
           <div className="destinations-grid">
-            {destCards.map((card, idx) => (
+            {destCards.map((card) => (
               <div
                 key={card.name}
-                className={`dest-card-light ${idx === 0 ? "dest-card-featured" : ""}`}
+                className="dest-card-light"
                 style={{
                   background: "white",
                   borderRadius: "20px",
@@ -119,128 +119,54 @@ export default function DestinationsSection() {
                 }}
               >
                 <div
-                  className={
-                    idx === 0 ? "dest-card-image" : "dest-card-image-regular"
-                  }
+                  className="dest-card-image-regular"
                   style={{
                     backgroundImage: `url(${card.image})`,
                   }}
-                >
-                  {idx === 0 && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        bottom: "0",
-                        left: "0",
-                        right: "0",
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.5), transparent)",
-                        padding: "24px 18px 16px",
-                      }}
-                    >
-                      <p
-                        style={{
-                          fontFamily: '"Bricolage Grotesque", sans-serif',
-                          fontSize: "22px",
-                          fontWeight: "800",
-                          color: "white",
-                        }}
-                      >
-                        {card.name}
-                      </p>
-                      <p
-                        style={{
-                          fontFamily: '"DM Sans", sans-serif',
-                          fontSize: "12px",
-                          color: "rgba(255,255,255,0.75)",
-                        }}
-                      >
-                        {card.country}
-                      </p>
-                    </div>
-                  )}
-                </div>
+                />
                 <div
                   style={{
-                    padding: idx === 0 ? "16px 18px 20px" : "13px 16px 16px",
+                    padding: "13px 16px 16px",
                   }}
                 >
-                  {idx === 0 && (
-                    <div className="dest-card-short-description">
-                      <p
-                        style={{
-                          fontSize: "15px",
-                          fontWeight: "700",
-                          color: "#1c1c1e",
-                          marginBottom: "4px",
-                          fontFamily: '"DM Sans", sans-serif',
-                        }}
-                      >
-                        {card.name}{" "}
-                        <span
-                          style={{
-                            fontSize: "12px",
-                            fontWeight: "400",
-                            color: "#999",
-                          }}
-                        >
-                          · {card.country}
-                        </span>
-                      </p>
-                      <p
+                  <div>
+                    <p
+                      style={{
+                        fontSize: "15px",
+                        fontWeight: "700",
+                        color: "#1c1c1e",
+                        marginBottom: "4px",
+                        fontFamily: '"DM Sans", sans-serif',
+                      }}
+                    >
+                      {card.name}{" "}
+                      <span
                         style={{
                           fontSize: "12px",
-                          color: "#888",
-                          marginBottom: "8px",
-                          fontFamily: '"DM Sans", sans-serif',
-                          lineHeight: "1.3",
+                          fontWeight: "400",
+                          color: "#999",
                         }}
                       >
-                        {card.shortDescription}
-                      </p>
-                    </div>
-                  )}
-
-                  {idx !== 0 && (
-                    <div>
-                      <p
-                        style={{
-                          fontSize: "15px",
-                          fontWeight: "700",
-                          color: "#1c1c1e",
-                          marginBottom: "4px",
-                          fontFamily: '"DM Sans", sans-serif',
-                        }}
-                      >
-                        {card.name}{" "}
-                        <span
-                          style={{
-                            fontSize: "12px",
-                            fontWeight: "400",
-                            color: "#999",
-                          }}
-                        >
-                          · {card.country}
-                        </span>
-                      </p>
-                      <p
-                        style={{
-                          fontSize: "12px",
-                          color: "#888",
-                          marginBottom: "8px",
-                          fontFamily: '"DM Sans", sans-serif',
-                          lineHeight: "1.3",
-                        }}
-                      >
-                        {card.shortDescription}
-                      </p>
-                    </div>
-                  )}
+                        · {card.country}
+                      </span>
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "12px",
+                        color: "#888",
+                        marginBottom: "8px",
+                        fontFamily: '"DM Sans", sans-serif',
+                        lineHeight: "1.3",
+                      }}
+                    >
+                      {card.shortDescription}
+                    </p>
+                  </div>
                   <div
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      marginTop: idx === 0 ? 0 : "4px",
+                      marginTop: "4px",
                     }}
                   >
                     <div>
@@ -253,30 +179,8 @@ export default function DestinationsSection() {
                       >
                         From · {card.days} days
                       </p>
-                      <p
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: "800",
-                          color: "#1c1c1e",
-                          fontFamily: '"Bricolage Grotesque", sans-serif',
-                          letterSpacing: "-0.01em",
-                        }}
-                      >
-                        {card.price}
-                      </p>
                     </div>
                   </div>
-                  {idx === 0 && (
-                    <p
-                      className="dest-card-full-description app-type-body"
-                      style={{
-                        color: "#666",
-                        marginTop: "16px",
-                      }}
-                    >
-                      {card.description}
-                    </p>
-                  )}
                 </div>
               </div>
             ))}
@@ -377,17 +281,6 @@ export default function DestinationsSection() {
                       >
                         From · {card.days} days
                       </p>
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          fontWeight: "800",
-                          color: "#1c1c1e",
-                          fontFamily: '"Bricolage Grotesque", sans-serif',
-                          letterSpacing: "-0.01em",
-                        }}
-                      >
-                        {card.price}
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -400,7 +293,7 @@ export default function DestinationsSection() {
       <style jsx>{`
         @media (max-width: 768px) {
           .destinations-section {
-            padding: 72px 16px !important;
+            padding: 0 16px 72px !important;
           }
 
           .destinations-heading {

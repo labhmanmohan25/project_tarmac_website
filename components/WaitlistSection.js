@@ -55,7 +55,7 @@ export default function WaitlistSection() {
           maxWidth: "920px",
           margin: "0 auto",
           position: "relative",
-          background: "#f6efe4",
+          background: "#eeebe6",
           border: "1px solid rgba(111,94,74,0.14)",
           borderRadius: "30px",
           padding: "72px 24px",

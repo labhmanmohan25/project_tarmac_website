@@ -31,12 +31,12 @@ export default function Home() {
 
       <HomeHeroSection />
 
-      <LazySection minHeight={700} rootMargin="800px 0px">
-        <HeroPhaseSection />
-      </LazySection>
-
       <LazySection minHeight={500} rootMargin="600px 0px">
         <HowItWorksSection />
+      </LazySection>
+
+      <LazySection minHeight={700} rootMargin="800px 0px">
+        <HeroPhaseSection />
       </LazySection>
 
       <LazySection minHeight={500} rootMargin="600px 0px">

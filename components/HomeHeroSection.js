@@ -13,8 +13,8 @@ export default function HomeHeroSection() {
       style={{
         position: "relative",
         overflow: "hidden",
-        background: "#ececec",
-        minHeight: "100vh",
+        background: "#eeebe6",
+        minHeight: "90vh",
         paddingTop: "72px",
         paddingBottom: "56px",
         display: "flex",
@@ -310,11 +310,7 @@ export default function HomeHeroSection() {
           height: 360px;
           top: -80px;
           left: -30px;
-          background: radial-gradient(
-            circle,
-            #ffbf8a 0%,
-            rgba(255, 191, 138, 0) 70%
-          );
+          background: transparent;
         }
 
         .hero-ambient-glow--right {
@@ -322,11 +318,7 @@ export default function HomeHeroSection() {
           height: 380px;
           right: -70px;
           bottom: -90px;
-          background: radial-gradient(
-            circle,
-            #9dd5ff 0%,
-            rgba(157, 213, 255, 0) 71%
-          );
+          background: transparent;
         }
 
         @media (max-width: 768px) {

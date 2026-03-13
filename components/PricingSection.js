@@ -7,8 +7,8 @@ const pricingTiers = [
     basePrice: 7,
     baseDays: 7,
     per: "per pass",
-    accent: "#d46e2c",
-    cardBackground: "#fff6eb",
+    accent: "#1c1c1e",
+    cardBackground: "#ffffff",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
     desc: "Best for short escapes and focused trips up to one week.",
@@ -19,8 +19,8 @@ const pricingTiers = [
     basePrice: 15,
     baseDays: 15,
     per: "per pass",
-    accent: "#ffd36f",
-    cardBackground: "#214a66",
+    accent: "#ffffff",
+    cardBackground: "#1c1c1e",
     image:
       "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=80",
     desc: "Built for longer vacations with room for changes on the go.",
@@ -32,8 +32,8 @@ const pricingTiers = [
     basePrice: 30,
     baseDays: 30,
     per: "per pass",
-    accent: "#258b67",
-    cardBackground: "#edf7ef",
+    accent: "#1c1c1e",
+    cardBackground: "#ffffff",
     image:
       "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80",
     desc: "Ideal for extended journeys and multi-city adventures.",
@@ -52,10 +52,10 @@ export default function PricingSection() {
     <section
       id="pricing"
       className="pricing-section"
-      style={{ background: "#dbe7ee", padding: "108px 48px" }}
+      style={{ background: "#eeebe6", padding: "108px 48px" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "56px" }}>
+        <div className="pricing-heading" style={{ textAlign: "center", marginBottom: "56px" }}>
           <h2
             className="app-title-font app-type-heading"
             style={{
@@ -110,7 +110,7 @@ export default function PricingSection() {
                       top: "16px",
                       left: "50%",
                       transform: "translateX(-50%)",
-                      background: "#f97316",
+                      background: "#1c1c1e",
                       color: "white",
                       borderRadius: "100px",
                       padding: "5px 16px",
@@ -326,8 +326,8 @@ export default function PricingSection() {
                       width: "100%",
                       padding: "14px",
                       borderRadius: "100px",
-                      background: tier.dark ? "#ffd36f" : tier.accent,
-                      color: tier.dark ? "#1f3551" : "white",
+                      background: tier.dark ? "white" : "#1c1c1e",
+                      color: tier.dark ? "#1c1c1e" : "white",
                       border: "none",
                       fontSize: "14px",
                       fontWeight: "600",
@@ -393,7 +393,7 @@ export default function PricingSection() {
                         top: "12px",
                         left: "50%",
                         transform: "translateX(-50%)",
-                        background: "#F97316",
+                        background: "#1c1c1e",
                         color: "white",
                         borderRadius: "100px",
                         padding: "4px 12px",
@@ -614,8 +614,8 @@ export default function PricingSection() {
                         width: "100%",
                         padding: "10px",
                         borderRadius: "100px",
-                        background: tier.dark ? "#ffd36f" : tier.accent,
-                        color: tier.dark ? "#1f3551" : "white",
+                        background: tier.dark ? "white" : "#1c1c1e",
+                        color: tier.dark ? "#1c1c1e" : "white",
                         border: "none",
                         fontSize: "12px",
                         fontWeight: "600",
@@ -640,15 +640,19 @@ export default function PricingSection() {
       <style jsx>{`
         @media (max-width: 768px) {
           .pricing-section {
-            padding: 72px 16px !important;
+            padding: 0 16px 48px !important;
+          }
+
+          .pricing-heading {
+            margin-bottom: 20px !important;
           }
 
           .pricing-mobile {
-            padding: 12px 0 16px !important;
+            padding: 0 !important;
           }
 
           .pricing-mobile :global(.slick-list) {
-            padding-top: 12px !important;
+            padding-top: 0 !important;
             padding-bottom: 16px !important;
           }
 

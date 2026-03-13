@@ -23,12 +23,6 @@ export default function HowItWorksSection() {
   return (
     <section id="features" className="how-simple-section">
       <div className="how-simple-inner">
-        <h2 className="how-simple-title app-type-heading">How It Works</h2>
-        <p className="how-simple-subtitle app-type-body">
-          From inspiration to booking, we've simplified every step so you can
-          focus on enjoying the journey, not the planning.
-        </p>
-
         <div
           className="how-simple-list"
           role="list"
@@ -51,12 +45,16 @@ export default function HowItWorksSection() {
             </article>
           ))}
         </div>
+        <p className="how-simple-subtitle app-type-body">
+          From inspiration to booking, we've simplified every step so you can
+          focus on enjoying the journey, not the planning.
+        </p>
       </div>
 
       <style jsx>{`
         .how-simple-section {
-          padding: 88px 40px;
-          background: #e7e7e7;
+          padding: 0 40px 88px;
+          background: #eeebe6;
         }
 
         .how-simple-inner {
@@ -84,7 +82,6 @@ export default function HowItWorksSection() {
         }
 
         .how-simple-list {
-          margin-top: 70px;
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 18px;
@@ -178,7 +175,7 @@ export default function HowItWorksSection() {
 
         @media (max-width: 900px) {
           .how-simple-section {
-            padding: 64px 16px;
+            padding: 0 16px 64px;
           }
 
           .how-simple-subtitle {

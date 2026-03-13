@@ -6,10 +6,10 @@ const reviews = [
     location: "New York, USA",
     rating: 5,
     text: "Tarmac completely transformed our Japan trip. When our flight was delayed, it automatically rerouted us and rebooked our dinner reservation. Incredible.",
-    color: "#F97316",
+    color: "#1c1c1e",
     image:
       "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80",
-    background: "#fff3e7",
+    background: "#ffffff",
     initials: "SM",
   },
   {
@@ -17,10 +17,10 @@ const reviews = [
     location: "London, UK",
     rating: 5,
     text: "Finally an app that handles group travel properly. The expense splitting alone saved us three awkward money conversations. The itinerary AI is genuinely brilliant.",
-    color: "#6366f1",
+    color: "#ffffff",
     image:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80",
-    background: "#23405f",
+    background: "#1c1c1e",
     initials: "DK",
     featured: true,
   },
@@ -29,10 +29,10 @@ const reviews = [
     location: "Singapore",
     rating: 5,
     text: "Planned our Morocco trip in 10 minutes. It understood our group's vibe from our chat history and built something better than any travel agent ever has.",
-    color: "#10b981",
+    color: "#1c1c1e",
     image:
       "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=80",
-    background: "#eef8f1",
+    background: "#ffffff",
     initials: "PL",
   },
 ];
@@ -42,7 +42,7 @@ export default function ReviewsSection() {
     <section
       id="reviews"
       className="reviews-section"
-      style={{ background: "#f4eadc", padding: "108px 48px" }}
+      style={{ background: "#eeebe6", padding: "108px 48px" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div
@@ -69,22 +69,12 @@ export default function ReviewsSection() {
                 className="app-title-font app-type-heading"
                 style={{
                   fontSize: "0.9em",
-                  color: "#b45f2a",
+                  color: "#6b6b6e",
                 }}
               >
                 Around the World
               </span>
             </h2>
-            <p
-              className="app-subheading-font app-type-subheading"
-              style={{
-                color: "#6e6256",
-                marginTop: "18px",
-              }}
-            >
-              Traveler stories should feel as alive as the destinations above,
-              so this section now carries warmer color and real trip imagery.
-            </p>
           </div>
 
           <div
@@ -152,7 +142,7 @@ export default function ReviewsSection() {
                         key={i}
                         width="14"
                         height="14"
-                        fill="#F97316"
+                        fill={rev.featured ? "rgba(255,255,255,0.7)" : "#1c1c1e"}
                         viewBox="0 0 24 24"
                       >
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -166,7 +156,7 @@ export default function ReviewsSection() {
                       fontSize: "14px",
                       color: rev.featured
                         ? "rgba(255,255,255,0.84)"
-                        : "#584a3d",
+                        : "#5f6b73",
                       marginBottom: "22px",
                     }}
                   >
@@ -275,7 +265,7 @@ export default function ReviewsSection() {
                         key={i}
                         width="12"
                         height="12"
-                        fill="#F97316"
+                        fill={rev.featured ? "rgba(255,255,255,0.7)" : "#1c1c1e"}
                         viewBox="0 0 24 24"
                       >
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -289,7 +279,7 @@ export default function ReviewsSection() {
                       fontSize: "13px",
                       color: rev.featured
                         ? "rgba(255,255,255,0.84)"
-                        : "#584a3d",
+                        : "#5f6b73",
                       marginBottom: "16px",
                       flex: 1,
                     }}
@@ -358,11 +348,12 @@ export default function ReviewsSection() {
       <style jsx>{`
         @media (max-width: 768px) {
           .reviews-section {
-            padding: 72px 16px !important;
+            padding: 0 16px 72px !important;
           }
 
           .reviews-heading {
             display: block !important;
+            margin-bottom: 24px !important;
           }
 
           .reviews-snapshots {
