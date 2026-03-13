@@ -9,7 +9,6 @@ import LazySection from "../components/LazySection";
 const HeroPhaseSection = dynamic(() => import("../components/HeroPhaseSection"), { ssr: true });
 const DestinationsSection = dynamic(() => import("../components/DestinationsSection"), { ssr: true });
 const TarmacExplainerSection = dynamic(() => import("../components/TarmacExplainerSection"), { ssr: true });
-const ReviewsSection = dynamic(() => import("../components/ReviewsSection"), { ssr: true });
 const PricingSection = dynamic(() => import("../components/PricingSection"), { ssr: true });
 const WaitlistSection = dynamic(() => import("../components/WaitlistSection"), { ssr: true });
 
@@ -42,10 +41,6 @@ export default function Home() {
 
         <LazySection minHeight={420} rootMargin="600px 0px">
           <TarmacExplainerSection />
-        </LazySection>
-
-        <LazySection minHeight={500} rootMargin="600px 0px">
-          <ReviewsSection />
         </LazySection>
 
         <LazySection minHeight={500} rootMargin="600px 0px">
