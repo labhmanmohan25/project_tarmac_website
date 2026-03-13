@@ -36,6 +36,7 @@ export default function PhaseCarousel({
   mobileCardMaxHeight = 320,
   showPhoneMockup = false,
   carouselHeight = 560,
+  chatResetKey,
 }) {
   const containerRef = useRef(null);
   const sliderWrapRef = useRef(null);
@@ -45,6 +46,7 @@ export default function PhaseCarousel({
   const [phoneAspectRatio, setPhoneAspectRatio] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(initialSlide);
   const [cardBottom, setCardBottom] = useState(null);
+  const [chatRenderKey, setChatRenderKey] = useState(0);
 
   const effectiveCardGap = showPhoneMockup ? PHONE_MOCKUP_CARD_GAP : cardGap;
   const halfGap = Math.round(effectiveCardGap / 2);
@@ -97,6 +99,32 @@ export default function PhaseCarousel({
       }
     };
   }, [showPhoneMockup]);
+
+  useEffect(() => {
+    if (typeof chatResetKey === "undefined") return;
+
+    const syncChatWithActiveSlide = () => {
+      if (!sliderWrapRef.current) {
+        setCurrentSlide(initialSlide);
+        setCardBottom(null);
+        setChatRenderKey((prev) => prev + 1);
+        return;
+      }
+
+      const activeSlide = sliderWrapRef.current.querySelector(
+        ".slick-active:not(.slick-cloned)",
+      );
+      const rawIndex = activeSlide?.getAttribute("data-index");
+      const parsedIndex = Number.parseInt(rawIndex ?? "", 10);
+
+      setCurrentSlide(Number.isNaN(parsedIndex) ? initialSlide : parsedIndex);
+      setCardBottom(null);
+      setChatRenderKey((prev) => prev + 1);
+    };
+
+    const timeoutId = setTimeout(syncChatWithActiveSlide, 0);
+    return () => clearTimeout(timeoutId);
+  }, [chatResetKey, initialSlide]);
 
   const phoneWidth = useMemo(() => {
     if (!showPhoneMockup || !containerHeight) return 0;
@@ -167,6 +195,9 @@ export default function PhaseCarousel({
 
   // Measure the bottom edge of the active card so chat anchors just below it
   useEffect(() => {
+    let timeoutId;
+    let tries = 0;
+
     const measure = () => {
       if (!sliderWrapRef.current || !containerRef.current) return;
       const slide = sliderWrapRef.current.querySelector(
@@ -176,10 +207,16 @@ export default function PhaseCarousel({
       const slideRect = slide.getBoundingClientRect();
       const containerRect = containerRef.current.getBoundingClientRect();
       setCardBottom(slideRect.bottom - containerRect.top);
+
+      // Slick/layout can lag one tick after data changes, so re-measure briefly.
+      tries += 1;
+      if (tries < 5) {
+        timeoutId = setTimeout(measure, 60);
+      }
     };
-    const t = setTimeout(measure, 80);
-    return () => clearTimeout(t);
-  }, [centerSlideIndex, computedCardWidth]);
+    timeoutId = setTimeout(measure, 80);
+    return () => clearTimeout(timeoutId);
+  }, [centerSlideIndex, computedCardWidth, chatResetKey, slides]);
 
   const slideStyle = useMemo(
     () => ({
@@ -344,7 +381,7 @@ export default function PhaseCarousel({
       {/* Chat bubbles — anchored just below the card, left/right alternating */}
       {slides[centerSlideIndex]?.chatMessages?.length > 0 && (
         <div
-          key={`chat-${centerSlideIndex}`}
+          key={`chat-${chatRenderKey}-${centerSlideIndex}`}
           style={{
             position: "absolute",
             top: cardBottom != null ? `${cardBottom + 12}px` : "420px",
@@ -378,29 +415,6 @@ export default function PhaseCarousel({
             </div>
           ))}
         </div>
-      )}
-
-      {showPhoneMockup && (
-      <div
-        className="phase-chat-composer"
-        style={{ width: `${computedCardWidth}px` }}
-      >
-        <button type="button" className="phase-chat-icon-btn" aria-label="Attach file">
-          <span aria-hidden="true">📎</span>
-        </button>
-        <input
-          type="text"
-          className="phase-chat-input"
-          placeholder="Type a message"
-          aria-label="Type a message"
-        />
-        <button type="button" className="phase-chat-icon-btn" aria-label="Voice input">
-          <span aria-hidden="true">🎤</span>
-        </button>
-        <button type="button" className="phase-chat-send-btn" aria-label="Send message">
-          <span aria-hidden="true">➤</span>
-        </button>
-      </div>
       )}
       </div>
 

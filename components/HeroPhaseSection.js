@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import SegmentedControl from "./SegmentedControl";
 import PhaseCarousel from "./PhaseCarousel";
 
@@ -1062,43 +1062,73 @@ const phaseCardsConfig = {
     },
     {
       title: "Best food stalls locals actually eat at around here?",
-      description: "In-Trip Question Card",
+        description: "In-Trip Suggestion Card",
       chatMessages: [
         { name: "Jake", text: "NOT tourist traps plz" },
         { name: "Sam", text: "real local spots only" },
       ],
       renderCard: () => (
-        <InTripActionQuestionCard
-          title="Best food stalls locals eat at?"
-          cta="Show Me"
+          <InTripSuggestionCard
+            title="Best food stalls locals actually eat at around here?"
+            subtitle="Ranked from local food blogs, recent repeat-customer reviews, and walk-time from your location."
+            previewContent={
+              <>
+                <RestaurantPreview
+                  name="Torikado Alley Stalls"
+                  rating="4.8"
+                  distance="6 min walk"
+                  priceRange="¥900 avg"
+                  tag="Late-night local pick"
+                />
+                <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Yakitori Row · 11 vendors · busiest with locals after 20:00</div>
+              </>
+            }
+            sourcesCount="3 local food blogs · 240 recent reviews"
+            cta="Let's Go"
         />
       ),
     },
     {
       title: "Need a restroom nearby?",
-      description: "In-Trip Question Card",
+        description: "In-Trip Suggestion Card",
       chatMessages: [
         { name: "Riya", text: "🆘 help needed lol" },
         { name: "Jake", text: "😂😂 running" },
       ],
       renderCard: () => (
-        <InTripActionQuestionCard
+          <InTripSuggestionCard
           title="Need a restroom nearby?"
-          cta="Find Now"
+            subtitle="Nearest verified public facilities based on live open-hours, foot-access, and cleanliness reports."
+            previewContent={
+              <>
+                <MapsLinkButton label="Shibuya Stream Restrooms · 120 m · Level 2" />
+                <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Open now · Accessible stall available · 2 min queue estimate</div>
+              </>
+            }
+            sourcesCount="City facilities data · live mall hours"
+            cta="Take Me There"
         />
       ),
     },
     {
       title: "Shopping spots near me?",
-      description: "In-Trip Question Card",
+        description: "In-Trip Suggestion Card",
       chatMessages: [
         { name: "Sam", text: "let's goooo 🛍️" },
         { name: "Jake", text: "budget?? lol" },
       ],
       renderCard: () => (
-        <InTripActionQuestionCard
+          <InTripSuggestionCard
           title="Shopping spots near me?"
-          cta="Show Me"
+            subtitle="Picked from your radius, price mix, and stores with the strongest recent local footfall."
+            previewContent={
+              <>
+                <MapsLinkButton label="Cat Street Shops · 450 m · Harajuku" />
+                <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Vintage · sneakers · design stores · 18 top-rated stops in one stretch</div>
+              </>
+            }
+            sourcesCount="18 nearby stores compared"
+            cta="Let's Go"
         />
       ),
     },
@@ -1118,28 +1148,39 @@ const phaseCardsConfig = {
     },
     {
       title: "Help me do a food tour here.",
-      description: "In-Trip Question Card",
+      description: "In-Trip Suggestion Card",
       chatMessages: [
         { name: "Jake", text: "I'm SO in 🍢" },
         { name: "Riya", text: "planning as we walk" },
       ],
       renderCard: () => (
-        <InTripActionQuestionCard
+        <InTripSuggestionCard
           title="Help me do a food tour here."
-          cta="Build Food Tour"
+          subtitle="Built as a walkable route using crowd timing, signature dishes, and stop-to-stop distance."
+          previewContent="Stop 1: Gyoza alley · Stop 2: standing sushi · Stop 3: taiyaki window · 42 min total walk"
+          sourcesCount="12 food stops ranked"
+          cta="Start Tour"
         />
       ),
     },
     {
       title: "Best ferry tours - where do locals buy tickets?",
-      description: "In-Trip Question Card",
+      description: "In-Trip Suggestion Card",
       chatMessages: [
         { name: "Sam", text: "don't want to overpay" },
       ],
       renderCard: () => (
-        <InTripActionQuestionCard
+        <InTripSuggestionCard
           title="Best ferry tours - where do locals buy tickets?"
-          cta="Find Tours"
+          subtitle="Filtered for operator-direct pricing, local boarding points, and today's departure availability."
+          previewContent={
+            <>
+              <MapsLinkButton label="Sumida River Cruise Pier · 700 m · Direct counter" />
+              <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Operator price ¥1,200 · reseller avg ¥1,650 · next local-favorite departure 16:40</div>
+            </>
+          }
+          sourcesCount="4 operators · direct ticket counters checked"
+          cta="See Tours"
         />
       ),
     },
@@ -1383,17 +1424,22 @@ const phaseCardsConfig = {
       renderCard: () => <PostTripSplitCard />,
     },
     {
-      icon: "❓",
-      title: "Suggest my next trip based on this one.",
-      description: "Post-Trip Request",
+      icon: "💡",
+      title: "Suggested next trips based on this one.",
+      description: "Post-Trip Proactive Suggestion",
       chatMessages: [
         { name: "Sam", text: "already ready for next one!" },
         { name: "Jake", text: "same time next year? 🌏" },
       ],
       renderCard: () => (
-        <PostTripQuestionCard
-          title="Suggest my next trip based on this one."
-          cta="Show Me"
+        <PostTripSuggestionCard
+          title="Suggested next trips based on this one."
+          kind="Next Trip Suggestion"
+          accent="explore"
+          subtitle="Matched from your group's pace, spend pattern, food preferences, and activity mix."
+          previewContent={<DestinationFitList destinations={[{flag:"🇰🇷",name:"Seoul",fit:91,price:"€1,150"},{flag:"🇹🇼",name:"Taipei",fit:88,price:"€980"},{flag:"🇵🇹",name:"Porto",fit:84,price:"€1,320"}]} />}
+          sourcesCount="Trip history · 120+ destinations compared"
+          cta="See Picks"
         />
       ),
     },
@@ -1520,10 +1566,32 @@ const phaseCardsConfig = {
   ],
 };
 
+function shuffleCards(cards) {
+  const shuffled = [...cards];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [
+      shuffled[randomIndex],
+      shuffled[index],
+    ];
+  }
+
+  return shuffled;
+}
+
 export default function HeroPhaseSection() {
   const [selectedPhase, setSelectedPhase] = useState("pretrip");
+  const randomizedPhaseCardsConfig = useMemo(
+    () => ({
+      pretrip: shuffleCards(phaseCardsConfig.pretrip),
+      intrip: shuffleCards(phaseCardsConfig.intrip),
+      posttrip: shuffleCards(phaseCardsConfig.posttrip),
+    }),
+    []
+  );
   const activePhaseCards =
-    phaseCardsConfig[selectedPhase] || phaseCardsConfig.pretrip;
+    randomizedPhaseCardsConfig[selectedPhase] || randomizedPhaseCardsConfig.pretrip;
 
   return (
     <section
@@ -1559,17 +1627,46 @@ export default function HeroPhaseSection() {
           display: "flex",
           flexDirection: "column",
           flex: 1,
+          marginTop: "100px",
         }}
       >
+        <h1
+          className="hero-main-title app-title-font app-type-heading"
+          style={{
+            fontSize: "clamp(42px, 6.6vw, 74px)",
+            color: "#171717",
+            margin: "0 0 14px",
+            textAlign: "center",
+            alignSelf: "center",
+            fontStyle: "normal",
+          }}
+        >
+          <span style={{ whiteSpace: "nowrap" }}>
+            Your Trips.{" "}
+            <span
+              style={{
+                fontStyle: "italic",
+                textDecoration: "underline",
+                textDecorationThickness: "2px",
+                textUnderlineOffset: "0.12em",
+              }}
+            >
+              Cared
+            </span>
+            .
+          </span>
+          <br />
+          Start to Finish.
+        </h1>
         <div
           className="hero-segment-wrap"
           style={{
             display: "flex",
             justifyContent: "center",
-            marginTop: "80px",
             marginBottom: "0px",
             width: "100%",
             flexShrink: 0,
+            marginTop: "20px",
           }}
         >
           <SegmentedControl
@@ -1585,10 +1682,14 @@ export default function HeroPhaseSection() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            paddingBottom: "48px",
+            paddingBottom: "0",
           }}
         >
-          <PhaseCarousel slides={activePhaseCards} showPhoneMockup />
+          <PhaseCarousel
+            slides={activePhaseCards}
+            showPhoneMockup
+            chatResetKey={selectedPhase}
+          />
         </div>
       </div>
 
@@ -1597,41 +1698,67 @@ export default function HeroPhaseSection() {
           width: 100%;
           border-radius: 14px;
           padding: 13px;
-          border: 1.5px solid #dfd7c8;
+          border: 2px solid transparent;
           display: flex;
           flex-direction: column;
           gap: 7px;
+          position: relative;
+          --card-surface: #ffffff;
+          --angle: 0turn;
+          --card-c1: #50bfff;
+          --card-c2: #5f8dfb;
+          --card-c3: #9ee8ff;
+          --card-c4: #4f8fff;
+          background:
+            linear-gradient(var(--card-surface), var(--card-surface))
+              padding-box,
+            conic-gradient(
+                from var(--angle),
+                var(--card-surface) 0deg,
+                var(--card-c1) 55deg,
+                var(--card-c2) 120deg,
+                var(--card-c3) 210deg,
+                var(--card-c4) 300deg,
+                var(--card-surface) 360deg
+              )
+              border-box;
+          animation: gradientBorder 14s linear infinite;
           box-shadow: 0 8px 20px rgba(26, 22, 14, 0.06);
         }
 
         .pretrip-card-content {
-          background: #f5f0e8;
-          border-color: #d4a843;
-          border-width: 2px;
+          --card-c1: #50bfff;
+          --card-c2: #5f8dfb;
+          --card-c3: #9ee8ff;
+          --card-c4: #4f8fff;
         }
 
         .pretrip-card-question {
-          background: #f5f0e8;
-          border-color: #9a9aaa;
-          border-width: 2px;
+          --card-c1: #ff89c4;
+          --card-c2: #cf7aff;
+          --card-c3: #ffb6dc;
+          --card-c4: #f067d9;
         }
 
         .pretrip-card-poll {
-          background: #f5f0e8;
-          border-color: #9a9aaa;
-          border-width: 2px;
+          --card-c1: #ff89c4;
+          --card-c2: #cf7aff;
+          --card-c3: #ffb6dc;
+          --card-c4: #f067d9;
         }
 
         .pretrip-card-suggestion {
-          background: #f5f0e8;
-          border-color: #a07040;
-          border-width: 2px;
+          --card-c1: #f8d16e;
+          --card-c2: #e7a647;
+          --card-c3: #fde7ab;
+          --card-c4: #f0c16d;
         }
 
         .pretrip-card-warning {
-          background: #f5f0e8;
-          border-color: #a07040;
-          border-width: 2px;
+          --card-c1: #f8d16e;
+          --card-c2: #e7a647;
+          --card-c3: #fde7ab;
+          --card-c4: #f0c16d;
         }
 
         .pretrip-card-top {
@@ -1951,41 +2078,67 @@ export default function HeroPhaseSection() {
           width: 100%;
           border-radius: 14px;
           padding: 13px;
-          border: 1.5px solid #cfe0d8;
+          border: 2px solid transparent;
           display: flex;
           flex-direction: column;
           gap: 7px;
+          position: relative;
+          --card-surface: #ffffff;
+          --angle: 0turn;
+          --card-c1: #50bfff;
+          --card-c2: #5f8dfb;
+          --card-c3: #9ee8ff;
+          --card-c4: #4f8fff;
+          background:
+            linear-gradient(var(--card-surface), var(--card-surface))
+              padding-box,
+            conic-gradient(
+                from var(--angle),
+                var(--card-surface) 0deg,
+                var(--card-c1) 55deg,
+                var(--card-c2) 120deg,
+                var(--card-c3) 210deg,
+                var(--card-c4) 300deg,
+                var(--card-surface) 360deg
+              )
+              border-box;
+          animation: gradientBorder 14s linear infinite;
           box-shadow: 0 8px 20px rgba(18, 37, 30, 0.08);
         }
 
         .intrip-card-content {
-          background: #f5f0e8;
-          border-color: #d4a843;
-          border-width: 2px;
+          --card-c1: #50bfff;
+          --card-c2: #5f8dfb;
+          --card-c3: #9ee8ff;
+          --card-c4: #4f8fff;
         }
 
         .intrip-card-question {
-          background: #f5f0e8;
-          border-color: #9a9aaa;
-          border-width: 2px;
+          --card-c1: #ff89c4;
+          --card-c2: #cf7aff;
+          --card-c3: #ffb6dc;
+          --card-c4: #f067d9;
         }
 
         .intrip-card-suggestion {
-          background: #f5f0e8;
-          border-color: #a07040;
-          border-width: 2px;
+          --card-c1: #f8d16e;
+          --card-c2: #e7a647;
+          --card-c3: #fde7ab;
+          --card-c4: #f0c16d;
         }
 
         .intrip-card-warning {
-          background: #f5f0e8;
-          border-color: #a07040;
-          border-width: 2px;
+          --card-c1: #f8d16e;
+          --card-c2: #e7a647;
+          --card-c3: #fde7ab;
+          --card-c4: #f0c16d;
         }
 
         .intrip-card-poll {
-          background: #f5f0e8;
-          border-color: #9a9aaa;
-          border-width: 2px;
+          --card-c1: #ff89c4;
+          --card-c2: #cf7aff;
+          --card-c3: #ffb6dc;
+          --card-c4: #f067d9;
         }
 
         .intrip-card-top {
@@ -2181,41 +2334,82 @@ export default function HeroPhaseSection() {
           width: 100%;
           border-radius: 14px;
           padding: 13px;
-          border: 1.5px solid #e4ddd0;
+          border: 2px solid transparent;
           display: flex;
           flex-direction: column;
           gap: 7px;
+          position: relative;
+          --card-surface: #ffffff;
+          --angle: 0turn;
+          --card-c1: #50bfff;
+          --card-c2: #5f8dfb;
+          --card-c3: #9ee8ff;
+          --card-c4: #4f8fff;
+          background:
+            linear-gradient(var(--card-surface), var(--card-surface))
+              padding-box,
+            conic-gradient(
+                from var(--angle),
+                var(--card-surface) 0deg,
+                var(--card-c1) 55deg,
+                var(--card-c2) 120deg,
+                var(--card-c3) 210deg,
+                var(--card-c4) 300deg,
+                var(--card-surface) 360deg
+              )
+              border-box;
+          animation: gradientBorder 14s linear infinite;
           box-shadow: 0 8px 20px rgba(26, 22, 14, 0.06);
         }
 
         .posttrip-card-content {
-          background: #f5f0e8;
-          border-color: #d4a843;
-          border-width: 2px;
+          --card-c1: #50bfff;
+          --card-c2: #5f8dfb;
+          --card-c3: #9ee8ff;
+          --card-c4: #4f8fff;
         }
 
         .posttrip-card-question {
-          background: #f5f0e8;
-          border-color: #9a9aaa;
-          border-width: 2px;
+          --card-c1: #ff89c4;
+          --card-c2: #cf7aff;
+          --card-c3: #ffb6dc;
+          --card-c4: #f067d9;
         }
 
         .posttrip-card-suggestion {
-          background: #f5f0e8;
-          border-color: #9a9aaa;
-          border-width: 2px;
+          --card-c1: #f8d16e;
+          --card-c2: #e7a647;
+          --card-c3: #fde7ab;
+          --card-c4: #f0c16d;
         }
 
         .posttrip-card-finance {
-          background: #f5f0e8;
-          border-color: #a07040;
-          border-width: 2px;
+          --card-c1: #50bfff;
+          --card-c2: #5f8dfb;
+          --card-c3: #9ee8ff;
+          --card-c4: #4f8fff;
         }
 
         .posttrip-card-explore {
-          background: #f5f0e8;
-          border-color: #a07040;
-          border-width: 2px;
+          --card-c1: #ff89c4;
+          --card-c2: #cf7aff;
+          --card-c3: #ffb6dc;
+          --card-c4: #f067d9;
+        }
+
+        @keyframes gradientBorder {
+          from {
+            --angle: 0turn;
+          }
+          to {
+            --angle: 10turn;
+          }
+        }
+
+        @property --angle {
+          syntax: "<angle>";
+          inherits: true;
+          initial-value: 0turn;
         }
 
         .posttrip-card-top {

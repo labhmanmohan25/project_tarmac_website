@@ -1,4 +1,5 @@
 import { SITE_LINKS } from "../lib/siteLinks";
+import HowItWorksSection from "./HowItWorksSection";
 
 export default function HomeHeroSection() {
   const handleEmailClick = (event) => {
@@ -14,10 +15,10 @@ export default function HomeHeroSection() {
         position: "relative",
         overflow: "hidden",
         background: "#eeebe6",
-        minHeight: "90vh",
-        paddingTop: "72px",
+        paddingTop: "0",
         paddingBottom: "56px",
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
       }}
@@ -38,35 +39,28 @@ export default function HomeHeroSection() {
           zIndex: 2,
           maxWidth: "920px",
           margin: "0 auto",
+          // marginTop: "48px",
           padding: "0 48px",
           width: "100%",
           textAlign: "center",
         }}
       >
-        <h1
-          className="hero-main-title app-title-font app-type-heading"
-          style={{
-            fontSize: "clamp(42px, 6.6vw, 74px)",
-            color: "#171717",
-            margin: "0 0 14px",
-          }}
-        >
-          Your <span className="ai-loader-wrapper">Trip<div className="ai-loader"></div></span>. Handled.
-          <br />
-          Start to Finish.
-        </h1>
-
         <p
           className="hero-tagline app-subheading-font app-type-subheading"
           style={{
-            color: "#4a4a4a",
-            maxWidth: "650px",
+            color: "#303033",
+            maxWidth: "780px",
             margin: "0 auto 26px",
+            fontSize: "clamp(28px, 3.4vw, 46px)",
+            lineHeight: "1.24",
+            letterSpacing: "-0.02em",
+            fontWeight: "520",
           }}
         >
-          One AI
-          that plans the trip, navigates the chaos, and settles the bill. Before
-          you leave, while you're there, and after you're home.
+          One AI that <em className="hero-tagline-emphasis"><span className="hero-tagline-keyword">plans</span> the trip</em>,
+          <br className="hero-tagline-break" />
+          <em className="hero-tagline-emphasis"><span className="hero-tagline-keyword">navigates</span> the chaos</em>, and{" "}
+          <em className="hero-tagline-emphasis"><span className="hero-tagline-keyword">settles</span> the bill</em>.
         </p>
 
         <div
@@ -262,6 +256,10 @@ export default function HomeHeroSection() {
         </div>
       </div>
 
+      <div className="hero-how-it-works-wrap">
+        <HowItWorksSection as="div" />
+      </div>
+
       <style jsx>{`
         @keyframes aiLoaderSpin {
           0% {
@@ -321,11 +319,32 @@ export default function HomeHeroSection() {
           background: transparent;
         }
 
+        .hero-tagline-emphasis {
+          font-style: italic;
+          font-weight: 600;
+          color: #1f1f21;
+        }
+
+        .hero-tagline-keyword {
+          text-decoration: underline;
+          text-decoration-thickness: 2px;
+          text-underline-offset: 0.12em;
+        }
+
+        .hero-tagline-break {
+          display: block;
+          height: 4px;
+        }
+
+        .hero-how-it-works-wrap {
+          width: 100%;
+          margin-top: clamp(28px, 4vw, 56px);
+        }
+
         @media (max-width: 768px) {
           .hero-section {
-            min-height: 62vh;
-            padding-top: 90px !important;
-            padding-bottom: 40px !important;
+            padding-top: 0 !important;
+            padding-bottom: 0px !important;
           }
 
           .hero-main-title {
@@ -334,6 +353,9 @@ export default function HomeHeroSection() {
 
           .hero-tagline {
             max-width: 430px !important;
+            font-size: clamp(22px, 8.2vw, 34px) !important;
+            line-height: 1.28 !important;
+            letter-spacing: -0.015em !important;
           }
 
           .hero-download-btn {
@@ -347,6 +369,10 @@ export default function HomeHeroSection() {
 
           .hero-inner {
             padding: 0 20px !important;
+          }
+
+          .hero-how-it-works-wrap {
+            margin-top: 20px;
           }
 
           .hero-ambient-glow--left {

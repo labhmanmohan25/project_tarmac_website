@@ -129,24 +129,21 @@ export default function Footer() {
             </Link>
 
             <p
+              className="app-type-body"
               style={{
                 color: "rgba(255,255,255,0.45)",
-                fontSize: "14px",
-                lineHeight: "1.65",
                 maxWidth: "260px",
                 marginBottom: "8px",
-                fontFamily: '"DM Sans", sans-serif',
               }}
             >
-              Navigate your journey with tarmac — your personal navigator for
-              every destination and adventure.
+              Travel with tarmac — your personal concierge for
+              every trip and adventure.
             </p>
             <p
+              className="app-type-caption"
               style={{
                 color: "rgba(255,255,255,0.25)",
-                fontSize: "12px",
                 marginBottom: "24px",
-                fontFamily: '"DM Sans", sans-serif',
               }}
             >
               Built in NYC · By Apurva & Manmohan
@@ -228,13 +225,12 @@ export default function Footer() {
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <a
+                      className="app-type-body"
                       href={link.href}
                       target={link.href.startsWith("http") ? "_blank" : undefined}
                       rel={link.href.startsWith("http") ? "noreferrer" : undefined}
                       style={{
                         color: "rgba(255,255,255,0.42)",
-                        fontSize: "14px",
-                        fontFamily: '"DM Sans", sans-serif',
                         textDecoration: "none",
                         transition: "color 0.2s",
                       }}
@@ -278,14 +274,13 @@ export default function Footer() {
             { label: "Terms & Conditions", href: SITE_LINKS.termsOfService },
           ].map((item) => (
             <a
+              className="app-type-caption"
               key={item.label}
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noreferrer" : undefined}
               style={{
                 color: "rgba(255,255,255,0.25)",
-                fontSize: "13px",
-                fontFamily: '"DM Sans", sans-serif',
                 textDecoration: "none",
               }}
             >

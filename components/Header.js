@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { FaAndroid, FaApple } from "react-icons/fa";
 import { SITE_LINKS } from "../lib/siteLinks";
 
 export default function Header() {
@@ -77,13 +78,34 @@ export default function Header() {
           }
 
           .header-cta {
-            padding: 8px 14px !important;
-            font-size: 12px !important;
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            min-height: 38px;
+            padding: 0 !important;
+            border-radius: 999px;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .header-cta-label {
+            display: none;
+          }
+
+          .header-cta-icon {
+            display: inline-flex !important;
           }
 
           .header-cta-group {
-            gap: 8px !important;
+            gap: 6px !important;
           }
+        }
+
+        .header-cta-icon {
+          display: none;
+          width: 18px;
+          height: 18px;
         }
       `}</style>
       <nav className="header-nav">
@@ -117,11 +139,12 @@ export default function Header() {
           <span
             className="header-logo-text"
             style={{
-              fontFamily: '"Bricolage Grotesque", sans-serif',
+              fontFamily: '"Montserrat", sans-serif',
               fontSize: "17px",
-              fontWeight: "400",
-              color: "#1c1c1e",
-              letterSpacing: "-0.01em",
+              fontWeight: "390",
+              color: "#2D2D2D",
+              letterSpacing: "0.11em",
+              textTransform: "lowercase",
             }}
           >
             tarmac
@@ -143,10 +166,15 @@ export default function Header() {
               fontSize: "14px",
               fontWeight: "600",
               textDecoration: "none",
-              display: "inline-block",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            Download iOS
+            <span className="header-cta-icon" aria-hidden="true">
+              <FaApple size={18} />
+            </span>
+            <span className="header-cta-label">Download iOS</span>
           </a>
           <a
             href={SITE_LINKS.googlePlay}
@@ -158,10 +186,15 @@ export default function Header() {
               fontSize: "14px",
               fontWeight: "600",
               textDecoration: "none",
-              display: "inline-block",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            Download Android
+            <span className="header-cta-icon" aria-hidden="true">
+              <FaAndroid size={18} />
+            </span>
+            <span className="header-cta-label">Download Android</span>
           </a>
         </div>
       </nav>

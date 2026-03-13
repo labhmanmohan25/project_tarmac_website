@@ -1,661 +1,415 @@
 import { useState } from "react";
-import PhaseCarousel from "./PhaseCarousel";
-
-const pricingTiers = [
-  {
-    name: "7-Day Pass",
-    basePrice: 7,
-    baseDays: 7,
-    per: "per pass",
-    accent: "#1c1c1e",
-    cardBackground: "#ffffff",
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
-    desc: "Best for short escapes and focused trips up to one week.",
-    dark: false,
-  },
-  {
-    name: "15-Day Pass",
-    basePrice: 15,
-    baseDays: 15,
-    per: "per pass",
-    accent: "#ffffff",
-    cardBackground: "#1c1c1e",
-    image:
-      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=80",
-    desc: "Built for longer vacations with room for changes on the go.",
-    dark: true,
-    badge: "Most Popular",
-  },
-  {
-    name: "30-Day Pass",
-    basePrice: 30,
-    baseDays: 30,
-    per: "per pass",
-    accent: "#1c1c1e",
-    cardBackground: "#ffffff",
-    image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80",
-    desc: "Ideal for extended journeys and multi-city adventures.",
-    dark: false,
-  },
-];
 
 export default function PricingSection() {
-  const [additionalDaysByPlan, setAdditionalDaysByPlan] = useState({
-    "7-Day Pass": 0,
-    "15-Day Pass": 0,
-    "30-Day Pass": 0,
+  const [tripDays, setTripDays] = useState(8);
+  const [expandedPlans, setExpandedPlans] = useState({
+    payPerTrip: false,
+    subscription: false,
   });
+
+  const payPerTripMonthlyEstimate = tripDays;
+  const subscriptionPrice = 15;
+  const savings = Math.max(payPerTripMonthlyEstimate - subscriptionPrice, 0);
+
+  const togglePlanDetails = (planKey) => {
+    setExpandedPlans((prev) => ({
+      ...prev,
+      [planKey]: !prev[planKey],
+    }));
+  };
 
   return (
     <section
       id="pricing"
       className="pricing-section"
-      style={{ background: "#eeebe6", padding: "108px 48px" }}
+      style={{ background: "#eeebe6", padding: "0 48px" }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="pricing-heading" style={{ textAlign: "center", marginBottom: "56px" }}>
+      <div style={{ maxWidth: "1020px", margin: "0 auto" }}>
+        <div
+          className="pricing-heading"
+          style={{ textAlign: "center", marginBottom: "26px" }}
+        >
           <h2
             className="app-title-font app-type-heading"
             style={{
               fontSize: "clamp(32px, 4vw, 52px)",
               color: "#1c1c1e",
-              marginBottom: "16px",
+              marginBottom: "10px",
+              fontStyle: "normal",
             }}
           >
-            Simple, Per-Trip Pricing
+            Crisp Pricing. Zero Confusion.
           </h2>
         </div>
 
-        <div
-          className="pricing-desktop"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "16px",
-          }}
-        >
-          {pricingTiers.map((tier) => {
-            const additionalDays = additionalDaysByPlan[tier.name] ?? 0;
-            const totalPrice = tier.basePrice + additionalDays;
+        <div className="pricing-split">
+          <article className="plan plan-light">
+            <span className="vibe-badge">For occasional travelers</span>
+            <p className="plan-eyebrow">Pay Per Trip</p>
+            <div className="plan-price-wrap">
+              <span className="plan-price">$1</span>
+              <span className="plan-per">per trip day</span>
+            </div>
 
-            return (
-              <div
-                key={tier.name}
-                style={{
-                  background: tier.cardBackground,
-                  borderRadius: "24px",
-                  overflow: "hidden",
-                  border: tier.dark
-                    ? "1px solid rgba(24,58,84,0.16)"
-                    : "1px solid rgba(93,105,113,0.12)",
-                  boxShadow: "0 14px 32px rgba(24,58,84,0.09)",
-                  position: "relative",
-                  transform: tier.dark ? "scale(1.02)" : "none",
-                }}
-              >
-                <div
-                  style={{
-                    height: "110px",
-                    backgroundImage: `url(${tier.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
+            <p className="plan-copy">
+              Automatically calculated from your synced trip calendar.
+            </p>
+
+            <div
+              id="pay-per-trip-details"
+              className={`plan-details ${expandedPlans.payPerTrip ? "expanded" : ""}`}
+            >
+              <div className="estimator">
+                <div className="estimator-row">
+                  <p>Trip days this month</p>
+                  <strong>{tripDays} days</strong>
+                </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={30}
+                  value={tripDays}
+                  onChange={(event) => setTripDays(Number(event.target.value))}
+                  aria-label="Estimated trip days this month"
                 />
-                {tier.badge && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "16px",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      background: "#1c1c1e",
-                      color: "white",
-                      borderRadius: "100px",
-                      padding: "5px 16px",
-                      fontSize: "11px",
-                      fontWeight: "700",
-                      fontFamily: '"DM Sans", sans-serif',
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {tier.badge}
-                  </div>
-                )}
-                <div style={{ padding: "22px" }}>
-                  <p
-                    style={{
-                      fontSize: "11px",
-                      fontWeight: "600",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: tier.dark ? "rgba(255,255,255,0.62)" : "#7b868d",
-                      marginBottom: "10px",
-                      fontFamily: '"DM Sans", sans-serif',
-                    }}
-                  >
-                    {tier.name}
-                  </p>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "baseline",
-                      gap: "6px",
-                      marginBottom: "8px",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: '"Bricolage Grotesque", sans-serif',
-                        fontSize: "42px",
-                        fontWeight: "800",
-                        color: tier.dark ? "white" : tier.accent,
-                        letterSpacing: "-0.03em",
-                        lineHeight: 1,
-                      }}
-                    >
-                      ${tier.basePrice}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "12px",
-                        color: tier.dark ? "rgba(255,255,255,0.62)" : "#7b868d",
-                        fontFamily: '"DM Sans", sans-serif',
-                      }}
-                    >
-                      {tier.per}
-                    </span>
-                  </div>
-
-                  <div
-                    style={{
-                      border: tier.dark
-                        ? "1px solid rgba(255,255,255,0.14)"
-                        : "1px solid rgba(93,105,113,0.14)",
-                      borderRadius: "14px",
-                      padding: "12px",
-                      marginBottom: "12px",
-                      background: tier.dark
-                        ? "rgba(255,255,255,0.06)"
-                        : "#ffffff",
-                    }}
-                  >
-                    <p
-                      style={{
-                        margin: "0 0 8px",
-                        fontSize: "12px",
-                        color: tier.dark ? "rgba(255,255,255,0.72)" : "#64727a",
-                        fontFamily: '"DM Sans", sans-serif',
-                      }}
-                    >
-                      Add additional days ($1/day)
-                    </p>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "8px",
-                        }}
-                      >
-                        <button
-                          onClick={() =>
-                            setAdditionalDaysByPlan((prev) => ({
-                              ...prev,
-                              [tier.name]: Math.max(
-                                0,
-                                (prev[tier.name] ?? 0) - 1,
-                              ),
-                            }))
-                          }
-                          aria-label={`Decrease additional days for ${tier.name}`}
-                          style={{
-                            width: "30px",
-                            height: "30px",
-                            borderRadius: "999px",
-                            border: tier.dark
-                              ? "1px solid rgba(255,255,255,0.25)"
-                              : "1px solid rgba(93,105,113,0.18)",
-                            background: tier.dark ? "transparent" : "#f9fbfc",
-                            color: tier.dark ? "white" : tier.accent,
-                            cursor: "pointer",
-                            fontSize: "18px",
-                            lineHeight: 1,
-                          }}
-                        >
-                          -
-                        </button>
-                        <span
-                          style={{
-                            minWidth: "28px",
-                            textAlign: "center",
-                            fontFamily: '"DM Sans", sans-serif',
-                            fontSize: "14px",
-                            fontWeight: "600",
-                            color: tier.dark ? "white" : "#1c1c1e",
-                          }}
-                        >
-                          {additionalDays}
-                        </span>
-                        <button
-                          onClick={() =>
-                            setAdditionalDaysByPlan((prev) => ({
-                              ...prev,
-                              [tier.name]: Math.min(
-                                30,
-                                (prev[tier.name] ?? 0) + 1,
-                              ),
-                            }))
-                          }
-                          aria-label={`Increase additional days for ${tier.name}`}
-                          style={{
-                            width: "30px",
-                            height: "30px",
-                            borderRadius: "999px",
-                            border: tier.dark
-                              ? "1px solid rgba(255,255,255,0.25)"
-                              : "1px solid rgba(93,105,113,0.18)",
-                            background: tier.dark ? "transparent" : "#f9fbfc",
-                            color: tier.dark ? "white" : tier.accent,
-                            cursor: "pointer",
-                            fontSize: "18px",
-                            lineHeight: 1,
-                          }}
-                        >
-                          +
-                        </button>
-                      </div>
-
-                      <span
-                        style={{
-                          fontFamily: '"DM Sans", sans-serif',
-                          fontSize: "12px",
-                          color: tier.dark
-                            ? "rgba(255,255,255,0.72)"
-                            : "#64727a",
-                        }}
-                      >
-                        Total days: {tier.baseDays + additionalDays}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p
-                    className="app-type-body"
-                    style={{
-                      color: tier.dark ? "rgba(255,255,255,0.76)" : "#5f6b73",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    {tier.desc}
-                  </p>
-
-                  <p
-                    style={{
-                      margin: "0 0 14px",
-                      fontSize: "12px",
-                      fontWeight: "600",
-                      color: tier.dark ? "rgba(255,255,255,0.86)" : "#405058",
-                      fontFamily: '"DM Sans", sans-serif',
-                    }}
-                  >
-                    Includes all AI travel planning features.
-                  </p>
-
-                  <p
-                    style={{
-                      margin: "0 0 16px",
-                      fontFamily: '"DM Sans", sans-serif',
-                      fontSize: "13px",
-                      fontWeight: "700",
-                      color: tier.dark ? "#f8f8f8" : tier.accent,
-                    }}
-                  >
-                    Total: ${totalPrice}
-                  </p>
-
-                  <button
-                    style={{
-                      width: "100%",
-                      padding: "14px",
-                      borderRadius: "100px",
-                      background: tier.dark ? "white" : "#1c1c1e",
-                      color: tier.dark ? "#1c1c1e" : "white",
-                      border: "none",
-                      fontSize: "14px",
-                      fontWeight: "600",
-                      cursor: "pointer",
-                      fontFamily: '"DM Sans", sans-serif',
-                      transition: "opacity 0.2s",
-                    }}
-                  >
-                    {additionalDays > 0
-                      ? `Choose ${tier.baseDays}-Day + ${additionalDays} Day${additionalDays === 1 ? "" : "s"}`
-                      : `Choose ${tier.baseDays}-Day`}
-                  </button>
-                </div>
+                <p className="estimate-total">
+                  Estimated monthly cost: ${payPerTripMonthlyEstimate}
+                </p>
               </div>
-            );
-          })}
+            </div>
+
+            <button
+              className="know-more-toggle"
+              onClick={() => togglePlanDetails("payPerTrip")}
+              aria-expanded={expandedPlans.payPerTrip}
+              aria-controls="pay-per-trip-details"
+              type="button"
+            >
+              {expandedPlans.payPerTrip ? "Show less" : "Know more"}
+            </button>
+
+            <button className="cta cta-dark">Choose Pay Per Trip</button>
+          </article>
+
+          <article className="plan plan-dark">
+            <span className="best-badge">Best For Frequent Travelers</span>
+            <p className="plan-eyebrow">Subscription</p>
+            <div className="plan-price-wrap">
+              <span className="plan-price">$15</span>
+              <span className="plan-per">per month</span>
+            </div>
+
+            <p className="plan-copy">
+              One predictable monthly plan for frequent travelers.
+            </p>
+
+            <div
+              id="subscription-details"
+              className={`plan-details ${expandedPlans.subscription ? "expanded" : ""}`}
+            >
+              <div className="value-box">
+                <p>
+                  At <strong>20 traveling days/month</strong>
+                </p>
+                <p>
+                  Pay per trip: <strong>$20</strong>
+                </p>
+                <p>
+                  Frequent Flyer: <strong>$15</strong>
+                </p>
+                <p className="save-line">You save $5/month with Frequent Flyer.</p>
+                <p className="value-note">
+                  With your current {tripDays} trip days, the saving is
+                  <strong> ${savings}</strong> vs pay per trip.
+                </p>
+              </div>
+            </div>
+
+            <button
+              className="know-more-toggle know-more-toggle-dark"
+              onClick={() => togglePlanDetails("subscription")}
+              aria-expanded={expandedPlans.subscription}
+              aria-controls="subscription-details"
+              type="button"
+            >
+              {expandedPlans.subscription ? "Show less" : "Know more"}
+            </button>
+
+            <button className="cta cta-light">Choose Subscription</button>
+          </article>
         </div>
-
-        <div className="pricing-mobile">
-          <PhaseCarousel
-            slides={pricingTiers}
-            cardWidth={280}
-            cardGap={12}
-            autoplay={false}
-            showDots={false}
-            showArrows={false}
-            pauseOnHover={false}
-            infinite={false}
-            initialSlide={1}
-            minHeight="auto"
-            renderCard={(tier) => {
-              const additionalDays = additionalDaysByPlan[tier.name] ?? 0;
-              const totalPrice = tier.basePrice + additionalDays;
-
-              return (
-                <div
-                  style={{
-                    background: tier.cardBackground,
-                    borderRadius: "16px",
-                    overflow: "hidden",
-                    border: tier.dark
-                      ? "1px solid rgba(24,58,84,0.16)"
-                      : "1px solid rgba(93,105,113,0.12)",
-                    boxShadow: "0 14px 32px rgba(24,58,84,0.09)",
-                    position: "relative",
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <div
-                    style={{
-                      height: "92px",
-                      backgroundImage: `url(${tier.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  />
-                  {tier.badge && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "12px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        background: "#1c1c1e",
-                        color: "white",
-                        borderRadius: "100px",
-                        padding: "4px 12px",
-                        fontSize: "10px",
-                        fontWeight: "700",
-                        fontFamily: '"DM Sans", sans-serif',
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {tier.badge}
-                    </div>
-                  )}
-                  <div style={{ padding: "20px 18px 24px" }}>
-                    <p
-                      style={{
-                        fontSize: "10px",
-                        fontWeight: "600",
-                        letterSpacing: "0.12em",
-                        textTransform: "uppercase",
-                        color: tier.dark ? "rgba(255,255,255,0.62)" : "#7b868d",
-                        marginBottom: "8px",
-                        fontFamily: '"DM Sans", sans-serif',
-                        marginTop: tier.badge ? "8px" : 0,
-                      }}
-                    >
-                      {tier.name}
-                    </p>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "baseline",
-                        gap: "4px",
-                        marginBottom: "6px",
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontFamily: '"Bricolage Grotesque", sans-serif',
-                          fontSize: "36px",
-                          fontWeight: "800",
-                          color: tier.dark ? "white" : tier.accent,
-                          letterSpacing: "-0.03em",
-                          lineHeight: 1,
-                        }}
-                      >
-                        ${tier.basePrice}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: "11px",
-                          color: tier.dark
-                            ? "rgba(255,255,255,0.62)"
-                            : "#7b868d",
-                          fontFamily: '"DM Sans", sans-serif',
-                        }}
-                      >
-                        {tier.per}
-                      </span>
-                    </div>
-
-                    <p
-                      className="app-type-body"
-                      style={{
-                        color: tier.dark ? "rgba(255,255,255,0.76)" : "#5f6b73",
-                        marginBottom: "8px",
-                      }}
-                    >
-                      {tier.desc}
-                    </p>
-
-                    <p
-                      style={{
-                        margin: "0 0 10px",
-                        fontSize: "11px",
-                        fontWeight: "600",
-                        color: tier.dark ? "rgba(255,255,255,0.84)" : "#405058",
-                        fontFamily: '"DM Sans", sans-serif',
-                      }}
-                    >
-                      Includes all AI travel planning features.
-                    </p>
-
-                    <div
-                      style={{
-                        border: tier.dark
-                          ? "1px solid rgba(255,255,255,0.14)"
-                          : "1px solid rgba(93,105,113,0.14)",
-                        borderRadius: "10px",
-                        padding: "10px",
-                        marginBottom: "12px",
-                        background: tier.dark
-                          ? "rgba(255,255,255,0.06)"
-                          : "#ffffff",
-                      }}
-                    >
-                      <p
-                        style={{
-                          margin: "0 0 6px",
-                          fontSize: "10px",
-                          color: tier.dark
-                            ? "rgba(255,255,255,0.72)"
-                            : "#64727a",
-                          fontFamily: '"DM Sans", sans-serif',
-                        }}
-                      >
-                        Add days ($1/day)
-                      </p>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "6px",
-                          }}
-                        >
-                          <button
-                            onClick={() =>
-                              setAdditionalDaysByPlan((prev) => ({
-                                ...prev,
-                                [tier.name]: Math.max(
-                                  0,
-                                  (prev[tier.name] ?? 0) - 1,
-                                ),
-                              }))
-                            }
-                            aria-label={`Decrease additional days for ${tier.name}`}
-                            style={{
-                              width: "24px",
-                              height: "24px",
-                              borderRadius: "999px",
-                              border: tier.dark
-                                ? "1px solid rgba(255,255,255,0.25)"
-                                : "1px solid rgba(93,105,113,0.18)",
-                              background: tier.dark ? "transparent" : "#f9fbfc",
-                              color: tier.dark ? "white" : tier.accent,
-                              cursor: "pointer",
-                              fontSize: "14px",
-                              lineHeight: 1,
-                            }}
-                          >
-                            -
-                          </button>
-                          <span
-                            style={{
-                              minWidth: "24px",
-                              textAlign: "center",
-                              fontFamily: '"DM Sans", sans-serif',
-                              fontSize: "12px",
-                              fontWeight: "600",
-                              color: tier.dark ? "white" : "#1c1c1e",
-                            }}
-                          >
-                            {additionalDays}
-                          </span>
-                          <button
-                            onClick={() =>
-                              setAdditionalDaysByPlan((prev) => ({
-                                ...prev,
-                                [tier.name]: Math.min(
-                                  30,
-                                  (prev[tier.name] ?? 0) + 1,
-                                ),
-                              }))
-                            }
-                            aria-label={`Increase additional days for ${tier.name}`}
-                            style={{
-                              width: "24px",
-                              height: "24px",
-                              borderRadius: "999px",
-                              border: tier.dark
-                                ? "1px solid rgba(255,255,255,0.25)"
-                                : "1px solid rgba(93,105,113,0.18)",
-                              background: tier.dark ? "transparent" : "#f9fbfc",
-                              color: tier.dark ? "white" : tier.accent,
-                              cursor: "pointer",
-                              fontSize: "14px",
-                              lineHeight: 1,
-                            }}
-                          >
-                            +
-                          </button>
-                        </div>
-
-                        <span
-                          style={{
-                            fontFamily: '"DM Sans", sans-serif',
-                            fontSize: "10px",
-                            color: tier.dark
-                              ? "rgba(255,255,255,0.72)"
-                              : "#64727a",
-                          }}
-                        >
-                          {tier.baseDays + additionalDays}d
-                        </span>
-                      </div>
-                    </div>
-
-                    <p
-                      style={{
-                        margin: "0 0 12px",
-                        fontFamily: '"DM Sans", sans-serif',
-                        fontSize: "12px",
-                        fontWeight: "700",
-                        color: tier.dark ? "#f8f8f8" : tier.accent,
-                      }}
-                    >
-                      Total: ${totalPrice}
-                    </p>
-
-                    <button
-                      style={{
-                        width: "100%",
-                        padding: "10px",
-                        borderRadius: "100px",
-                        background: tier.dark ? "white" : "#1c1c1e",
-                        color: tier.dark ? "#1c1c1e" : "white",
-                        border: "none",
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        cursor: "pointer",
-                        fontFamily: '"DM Sans", sans-serif',
-                        transition: "opacity 0.2s",
-                      }}
-                    >
-                      {additionalDays > 0
-                        ? `Choose +${additionalDays}d`
-                        : "Choose"}
-                    </button>
-                  </div>
-                </div>
-              );
-            }}
-          />
-        </div>
-
       </div>
 
       <style jsx>{`
+        .pricing-split {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(280px, 1fr));
+          gap: 14px;
+        }
+
+        .plan {
+          border-radius: 24px;
+          padding: 24px;
+          box-shadow: 0 16px 34px rgba(24, 58, 84, 0.08);
+          border: 1px solid rgba(28, 28, 30, 0.1);
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .plan-light {
+          background: linear-gradient(150deg, #ffffff, #f3f7f8);
+        }
+
+        .plan-dark {
+          background: linear-gradient(150deg, #1c1c1e, #262f34);
+          color: #f5f7f8;
+          border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .best-badge {
+          display: inline-block;
+          align-self: flex-start;
+          width: fit-content;
+          margin-bottom: 10px;
+          border-radius: 999px;
+          padding: 5px 11px;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          font-family: "DM Sans", sans-serif;
+          background: rgba(255, 255, 255, 0.14);
+          color: #f8f8f8;
+        }
+
+        .vibe-badge {
+          display: inline-block;
+          align-self: flex-start;
+          width: fit-content;
+          margin-bottom: 10px;
+          border-radius: 999px;
+          padding: 5px 11px;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          font-family: "DM Sans", sans-serif;
+          background: rgba(28, 28, 30, 0.08);
+          color: #1c1c1e;
+          border: 1px solid rgba(28, 28, 30, 0.12);
+        }
+
+        .plan-eyebrow {
+          font-size: 11px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          font-weight: 700;
+          font-family: "DM Sans", sans-serif;
+          color: inherit;
+          opacity: 0.72;
+          margin: 0 0 10px;
+        }
+
+        .plan-price-wrap {
+          display: flex;
+          align-items: baseline;
+          gap: 8px;
+          margin-bottom: 10px;
+        }
+
+        .plan-price {
+          font-family: "Bricolage Grotesque", sans-serif;
+          font-size: 50px;
+          line-height: 1;
+          letter-spacing: -0.03em;
+          font-weight: 800;
+        }
+
+        .plan-per {
+          font-family: "DM Sans", sans-serif;
+          font-size: 12px;
+          opacity: 0.7;
+        }
+
+        .plan-copy {
+          font-family: "DM Sans", sans-serif;
+          font-size: 14px;
+          line-height: 1.45;
+          margin: 0 0 16px;
+          opacity: 0.9;
+        }
+
+        .estimator {
+          border: 1px solid rgba(28, 28, 30, 0.12);
+          background: rgba(255, 255, 255, 0.86);
+          border-radius: 14px;
+          padding: 12px;
+          margin-bottom: 16px;
+        }
+
+        .estimator-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 8px;
+          font-family: "DM Sans", sans-serif;
+          font-size: 12px;
+          color: #5a666d;
+        }
+
+        .estimator-row strong {
+          color: #1c1c1e;
+          font-size: 12px;
+        }
+
+        input[type="range"] {
+          width: 100%;
+          accent-color: #1c1c1e;
+        }
+
+        .estimate-total {
+          margin: 8px 0 0;
+          font-family: "DM Sans", sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          color: #1c1c1e;
+        }
+
+        .value-box {
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 14px;
+          padding: 12px;
+          background: rgba(255, 255, 255, 0.06);
+          margin-bottom: 16px;
+          font-family: "DM Sans", sans-serif;
+          font-size: 13px;
+          line-height: 1.45;
+        }
+
+        .value-box p {
+          margin: 0 0 6px;
+        }
+
+        .value-box p:last-child {
+          margin-bottom: 0;
+        }
+
+        .save-line {
+          margin-top: 8px !important;
+          color: #d6f8dd;
+          font-weight: 700;
+        }
+
+        .value-note {
+          margin-top: 8px !important;
+          opacity: 0.85;
+        }
+
+        .know-more-toggle {
+          display: none;
+          border: none;
+          background: transparent;
+          color: #1c1c1e;
+          border-radius: 0;
+          padding: 0;
+          font-family: "DM Sans", sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          text-decoration: underline;
+          text-underline-offset: 2px;
+          width: fit-content;
+          margin: -4px 0 12px;
+          cursor: pointer;
+        }
+
+        .know-more-toggle-dark {
+          color: #f5f7f8;
+        }
+
+        .cta {
+          width: 100%;
+          border: none;
+          border-radius: 999px;
+          padding: 13px;
+          font-family: "DM Sans", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          cursor: pointer;
+          margin-top: auto;
+        }
+
+        .cta-dark {
+          background: #1c1c1e;
+          color: white;
+        }
+
+        .cta-light {
+          background: #ffffff;
+          color: #1c1c1e;
+        }
+
+        @media (max-width: 900px) {
+          .pricing-split {
+            grid-template-columns: 1fr;
+          }
+
+          .plan-dark {
+            order: -1;
+          }
+        }
+
         @media (max-width: 768px) {
           .pricing-section {
-            padding: 0 16px 48px !important;
+            padding: 0 16px !important;
           }
 
           .pricing-heading {
-            margin-bottom: 20px !important;
+            margin-bottom: 18px !important;
           }
 
-          .pricing-mobile {
-            padding: 0 !important;
+          .plan {
+            border-radius: 18px;
+            padding: 14px;
           }
 
-          .pricing-mobile :global(.slick-list) {
-            padding-top: 0 !important;
-            padding-bottom: 16px !important;
+          .plan-price {
+            font-size: 36px;
           }
 
+          .plan-copy {
+            font-size: 13px;
+            margin-bottom: 12px;
+          }
+
+          .plan-details {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition:
+              max-height 0.3s ease,
+              opacity 0.25s ease;
+          }
+
+          .plan-details.expanded {
+            max-height: 320px;
+            opacity: 1;
+          }
+
+          .know-more-toggle {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        @media (min-width: 769px) {
+          .plan-details {
+            max-height: none !important;
+            opacity: 1 !important;
+          }
         }
       `}</style>
     </section>
