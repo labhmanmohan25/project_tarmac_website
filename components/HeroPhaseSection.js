@@ -1641,8 +1641,8 @@ export default function HeroPhaseSection() {
             fontStyle: "normal",
           }}
         >
-          <span style={{ whiteSpace: "nowrap" }}>
-            Your Trips.{" "}
+          <span style={{ whiteSpace: "nowrap", marginLeft: "-0.25em" }}>
+            Your Trips,{" "}
             <span
               style={{
                 fontStyle: "italic",
@@ -1651,9 +1651,8 @@ export default function HeroPhaseSection() {
                 textUnderlineOffset: "0.12em",
               }}
             >
-              Cared
+              Curated
             </span>
-            .
           </span>
           <br />
           Start to Finish.
