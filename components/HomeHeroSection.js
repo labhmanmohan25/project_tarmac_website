@@ -83,7 +83,7 @@ export default function HomeHeroSection() {
             }}
           >
             <a
-              href={SITE_LINKS.appStore}
+              href={SITE_LINKS.waitlistForm}
               target="_blank"
               rel="noreferrer"
               className="hero-download-btn"
@@ -102,29 +102,7 @@ export default function HomeHeroSection() {
                 textDecoration: "none",
               }}
             >
-              App Store
-            </a>
-            <a
-              href={SITE_LINKS.googlePlay}
-              target="_blank"
-              rel="noreferrer"
-              className="hero-download-btn"
-              style={{
-                padding: "12px 24px",
-                fontSize: "15px",
-                background: "transparent",
-                color: "#1f1f21",
-                border: "1px solid #8a8a8a",
-                borderRadius: "999px",
-                fontFamily: '"DM Sans", sans-serif',
-                fontWeight: "500",
-                cursor: "pointer",
-                minWidth: "172px",
-                transition: "opacity 0.2s ease",
-                textDecoration: "none",
-              }}
-            >
-              Google Play
+              Join Waitlist
             </a>
           </div>
 

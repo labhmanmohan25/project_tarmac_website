@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaAndroid, FaApple } from "react-icons/fa";
 import { SITE_LINKS } from "../lib/siteLinks";
 
 export default function Header() {
@@ -157,7 +156,7 @@ export default function Header() {
           style={{ display: "flex", alignItems: "center", gap: "10px" }}
         >
           <a
-            href={SITE_LINKS.appStore}
+            href={SITE_LINKS.waitlistForm}
             target="_blank"
             rel="noreferrer"
             className="btn-dark-outline header-cta"
@@ -171,30 +170,7 @@ export default function Header() {
               justifyContent: "center",
             }}
           >
-            <span className="header-cta-icon" aria-hidden="true">
-              <FaApple size={18} />
-            </span>
-            <span className="header-cta-label">Download iOS</span>
-          </a>
-          <a
-            href={SITE_LINKS.googlePlay}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-dark-outline header-cta"
-            style={{
-              padding: "10px 22px",
-              fontSize: "14px",
-              fontWeight: "600",
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <span className="header-cta-icon" aria-hidden="true">
-              <FaAndroid size={18} />
-            </span>
-            <span className="header-cta-label">Download Android</span>
+            <span className="header-cta-label">Join Waitlist</span>
           </a>
         </div>
       </nav>

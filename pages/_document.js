@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
         <link rel="shortcut icon" href="/favicon.ico?v=2" />
+        <link rel="apple-touch-icon" href="/tarmac-logo.svg" />
 
         {/* DNS prefetch for external image CDNs */}
         <link rel="dns-prefetch" href="https://images.unsplash.com" />

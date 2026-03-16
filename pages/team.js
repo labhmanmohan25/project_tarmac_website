@@ -1,5 +1,5 @@
-import Head from "next/head";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
 import Footer from "../components/Footer";
 import LazySection from "../components/LazySection";
 import { SITE_LINKS } from "../lib/siteLinks";
@@ -27,16 +27,39 @@ const founders = [
   },
 ];
 
+const TEAM_JSON_LD = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Apurva Biswas",
+    jobTitle: "CEO & Co-founder",
+    worksFor: { "@type": "Organization", name: "Tarmac" },
+    sameAs: "https://www.linkedin.com/in/apurva-biswas",
+    description:
+      "Former Goldman Sachs FX & Commodities strategist. Drives Tarmac's vision and go-to-market strategy.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Manmohan Labh",
+    jobTitle: "CTO & Co-founder",
+    worksFor: { "@type": "Organization", name: "Tarmac" },
+    sameAs: "https://www.linkedin.com/in/manmohanlabh",
+    description:
+      "Full-stack systems architect with five years of production engineering excellence at Postman.",
+  },
+];
+
 export default function Team() {
   return (
     <>
-      <Head>
-        <title>Tarmac - Team</title>
-        <meta
-          name="description"
-          content="Meet the team behind Tarmac and the builders creating the travel experience we always wanted."
-        />
-      </Head>
+      <SEO
+        title="Team"
+        description="Meet the founders of Tarmac — Apurva Biswas (ex-Goldman Sachs) and Manmohan Labh (ex-Postman) — building the AI travel companion we always wanted."
+        canonical="/team"
+        ogType="profile"
+        jsonLd={TEAM_JSON_LD}
+      />
 
       <Header />
 

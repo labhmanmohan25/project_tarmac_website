@@ -1,5 +1,5 @@
-import Head from "next/head";
 import Layout from "../components/Layout";
+import SEO from "../components/SEO";
 import { useState } from "react";
 import { SITE_LINKS } from "../lib/siteLinks";
 import LazySection from "../components/LazySection";
@@ -28,10 +28,11 @@ export default function Contact() {
 
   return (
     <>
-      <Head>
-        <title>Tarmac - Contact</title>
-        <meta name="description" content="Get in touch with Tarmac" />
-      </Head>
+      <SEO
+        title="Contact"
+        description="Get in touch with the Tarmac team. Reach us by email or follow us on Instagram and LinkedIn."
+        canonical="/contact"
+      />
       <Layout>
         <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -83,23 +84,17 @@ export default function Contact() {
                     </a>
                   </div>
                   <div>
-                    <h3 className="app-type-body-strong text-gray-900">Download</h3>
+                    <h3 className="app-type-body-strong text-gray-900">
+                      Join Waitlist
+                    </h3>
                     <div className="flex flex-col gap-2">
                       <a
-                        href={SITE_LINKS.appStore}
+                        href={SITE_LINKS.waitlistForm}
                         target="_blank"
                         rel="noreferrer"
                         className="app-type-body text-gray-600 hover:text-gray-900"
                       >
-                        App Store
-                      </a>
-                      <a
-                        href={SITE_LINKS.googlePlay}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="app-type-body text-gray-600 hover:text-gray-900"
-                      >
-                        Google Play
+                        Open Google Form
                       </a>
                     </div>
                   </div>

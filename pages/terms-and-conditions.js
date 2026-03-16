@@ -1,14 +1,16 @@
-import Head from "next/head";
 import Layout from "../components/Layout";
+import SEO from "../components/SEO";
 import LazySection from "../components/LazySection";
 
 export default function TermsAndConditions() {
   return (
     <>
-      <Head>
-        <title>Tarmac - Terms & Conditions</title>
-        <meta name="description" content="Tarmac terms and conditions" />
-      </Head>
+      <SEO
+        title="Terms & Conditions"
+        description="Read the Tarmac terms and conditions governing use of the app and website."
+        canonical="/terms-and-conditions"
+        noindex={true}
+      />
       <Layout>
         <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <h1 className="app-title-font app-type-heading text-4xl text-gray-900 mb-4">

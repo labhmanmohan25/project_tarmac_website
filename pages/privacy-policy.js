@@ -1,14 +1,16 @@
-import Head from "next/head";
 import Layout from "../components/Layout";
+import SEO from "../components/SEO";
 import LazySection from "../components/LazySection";
 
 export default function PrivacyPolicy() {
   return (
     <>
-      <Head>
-        <title>Tarmac - Privacy Policy</title>
-        <meta name="description" content="Tarmac privacy policy" />
-      </Head>
+      <SEO
+        title="Privacy Policy"
+        description="Read the Tarmac privacy policy to understand how we collect, use, and protect your personal information."
+        canonical="/privacy-policy"
+        noindex={true}
+      />
       <Layout>
         <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <h1 className="app-title-font app-type-heading text-4xl text-gray-900 mb-4">

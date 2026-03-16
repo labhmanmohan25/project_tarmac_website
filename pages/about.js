@@ -1,14 +1,15 @@
-import Head from "next/head";
 import Layout from "../components/Layout";
+import SEO from "../components/SEO";
 import LazySection from "../components/LazySection";
 
 export default function About() {
   return (
     <>
-      <Head>
-        <title>Tarmac - About</title>
-        <meta name="description" content="About Tarmac project" />
-      </Head>
+      <SEO
+        title="About"
+        description="Tarmac is an AI-powered travel companion built by a team of NYC founders. One AI that handles your full trip — from group planning to post-trip expense splits."
+        canonical="/about"
+      />
       <Layout>
         <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center">

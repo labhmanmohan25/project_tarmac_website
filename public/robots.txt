@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block legal/utility pages from crawlers
+Disallow: /privacy-policy
+Disallow: /terms-and-conditions
+Disallow: /terms-of-service
+Disallow: /api/
+
+Sitemap: https://www.travelwithtarmac.com/sitemap.xml
