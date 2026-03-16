@@ -209,7 +209,7 @@ export default function HowItWorksSection({ as: Wrapper = "section" }) {
         .how-simple-line {
           margin: 30px 0 0;
           color: #deebff;
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.7;
           position: relative;
           z-index: 3;
@@ -277,7 +277,7 @@ export default function HowItWorksSection({ as: Wrapper = "section" }) {
 
           .how-simple-line {
             margin-top: 22px;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.7;
           }
         }
@@ -303,7 +303,7 @@ export default function HowItWorksSection({ as: Wrapper = "section" }) {
 
           .how-simple-line {
             margin-top: 18px;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.7;
           }
         }

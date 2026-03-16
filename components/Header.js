@@ -77,11 +77,7 @@ export default function Header() {
           }
 
           .header-cta {
-            width: 38px;
-            height: 38px;
-            min-width: 38px;
-            min-height: 38px;
-            padding: 0 !important;
+            padding: 10px 22px !important;
             border-radius: 999px;
             display: inline-flex !important;
             align-items: center;
@@ -89,22 +85,13 @@ export default function Header() {
           }
 
           .header-cta-label {
-            display: none;
-          }
-
-          .header-cta-icon {
-            display: inline-flex !important;
+            display: block;
+            font-size: 13px;
           }
 
           .header-cta-group {
-            gap: 6px !important;
+            gap: 10px !important;
           }
-        }
-
-        .header-cta-icon {
-          display: none;
-          width: 18px;
-          height: 18px;
         }
       `}</style>
       <nav className="header-nav">
