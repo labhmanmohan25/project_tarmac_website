@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { SITE_LINKS } from "../lib/siteLinks";
 
@@ -114,13 +113,10 @@ export default function Header() {
               justifyContent: "center",
             }}
           >
-            <Image
-              src="/tarmac-logo-transparent-bg.png"
-              alt="tarmac"
-              width={40}
-              height={40}
-              priority
-            />
+            <picture>
+              <source srcSet="/tarmac-dark.png" media="(prefers-color-scheme: dark)" />
+              <img src="/tarmac-light.png" alt="tarmac" width="40" height="40" loading="eager" />
+            </picture>
           </div>
           <span
             className="header-logo-text"

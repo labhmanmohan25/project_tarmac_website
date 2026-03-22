@@ -29,19 +29,19 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contact"
-        description="Get in touch with the Tarmac team. Reach us by email or follow us on Instagram and LinkedIn."
+        title="Contact Tarmac | Partner With Our AI Travel App"
+        description="Get in touch with the Tarmac team. Reach out for investor relations, location-based brand partnerships, or user feedback on your new travel companion."
+        keywords="contact tarmac, tarmac partnership, tarmac investor relations, ai travel app contact, brand partnerships tarmac"
         canonical="/contact"
       />
       <Layout>
         <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="app-title-font app-type-heading text-4xl text-gray-900 mb-4">
-              Get In Touch
+              Get in Touch
             </h1>
             <p className="app-subheading-font app-type-subheading text-lg text-gray-600">
-              We'd love to hear from you. Send us a message and we'll respond as
-              soon as possible.
+              Have questions about your new AI travel companion, want to partner on location-based brand challenges, or just want to share feedback? Drop us a line — we are building this to navigate the chaos with you.
             </p>
           </div>
 

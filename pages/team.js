@@ -8,21 +8,21 @@ const founders = [
   {
     name: "Apurva Biswas",
     role: "CEO & Co-founder",
-    bio: "Strategic thinker and product visionary. Former Goldman Sachs FX & Commodities strategist with a passion for solving real-world problems through innovative technology. Drives Tarmac's vision and go-to-market strategy.",
+    bio: "A former Associate in FX & Commodities Strategy at Goldman Sachs and an IIT engineering alum, Apurva leads Tarmac's overall vision, design, and business strategy. An obsessive traveler herself, she drives the mission to build the ultimate AI companion that eliminates friction for both solo explorers and friend groups.",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUydfdf95dYrdsu_V6ffjmFDYbsdTXvPm4Ig&s",
     pastExperience: "Goldman Sachs - FX & Commodities Strategy",
-    tags: ["Ex-Goldman Sachs", "Product Strategy"],
+    tags: ["Ex-Goldman Sachs", "IIT Alum"],
     linkedin: SITE_LINKS.founders.apurva,
   },
   {
     name: "Manmohan Labh",
     role: "CTO & Co-founder",
-    bio: "Full-stack systems architect with five years of production engineering excellence at Postman. Specialized in building scalable, high-performance infrastructure. Transforms ambitious ideas into robust, deployable reality.",
+    bio: "An IITian and former Senior Software Engineer at Postman with over five years of experience building scalable systems, Manmohan architects Tarmac's proprietary Spatial RAG engine. He is also a GYTI award winner for his patent-pending EEG medical bed invention.",
     image:
       "https://scontent.fblr20-2.fna.fbcdn.net/v/t39.30808-6/549566201_1367693158053283_5133508394041333681_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=24hvI5rIdf0Q7kNvwG_w4Fh&_nc_oc=AdlkCQbv17Q-5b0o94_hjpHIFZzeYUilNzOJs--KHWzZTsdOxdEzpZLmLzd1mFptMXCp-7Jvi-Zjg_R9cYqJFAbn&_nc_zt=23&_nc_ht=scontent.fblr20-2.fna&_nc_gid=L3-Gyn0aWCt89NsA2ekA9w&_nc_ss=8&oh=00_Afzp98WjQ0ehFpbwJS1YFur6rncGBNIY_ufbQvUSNASdWw&oe=69B53937",
-    pastExperience: "Postman - Backend Architecture & Scalability",
-    tags: ["Ex-Postman", "5 yrs Full Stack"],
+    pastExperience: "Postman - Senior Software Engineer",
+    tags: ["Ex-Postman", "GYTI Award Winner"],
     linkedin: SITE_LINKS.founders.manmohan,
   },
 ];
@@ -36,7 +36,7 @@ const TEAM_JSON_LD = [
     worksFor: { "@type": "Organization", name: "Tarmac" },
     sameAs: "https://www.linkedin.com/in/apurva-biswas",
     description:
-      "Former Goldman Sachs FX & Commodities strategist. Drives Tarmac's vision and go-to-market strategy.",
+      "A former Associate in FX & Commodities Strategy at Goldman Sachs and an IIT engineering alum, Apurva leads Tarmac's overall vision, design, and business strategy.",
   },
   {
     "@context": "https://schema.org",
@@ -46,7 +46,7 @@ const TEAM_JSON_LD = [
     worksFor: { "@type": "Organization", name: "Tarmac" },
     sameAs: "https://www.linkedin.com/in/manmohanlabh",
     description:
-      "Full-stack systems architect with five years of production engineering excellence at Postman.",
+      "An IITian and former Senior Software Engineer at Postman with over five years of experience building scalable systems, Manmohan architects Tarmac's proprietary Spatial RAG engine.",
   },
 ];
 
@@ -54,8 +54,9 @@ export default function Team() {
   return (
     <>
       <SEO
-        title="Team"
-        description="Meet the founders of Tarmac — Apurva Biswas (ex-Goldman Sachs) and Manmohan Labh (ex-Postman) — building the AI travel companion we always wanted."
+        title="Team Tarmac | Founders Apurva Biswas & Manmohan Labh"
+        description="Meet the founders behind Tarmac. College buddies and engineering veterans from Goldman Sachs and Postman, building the future of AI travel."
+        keywords="tarmac team, tarmac founders, apurva biswas, manmohan labh, ai travel startup founders"
         canonical="/team"
         ogType="profile"
         jsonLd={TEAM_JSON_LD}
@@ -220,6 +221,21 @@ export default function Team() {
                 ))}
               </div>
             </LazySection>
+
+            <p
+              className="app-type-body"
+              style={{
+                color: "#888",
+                fontSize: "15px",
+                maxWidth: "560px",
+                margin: "0 auto",
+                textAlign: "center",
+                lineHeight: "1.7",
+                paddingTop: "8px",
+              }}
+            >
+              Apurva and Manmohan have been building technology together for eight years. During college, they co-built a project that won the India-Australia Circular Economy Hackathon. They left their corporate careers in January 2026 to go all-in on solving the broken travel experience.
+            </p>
           </div>
         </div>
       </section>

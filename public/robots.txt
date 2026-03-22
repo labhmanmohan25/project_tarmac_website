@@ -7,4 +7,4 @@ Disallow: /terms-and-conditions
 Disallow: /terms-of-service
 Disallow: /api/
 
-Sitemap: https://www.travelwithtarmac.com/sitemap.xml
+Sitemap: https://travelwithtarmac.com/sitemap.xml
