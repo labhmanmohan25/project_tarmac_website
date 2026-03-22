@@ -5,11 +5,11 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta name="theme-color" content="#ffffff" />
-        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
-        <link rel="shortcut icon" href="/favicon/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg?v=2" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png?v=2" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico?v=2" />
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png?v=2" />
+        <link rel="manifest" href="/favicon/site.webmanifest?v=2" />
 
         {/* DNS prefetch for external image CDNs */}
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
