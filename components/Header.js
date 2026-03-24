@@ -114,7 +114,6 @@ export default function Header() {
             }}
           >
             <picture>
-              <source srcSet="/tarmac-dark.png" media="(prefers-color-scheme: dark)" />
               <img src="/tarmac-light.png" alt="tarmac" width="40" height="40" loading="eager" />
             </picture>
           </div>
