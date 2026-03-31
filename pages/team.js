@@ -14,6 +14,8 @@ const founders = [
     pastExperience: "Goldman Sachs - FX & Commodities Strategy",
     tags: ["Ex-Goldman Sachs", "IIT Alum"],
     linkedin: SITE_LINKS.founders.apurva,
+    linkedinUsername: "apurva-biswas",
+    email: "apurva.biswas@travelwithtarmac.com",
   },
   {
     name: "Manmohan Labh",
@@ -24,6 +26,8 @@ const founders = [
     pastExperience: "Postman - Senior Software Engineer",
     tags: ["Ex-Postman", "GYTI Award Winner"],
     linkedin: SITE_LINKS.founders.manmohan,
+    linkedinUsername: "manmohanlabh",
+    email: "manmohan.labh@travelwithtarmac.com",
   },
 ];
 
@@ -194,10 +198,14 @@ export default function Team() {
                         ))}
                       </div>
                       <div
+                        className="founder-links"
                         style={{
                           marginTop: "18px",
                           display: "flex",
+                          gap: "20px",
                           justifyContent: "center",
+                          flexWrap: "wrap",
+                          alignItems: "center",
                         }}
                       >
                         <a
@@ -206,6 +214,8 @@ export default function Team() {
                           rel="noreferrer"
                           style={{
                             display: "inline-flex",
+                            alignItems: "center",
+                            gap: "6px",
                             color: "#0a66c2",
                             fontFamily: '"DM Sans", sans-serif',
                             fontSize: "14px",
@@ -213,7 +223,29 @@ export default function Team() {
                             textDecoration: "none",
                           }}
                         >
-                          Connect on LinkedIn
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                          </svg>
+                          {founder.linkedinUsername}
+                        </a>
+                        <a
+                          href={`mailto:${founder.email}`}
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "6px",
+                            color: "#555",
+                            fontFamily: '"DM Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: "600",
+                            textDecoration: "none",
+                          }}
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                          </svg>
+                          {founder.email}
                         </a>
                       </div>
                     </div>
@@ -244,6 +276,10 @@ export default function Team() {
         @media (max-width: 768px) {
           .team-section {
             padding: 108px 16px 56px 16px !important;
+          }
+          .founder-links {
+            flex-direction: column;
+            gap: 12px !important;
           }
         }
       `}</style>
