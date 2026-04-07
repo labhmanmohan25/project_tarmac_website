@@ -67,45 +67,12 @@ export default function HomeHeroSection() {
           className="hero-actions"
           style={{
             display: "flex",
-            gap: "14px",
+            gap: "0",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              justifyContent: "center",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <a
-              href={SITE_LINKS.waitlistForm}
-              target="_blank"
-              rel="noreferrer"
-              className="hero-download-btn"
-              style={{
-                padding: "12px 24px",
-                fontSize: "15px",
-                background: "#1f1f21",
-                color: "#fafafa",
-                border: "1px solid #1f1f21",
-                borderRadius: "999px",
-                fontFamily: '"DM Sans", sans-serif',
-                fontWeight: "500",
-                cursor: "pointer",
-                minWidth: "172px",
-                transition: "opacity 0.2s ease",
-                textDecoration: "none",
-              }}
-            >
-              Join Waitlist
-            </a>
-          </div>
-
           <div
             className="hero-socials"
             style={{

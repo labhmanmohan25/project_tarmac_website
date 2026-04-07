@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { SITE_LINKS } from "../lib/siteLinks";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -74,23 +73,6 @@ export default function Header() {
           .header-logo-text {
             font-size: 15px !important;
           }
-
-          .header-cta {
-            padding: 10px 22px !important;
-            border-radius: 999px;
-            display: inline-flex !important;
-            align-items: center;
-            justify-content: center;
-          }
-
-          .header-cta-label {
-            display: block;
-            font-size: 13px;
-          }
-
-          .header-cta-group {
-            gap: 10px !important;
-          }
         }
       `}</style>
       <nav className="header-nav">
@@ -132,29 +114,6 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* CTA */}
-        <div
-          className="header-cta-group"
-          style={{ display: "flex", alignItems: "center", gap: "10px" }}
-        >
-          <a
-            href={SITE_LINKS.waitlistForm}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-dark-outline header-cta"
-            style={{
-              padding: "10px 22px",
-              fontSize: "14px",
-              fontWeight: "600",
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <span className="header-cta-label">Join Waitlist</span>
-          </a>
-        </div>
       </nav>
     </header>
   );

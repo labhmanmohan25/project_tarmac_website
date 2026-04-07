@@ -83,21 +83,6 @@ export default function Contact() {
                       Travel With Tarmac
                     </a>
                   </div>
-                  <div>
-                    <h3 className="app-type-body-strong text-gray-900">
-                      Join Waitlist
-                    </h3>
-                    <div className="flex flex-col gap-2">
-                      <a
-                        href={SITE_LINKS.waitlistForm}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="app-type-body text-gray-600 hover:text-gray-900"
-                      >
-                        Open Google Form
-                      </a>
-                    </div>
-                  </div>
                 </div>
               </div>
 

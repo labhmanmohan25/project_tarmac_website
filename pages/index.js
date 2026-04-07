@@ -10,7 +10,6 @@ const HeroPhaseSection = dynamic(() => import("../components/HeroPhaseSection"),
 const DestinationsSection = dynamic(() => import("../components/DestinationsSection"), { ssr: true });
 const TarmacExplainerSection = dynamic(() => import("../components/TarmacExplainerSection"), { ssr: true });
 const PricingSection = dynamic(() => import("../components/PricingSection"), { ssr: true });
-const WaitlistSection = dynamic(() => import("../components/WaitlistSection"), { ssr: true });
 
 const HOME_JSON_LD = [
   {
@@ -151,10 +150,6 @@ export default function Home() {
 
         <LazySection minHeight={500} rootMargin="600px 0px">
           <PricingSection />
-        </LazySection>
-
-        <LazySection minHeight={300} rootMargin="400px 0px">
-          <WaitlistSection />
         </LazySection>
       </div>
 

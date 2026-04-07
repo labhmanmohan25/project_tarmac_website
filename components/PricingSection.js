@@ -1,30 +1,38 @@
-import { useState } from "react";
-
 export default function PricingSection() {
-  const [tripDays, setTripDays] = useState(8);
-  const [expandedPlans, setExpandedPlans] = useState({
-    payPerTrip: false,
-    subscription: false,
-  });
-
-  const payPerTripMonthlyEstimate = tripDays;
-  const subscriptionPrice = 15;
-  const savings = Math.max(payPerTripMonthlyEstimate - subscriptionPrice, 0);
-
-  const togglePlanDetails = (planKey) => {
-    setExpandedPlans((prev) => ({
-      ...prev,
-      [planKey]: !prev[planKey],
-    }));
-  };
+  const plans = [
+    {
+      badge: "Trip Pricing",
+      badgeType: "vibe",
+      eyebrow: "Per Trip",
+      price: "7 / 15 / 30 Days",
+      per: "$10 / $15 / $20",
+      copy: "Simple fixed pricing based on total trip length.",
+      rows: [
+        { label: "7-Day Trip", value: "$10" },
+        { label: "15-Day Trip", value: "$15" },
+        { label: "30-Day Trip", value: "$20" },
+      ],
+      cardStyle: "plan-light",
+    },
+    {
+      badge: "Frequent Traveller",
+      badgeType: "best",
+      eyebrow: "Subscription",
+      price: "$20",
+      per: "per month",
+      copy: "For regular travelers who want one predictable monthly plan.",
+      rows: [{ label: "Minimum Commitment", value: "2 months" }],
+      cardStyle: "plan-dark",
+    },
+  ];
 
   return (
     <section
       id="pricing"
       className="pricing-section"
-      style={{ background: "#eeebe6", padding: "0 48px" }}
+      style={{ background: "#eeebe6", padding: "0 48px 56px" }}
     >
-      <div style={{ maxWidth: "1020px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <div
           className="pricing-heading"
           style={{ textAlign: "center", marginBottom: "26px" }}
@@ -43,104 +51,27 @@ export default function PricingSection() {
         </div>
 
         <div className="pricing-split">
-          <article className="plan plan-light">
-            <span className="vibe-badge">For occasional travelers</span>
-            <p className="plan-eyebrow">Pay Per Trip</p>
-            <div className="plan-price-wrap">
-              <span className="plan-price">$1</span>
-              <span className="plan-per">per trip day</span>
-            </div>
-
-            <p className="plan-copy">
-              Automatically calculated from your synced trip calendar.
-            </p>
-
-            <div
-              id="pay-per-trip-details"
-              className={`plan-details ${expandedPlans.payPerTrip ? "expanded" : ""}`}
-            >
-              <div className="estimator">
-                <div className="estimator-row">
-                  <p>Trip days this month</p>
-                  <strong>{tripDays} days</strong>
-                </div>
-                <input
-                  type="range"
-                  min={1}
-                  max={30}
-                  value={tripDays}
-                  onChange={(event) => setTripDays(Number(event.target.value))}
-                  aria-label="Estimated trip days this month"
-                />
-                <p className="estimate-total">
-                  Estimated monthly cost: ${payPerTripMonthlyEstimate}
-                </p>
+          {plans.map((plan) => (
+            <article key={plan.eyebrow} className={`plan ${plan.cardStyle}`}>
+              <span className={plan.badgeType === "best" ? "best-badge" : "vibe-badge"}>
+                {plan.badge}
+              </span>
+              <p className="plan-eyebrow">{plan.eyebrow}</p>
+              <div className="plan-price-wrap">
+                <span className="plan-price">{plan.price}</span>
+                <span className="plan-per">{plan.per}</span>
               </div>
-              <p className="plan-copy" style={{ marginTop: "10px" }}>
-                New accounts get the first 2 trip days free on their first
-                login.
-              </p>
-            </div>
-
-            <button
-              className="know-more-toggle"
-              onClick={() => togglePlanDetails("payPerTrip")}
-              aria-expanded={expandedPlans.payPerTrip}
-              aria-controls="pay-per-trip-details"
-              type="button"
-            >
-              {expandedPlans.payPerTrip ? "Show less" : "Know more"}
-            </button>
-
-            <button className="cta cta-dark">Choose Pay Per Trip</button>
-          </article>
-
-          <article className="plan plan-dark">
-            <span className="best-badge">Best For Frequent Travelers</span>
-            <p className="plan-eyebrow">Subscription</p>
-            <div className="plan-price-wrap">
-              <span className="plan-price">$15</span>
-              <span className="plan-per">per month</span>
-            </div>
-
-            <p className="plan-copy">
-              One predictable monthly plan for frequent travelers.
-            </p>
-
-            <div
-              id="subscription-details"
-              className={`plan-details ${expandedPlans.subscription ? "expanded" : ""}`}
-            >
-              <div className="value-box">
-                <p>
-                  At <strong>20 traveling days/month</strong>
-                </p>
-                <p>
-                  Pay per trip: <strong>$20</strong>
-                </p>
-                <p>
-                  Frequent Flyer: <strong>$15</strong>
-                </p>
-                <p className="save-line">You save $5/month with Frequent Flyer.</p>
-                <p className="value-note">
-                  With your current {tripDays} trip days, the saving is
-                  <strong> ${savings}</strong> vs pay per trip.
-                </p>
+              <p className="plan-copy">{plan.copy}</p>
+              <div className="plan-rows">
+                {plan.rows.map((row) => (
+                  <div className="plan-row" key={row.label}>
+                    <span className="plan-row-label">{row.label}</span>
+                    <span className="plan-row-value">{row.value}</span>
+                  </div>
+                ))}
               </div>
-            </div>
-
-            <button
-              className="know-more-toggle know-more-toggle-dark"
-              onClick={() => togglePlanDetails("subscription")}
-              aria-expanded={expandedPlans.subscription}
-              aria-controls="subscription-details"
-              type="button"
-            >
-              {expandedPlans.subscription ? "Show less" : "Know more"}
-            </button>
-
-            <button className="cta cta-light">Choose Subscription</button>
-          </article>
+            </article>
+          ))}
         </div>
       </div>
 
@@ -225,7 +156,7 @@ export default function PricingSection() {
 
         .plan-price {
           font-family: "Bricolage Grotesque", sans-serif;
-          font-size: 50px;
+          font-size: 44px;
           line-height: 1;
           letter-spacing: -0.03em;
           font-weight: 800;
@@ -245,129 +176,51 @@ export default function PricingSection() {
           opacity: 0.9;
         }
 
-        .estimator {
-          border: 1px solid rgba(28, 28, 30, 0.12);
-          background: rgba(255, 255, 255, 0.86);
-          border-radius: 14px;
+        .plan-rows {
+          margin-top: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
           padding: 12px;
-          margin-bottom: 16px;
+          border-radius: 12px;
+          border: 1px solid rgba(28, 28, 30, 0.12);
+          background: rgba(255, 255, 255, 0.72);
         }
 
-        .estimator-row {
+        .plan-dark .plan-rows {
+          border-color: rgba(255, 255, 255, 0.16);
+          background: rgba(255, 255, 255, 0.06);
+        }
+
+        .plan-row {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 8px;
+          gap: 8px;
+        }
+
+        .plan-row-label {
           font-family: "DM Sans", sans-serif;
-          font-size: 12px;
-          color: #5a666d;
+          font-size: 13px;
+          opacity: 0.7;
         }
 
-        .estimator-row strong {
-          color: #1c1c1e;
-          font-size: 12px;
-        }
-
-        input[type="range"] {
-          width: 100%;
-          accent-color: #1c1c1e;
-        }
-
-        .estimate-total {
-          margin: 8px 0 0;
+        .plan-row-value {
           font-family: "DM Sans", sans-serif;
           font-size: 13px;
           font-weight: 700;
-          color: #1c1c1e;
-        }
-
-        .value-box {
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-radius: 14px;
-          padding: 12px;
-          background: rgba(255, 255, 255, 0.06);
-          margin-bottom: 16px;
-          font-family: "DM Sans", sans-serif;
-          font-size: 13px;
-          line-height: 1.45;
-        }
-
-        .value-box p {
-          margin: 0 0 6px;
-        }
-
-        .value-box p:last-child {
-          margin-bottom: 0;
-        }
-
-        .save-line {
-          margin-top: 8px !important;
-          color: #d6f8dd;
-          font-weight: 700;
-        }
-
-        .value-note {
-          margin-top: 8px !important;
-          opacity: 0.85;
-        }
-
-        .know-more-toggle {
-          display: none;
-          border: none;
-          background: transparent;
-          color: #1c1c1e;
-          border-radius: 0;
-          padding: 0;
-          font-family: "DM Sans", sans-serif;
-          font-size: 13px;
-          font-weight: 700;
-          letter-spacing: 0.02em;
-          text-decoration: underline;
-          text-underline-offset: 2px;
-          width: fit-content;
-          margin: -4px 0 12px;
-          cursor: pointer;
-        }
-
-        .know-more-toggle-dark {
-          color: #f5f7f8;
-        }
-
-        .cta {
-          width: 100%;
-          border: none;
-          border-radius: 999px;
-          padding: 13px;
-          font-family: "DM Sans", sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          cursor: pointer;
-          margin-top: auto;
-        }
-
-        .cta-dark {
-          background: #1c1c1e;
-          color: white;
-        }
-
-        .cta-light {
-          background: #ffffff;
-          color: #1c1c1e;
+          opacity: 0.9;
         }
 
         @media (max-width: 900px) {
           .pricing-split {
             grid-template-columns: 1fr;
           }
-
-          .plan-dark {
-            order: -1;
-          }
         }
 
         @media (max-width: 768px) {
           .pricing-section {
-            padding: 0 16px !important;
+            padding: 0 16px 40px !important;
           }
 
           .pricing-heading {
@@ -380,39 +233,12 @@ export default function PricingSection() {
           }
 
           .plan-price {
-            font-size: 36px;
+            font-size: 34px;
           }
 
           .plan-copy {
             font-size: 13px;
             margin-bottom: 12px;
-          }
-
-          .plan-details {
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
-            transition:
-              max-height 0.3s ease,
-              opacity 0.25s ease;
-          }
-
-          .plan-details.expanded {
-            max-height: 320px;
-            opacity: 1;
-          }
-
-          .know-more-toggle {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-          }
-        }
-
-        @media (min-width: 769px) {
-          .plan-details {
-            max-height: none !important;
-            opacity: 1 !important;
           }
         }
       `}</style>
