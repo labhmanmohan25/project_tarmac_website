@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function Header() {
+export default function Header({ transparent = false, dark = false }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -45,11 +45,13 @@ export default function Header() {
         zIndex: 50,
         transition:
           "background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
-        background: scrolled ? "rgba(238,235,230,0.94)" : "rgba(238,235,230,0.74)",
-        borderBottom: scrolled
-          ? "1px solid rgba(0,0,0,0.06)"
-          : "1px solid transparent",
-        boxShadow: scrolled ? "0 8px 24px rgba(28, 28, 30, 0.05)" : "none",
+        background: transparent
+          ? "transparent"
+          : scrolled ? "rgba(238,235,230,0.94)" : "rgba(238,235,230,0.74)",
+        borderBottom: transparent
+          ? "1px solid transparent"
+          : scrolled ? "1px solid rgba(0,0,0,0.06)" : "1px solid transparent",
+        boxShadow: transparent ? "none" : scrolled ? "0 8px 24px rgba(28, 28, 30, 0.05)" : "none",
       }}
     >
       <style jsx>{`
@@ -96,7 +98,7 @@ export default function Header() {
             }}
           >
             <picture>
-              <img src="/tarmac-light.png" alt="tarmac" width="40" height="40" loading="eager" />
+              <img src={dark ? "/tarmac-dark.png" : "/tarmac-light.png"} alt="tarmac" width="40" height="40" loading="eager" />
             </picture>
           </div>
           <span
@@ -105,7 +107,7 @@ export default function Header() {
               fontFamily: '"Montserrat", sans-serif',
               fontSize: "17px",
               fontWeight: "390",
-              color: "#2D2D2D",
+              color: dark ? "rgba(255,255,255,0.92)" : "#2D2D2D",
               letterSpacing: "0.11em",
               textTransform: "lowercase",
             }}
@@ -114,6 +116,28 @@ export default function Header() {
           </span>
         </Link>
 
+        {/* Vision CTA */}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <Link
+            href="/vision"
+            className="btn-dark-outline header-cta"
+            style={{
+              padding: "10px 22px",
+              fontSize: "14px",
+              fontWeight: "600",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              ...(dark && {
+                color: "rgba(255,255,255,0.92)",
+                border: "1.5px solid rgba(255,255,255,0.55)",
+              }),
+            }}
+          >
+            <span className="header-cta-label">Our Vision</span>
+          </Link>
+        </div>
       </nav>
     </header>
   );
