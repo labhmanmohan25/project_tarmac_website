@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Header({ transparent = false, dark = false }) {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -66,6 +68,31 @@ export default function Header({ transparent = false, dark = false }) {
           gap: 12px;
         }
 
+        .header-text-link {
+          font-family: "Montserrat", sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .header-text-link span {
+          position: relative;
+          display: inline-block;
+          border-bottom: 2px solid transparent;
+          padding-bottom: 2px;
+          background: linear-gradient(to right, currentColor 0%, currentColor 100%) no-repeat;
+          background-size: 0% 2px;
+          background-position: bottom left;
+          transition: background-size 0.3s ease, transform 0.3s ease;
+        }
+
+        .header-text-link:hover span {
+          background-size: 100% 2px;
+          transform: skewX(-10deg);
+        }
+
         @media (max-width: 768px) {
           .header-nav {
             padding: 0 16px;
@@ -116,27 +143,31 @@ export default function Header({ transparent = false, dark = false }) {
           </span>
         </Link>
 
-        {/* Vision CTA */}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <Link
-            href="/vision"
-            className="btn-dark-outline header-cta"
+        {/* Vision + Team nav text links */}
+        <div style={{ display: "flex", alignItems: "center", gap: "30px" }}>
+          {/* Old bordered button styling intentionally removed in favor of plain text links. */}
+          <span
+            className="header-text-link"
+            onClick={() => router.push("/vision")}
             style={{
-              padding: "10px 22px",
-              fontSize: "14px",
-              fontWeight: "600",
-              textDecoration: "none",
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
-              ...(dark && {
-                color: "rgba(255,255,255,0.92)",
-                border: "1.5px solid rgba(255,255,255,0.55)",
-              }),
             }}
           >
-            <span className="header-cta-label">Our Vision</span>
-          </Link>
+            <span style={{ color: dark ? "rgba(255,255,255,0.92)" : "#2D2D2D" }}>Vision</span>
+          </span>
+          <span
+            className="header-text-link"
+            onClick={() => router.push("/team")}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <span style={{ color: dark ? "rgba(255,255,255,0.92)" : "#2D2D2D" }}>Team</span>
+          </span>
         </div>
       </nav>
     </header>

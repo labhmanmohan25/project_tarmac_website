@@ -66,7 +66,7 @@ export default function Team() {
         jsonLd={TEAM_JSON_LD}
       />
 
-      <Header />
+      <Header transparent />
 
       <section
         id="team"
