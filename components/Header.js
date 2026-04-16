@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { SITE_LINKS } from "../lib/siteLinks";
 
 export default function Header({ transparent = false, dark = false }) {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     let frameId = null;
@@ -36,6 +38,10 @@ export default function Header({ transparent = false, dark = false }) {
       }
     };
   }, []);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [router.asPath]);
 
   return (
     <header
@@ -93,6 +99,137 @@ export default function Header({ transparent = false, dark = false }) {
           transform: skewX(-10deg);
         }
 
+        .header-waitlist-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 38px;
+          padding: 0 16px;
+          border-radius: 999px;
+          border: 1px solid #2a1b00;
+          background: linear-gradient(135deg, #ffd24d 0%, #ffb11f 100%);
+          color: #1f1400;
+          text-decoration: none;
+          font-family: "Montserrat", sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
+          box-shadow: 0 8px 16px rgba(70, 42, 0, 0.2);
+          transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+        }
+
+        .header-waitlist-link:hover {
+          transform: translateY(-1px);
+          filter: brightness(1.03);
+          box-shadow: 0 10px 20px rgba(70, 42, 0, 0.26);
+        }
+
+        .header-links-wrap {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          position: relative;
+        }
+
+        .header-mobile-actions {
+          display: none;
+          align-items: center;
+          gap: 10px;
+          position: relative;
+        }
+
+        .header-mobile-waitlist {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 34px;
+          padding: 0 12px;
+          border-radius: 999px;
+          border: 1px solid #2a1b00;
+          background: linear-gradient(135deg, #ffd24d 0%, #ffb11f 100%);
+          color: #1f1400;
+          text-decoration: none;
+          font-family: "Montserrat", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          box-shadow: 0 6px 12px rgba(70, 42, 0, 0.2);
+        }
+
+        .header-mobile-menu-btn {
+          width: 34px;
+          height: 34px;
+          border: 1px solid rgba(0, 0, 0, 0.16);
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.72);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: border-color 0.18s ease, background-color 0.18s ease;
+        }
+
+        .header-mobile-menu-btn:hover {
+          border-color: rgba(0, 0, 0, 0.3);
+          background: rgba(255, 255, 255, 0.9);
+        }
+
+        .header-mobile-menu-btn:focus-visible {
+          outline: 2px solid #1f1400;
+          outline-offset: 1px;
+        }
+
+        .header-mobile-menu-dots {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 3px;
+        }
+
+        .header-mobile-menu-dots span {
+          width: 4px;
+          height: 4px;
+          border-radius: 999px;
+          background: #2d2d2d;
+        }
+
+        .header-mobile-menu {
+          position: absolute;
+          right: 0;
+          top: calc(100% + 10px);
+          min-width: 132px;
+          padding: 8px;
+          border-radius: 12px;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          background: rgba(255, 255, 255, 0.96);
+          box-shadow: 0 18px 32px rgba(20, 20, 20, 0.16);
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          z-index: 8;
+        }
+
+        .header-mobile-menu-item {
+          width: 100%;
+          border: none;
+          border-radius: 8px;
+          background: transparent;
+          color: #2d2d2d;
+          font-family: "Montserrat", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          text-align: left;
+          padding: 8px 10px;
+          cursor: pointer;
+        }
+
+        .header-mobile-menu-item:hover {
+          background: rgba(0, 0, 0, 0.06);
+        }
+
         @media (max-width: 768px) {
           .header-nav {
             padding: 0 16px;
@@ -101,6 +238,22 @@ export default function Header({ transparent = false, dark = false }) {
 
           .header-logo-text {
             font-size: 15px !important;
+          }
+
+          .header-waitlist-link {
+            display: none;
+          }
+
+          .header-text-link {
+            display: none !important;
+          }
+
+          .header-links-wrap {
+            gap: 0;
+          }
+
+          .header-mobile-actions {
+            display: inline-flex;
           }
         }
       `}</style>
@@ -144,7 +297,17 @@ export default function Header({ transparent = false, dark = false }) {
         </Link>
 
         {/* Vision + Team nav text links */}
-        <div style={{ display: "flex", alignItems: "center", gap: "30px" }}>
+        <div className="header-links-wrap">
+          <a
+            href={SITE_LINKS.waitlistForm}
+            target="_blank"
+            rel="noreferrer"
+            className="header-waitlist-link"
+            aria-label="Join waitlist"
+          >
+            Join Waitlist
+          </a>
+
           {/* Old bordered button styling intentionally removed in favor of plain text links. */}
           <span
             className="header-text-link"
@@ -168,6 +331,60 @@ export default function Header({ transparent = false, dark = false }) {
           >
             <span style={{ color: dark ? "rgba(255,255,255,0.92)" : "#2D2D2D" }}>Team</span>
           </span>
+
+          <div className="header-mobile-actions">
+            <a
+              href={SITE_LINKS.waitlistForm}
+              target="_blank"
+              rel="noreferrer"
+              className="header-mobile-waitlist"
+              aria-label="Join waitlist"
+            >
+              Waitlist
+            </a>
+
+            <button
+              type="button"
+              className="header-mobile-menu-btn"
+              onClick={() => setMobileMenuOpen((previousValue) => !previousValue)}
+              aria-label="Open menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="header-mobile-menu"
+            >
+              <span className="header-mobile-menu-dots" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+            </button>
+
+            {mobileMenuOpen ? (
+              <div id="header-mobile-menu" className="header-mobile-menu" role="menu">
+                <button
+                  type="button"
+                  className="header-mobile-menu-item"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    router.push("/vision");
+                  }}
+                  role="menuitem"
+                >
+                  Vision
+                </button>
+                <button
+                  type="button"
+                  className="header-mobile-menu-item"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    router.push("/team");
+                  }}
+                  role="menuitem"
+                >
+                  Team
+                </button>
+              </div>
+            ) : null}
+          </div>
         </div>
       </nav>
     </header>

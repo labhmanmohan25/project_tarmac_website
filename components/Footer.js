@@ -4,7 +4,10 @@ import { SITE_LINKS } from "../lib/siteLinks";
 const footerColumns = [
   {
     title: "Company",
-    links: [{ label: "Team", href: "/team" }],
+    links: [
+      { label: "Vision", href: "/vision" },
+      { label: "Team", href: "/team" },
+    ],
   },
   {
     title: "Legal",

@@ -1581,7 +1581,7 @@ function shuffleCards(cards) {
 }
 
 export default function HeroPhaseSection() {
-  const [selectedPhase, setSelectedPhase] = useState("pretrip");
+  const [selectedPhase, setSelectedPhase] = useState("intrip");
   const randomizedPhaseCardsConfig = useMemo(
     () => ({
       pretrip: shuffleCards(phaseCardsConfig.pretrip),
@@ -1657,6 +1657,7 @@ export default function HeroPhaseSection() {
           <br />
           Start to Finish.
         </h1>
+
         <div
           className="hero-segment-wrap"
           style={{
