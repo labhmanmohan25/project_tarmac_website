@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Script from "next/script";
+import CursorImage from "../components/CursorImage";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }) {
           gtag('config', 'G-4Z96998NFF');
         `}
       </Script>
+      <CursorImage />
       <Component {...pageProps} />
     </>
   );

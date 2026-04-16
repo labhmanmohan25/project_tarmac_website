@@ -106,8 +106,8 @@ export default function Header({ transparent = false, dark = false }) {
           min-height: 38px;
           padding: 0 16px;
           border-radius: 999px;
-          border: 1px solid #2a1b00;
-          background: linear-gradient(135deg, #ffd24d 0%, #ffb11f 100%);
+          border: 1px solid #5a4500;
+          background: #ffea00;
           color: #1f1400;
           text-decoration: none;
           font-family: "Montserrat", sans-serif;
@@ -115,14 +115,14 @@ export default function Header({ transparent = false, dark = false }) {
           font-weight: 700;
           letter-spacing: 0.03em;
           text-transform: uppercase;
-          box-shadow: 0 8px 16px rgba(70, 42, 0, 0.2);
+          box-shadow: 0 8px 16px rgba(90, 69, 0, 0.26);
           transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
         }
 
         .header-waitlist-link:hover {
           transform: translateY(-1px);
-          filter: brightness(1.03);
-          box-shadow: 0 10px 20px rgba(70, 42, 0, 0.26);
+          filter: brightness(1.07);
+          box-shadow: 0 10px 20px rgba(90, 69, 0, 0.32);
         }
 
         .header-links-wrap {
@@ -146,8 +146,8 @@ export default function Header({ transparent = false, dark = false }) {
           min-height: 34px;
           padding: 0 12px;
           border-radius: 999px;
-          border: 1px solid #2a1b00;
-          background: linear-gradient(135deg, #ffd24d 0%, #ffb11f 100%);
+          border: 1px solid #5a4500;
+          background: #ffea00;
           color: #1f1400;
           text-decoration: none;
           font-family: "Montserrat", sans-serif;
@@ -155,7 +155,7 @@ export default function Header({ transparent = false, dark = false }) {
           font-weight: 700;
           letter-spacing: 0.04em;
           text-transform: uppercase;
-          box-shadow: 0 6px 12px rgba(70, 42, 0, 0.2);
+          box-shadow: 0 6px 12px rgba(90, 69, 0, 0.26);
         }
 
         .header-mobile-menu-btn {
@@ -305,7 +305,7 @@ export default function Header({ transparent = false, dark = false }) {
             className="header-waitlist-link"
             aria-label="Join waitlist"
           >
-            Join Waitlist
+            JOIN WAITLIST
           </a>
 
           {/* Old bordered button styling intentionally removed in favor of plain text links. */}
@@ -340,7 +340,7 @@ export default function Header({ transparent = false, dark = false }) {
               className="header-mobile-waitlist"
               aria-label="Join waitlist"
             >
-              Waitlist
+              JOIN WAITLIST
             </a>
 
             <button

@@ -360,7 +360,7 @@ export default function PhaseCarousel({
             letterSpacing: "0px",
           }}
         >
-          Thailand trip with the gang
+          India trip with the gang
         </span>
       </div>
       )}

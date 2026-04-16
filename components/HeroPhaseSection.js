@@ -586,8 +586,8 @@ const phaseCardsConfig = {
       title: "Where do you want to go?",
       description: "Pre-Trip Question Card",
       chatMessages: [
-        { name: "Sam", text: "Thailand??" },
-        { name: "Riya", text: "or Bali 🏝️" },
+        { name: "Sam", text: "Jaipur??" },
+        { name: "Riya", text: "or Kerala 🌴" },
         { name: "Jake", text: "either works for me" },
       ],
       renderCard: () => (
@@ -734,13 +734,13 @@ const phaseCardsConfig = {
       title: "Which of these 3 destinations?",
       description: "Pre-Trip Poll Card",
       chatMessages: [
-        { name: "Sam", text: "Bali no contest" },
-        { name: "Riya", text: "Lisbon is so good tho 🏛️" },
+        { name: "Sam", text: "Goa no contest" },
+        { name: "Riya", text: "Varanasi is so good tho 🛕" },
       ],
       renderCard: () => (
         <PreTripPollCard
           title="Which of these 3 destinations?"
-          options={["Bali", "Almaty", "Lisbon"]}
+          options={["Goa", "Jaipur", "Varanasi"]}
         />
       ),
     },
@@ -807,14 +807,14 @@ const phaseCardsConfig = {
       title: "Your group is split. Running a poll.",
       description: "Pre-Trip Suggestion Card",
       chatMessages: [
-        { name: "Jake", text: "Bali > everything" },
-        { name: "Riya", text: "voted Lisbon 🏛️" },
+        { name: "Jake", text: "Goa > everything" },
+        { name: "Riya", text: "voted Jaipur 🏰" },
       ],
       renderCard: () => (
         <PreTripSuggestionCard
           title="Your group is split. Running a poll."
           subtitle="Detected from group chat discussion — launched a tie-breaker poll automatically."
-          previewContent="Bali vs Lisbon — 2v2 tie · Poll sent to group · Closes in 24h"
+          previewContent="Goa vs Jaipur — 2v2 tie · Poll sent to group · Closes in 24h"
           sourcesCount="Group chat thread analyzed"
           cta="See Poll"
         />
@@ -824,13 +824,13 @@ const phaseCardsConfig = {
       title: "You went to beach last trip. Here are mountain options.",
       description: "Pre-Trip Suggestion Card",
       chatMessages: [
-        { name: "Sam", text: "Swiss Alps?? yes please 🏔️" },
+        { name: "Sam", text: "Munnar?? yes please 🏔️" },
       ],
       renderCard: () => (
         <PreTripSuggestionCard
           title="You went to beach last trip. Here are mountain options."
           subtitle="Ranked by variety score, distance from last trip type, and group preferences."
-          previewContent={<DestinationFitList destinations={[{flag:"🇨🇭",name:"Swiss Alps",fit:91,price:"€1,800"},{flag:"🇯🇵",name:"Hokkaido",fit:87,price:"€1,200"},{flag:"🇵🇪",name:"Cusco",fit:84,price:"€1,500"}]} />}
+          previewContent={<DestinationFitList destinations={[{flag:"🇮🇳",name:"Munnar",fit:91,price:"₹38,000"},{flag:"🇮🇳",name:"Coorg",fit:87,price:"₹34,000"},{flag:"🇮🇳",name:"Rishikesh",fit:84,price:"₹29,000"}]} />}
           sourcesCount="Trip history · 80+ mountain destinations"
           cta="Show Me"
         />
@@ -840,14 +840,14 @@ const phaseCardsConfig = {
       title: "It's summer, 10 days - long-haul is out. Here's what fits.",
       description: "Pre-Trip Suggestion Card",
       chatMessages: [
-        { name: "Riya", text: "Mykonos or Dubrovnik?" },
-        { name: "Jake", text: "Azores is underrated" },
+        { name: "Riya", text: "Jaipur or Munnar?" },
+        { name: "Jake", text: "Kochi is underrated" },
       ],
       renderCard: () => (
         <PreTripSuggestionCard
           title="It's summer, 10 days — long-haul is out. Here's what fits."
           subtitle="Filtered for max 4-hour flights, July–August availability, and your budget range."
-          previewContent="Max 4h flight · 23 qualifying destinations · Top 3: Mykonos · Dubrovnik · Azores"
+          previewContent="Max 3h flight · 23 qualifying destinations · Top 3: Jaipur · Kochi · Goa"
           sourcesCount="Flight data · seasonal filters applied"
           cta="See Destinations"
         />
@@ -857,8 +857,8 @@ const phaseCardsConfig = {
       title: "Festival happening during your travel window.",
       description: "Pre-Trip Suggestion Card",
       chatMessages: [
-        { name: "Sam", text: "Sziget!! I've wanted to go 🎉" },
-        { name: "Jake", text: "Budapest + festival = yes" },
+        { name: "Sam", text: "Jaipur Lit Fest!! I've wanted to go 🎉" },
+        { name: "Jake", text: "Jaipur + festival = yes" },
       ],
       renderCard: () => (
         <PreTripSuggestionCard
@@ -866,10 +866,10 @@ const phaseCardsConfig = {
           subtitle="Detected from public event calendars matching your planned dates."
           previewContent={<>
             <div className="pretrip-event-card">
-              <span className="pretrip-event-name">Sziget Festival</span>
-              <span className="pretrip-event-location">Budapest · Aug 14–20</span>
+              <span className="pretrip-event-name">Jaipur Literature Festival</span>
+              <span className="pretrip-event-location">Jaipur · Jan 30–Feb 3</span>
             </div>
-            <div style={{marginTop:'5px',fontSize:'10px',color:'#484238',fontFamily:'"DM Sans",sans-serif'}}>Tickets from €280 · Flights +20% during dates · Book early</div>
+            <div style={{marginTop:'5px',fontSize:'10px',color:'#484238',fontFamily:'"DM Sans",sans-serif'}}>Passes from ₹899 · Hotels +20% during dates · Book early</div>
           </>}
           sourcesCount="12 event calendars scanned"
           cta="Tell Me More"
@@ -886,7 +886,7 @@ const phaseCardsConfig = {
         <PreTripSuggestionCard
           title="Very few vegan options at this destination."
           subtitle="Checked restaurant databases and food review platforms for this route."
-          previewContent="Marrakesh: 4 vegan restaurants only (3 tourist-facing) · vs Lisbon: 140+ vegan options"
+          previewContent="Varanasi: 6 vegan-friendly cafes only (4 central) · vs Delhi: 120+ vegan options"
           sourcesCount="Google Places · HappyCow · 3 food platforms"
           cta="Find Alternatives"
           warning
@@ -897,14 +897,14 @@ const phaseCardsConfig = {
       title: "Here are 5 destinations ranked by fit.",
       description: "Pre-Trip Suggestion Card",
       chatMessages: [
-        { name: "Jake", text: "Tbilisi 85%! let's go" },
-        { name: "Sam", text: "Lisbon is obvious tho" },
+        { name: "Jake", text: "Jaipur 89%! let's go" },
+        { name: "Sam", text: "Goa is obvious tho" },
       ],
       renderCard: () => (
         <PreTripSuggestionCard
           title="Here are 5 destinations ranked by fit."
           subtitle="Scored against your group's preferences, budget, travel style, and timing."
-          previewContent={<DestinationFitList destinations={[{flag:"🇵🇹",name:"Lisbon",fit:94,price:"€1,400"},{flag:"🇲🇽",name:"Oaxaca",fit:89,price:"€1,600"},{flag:"🇬🇪",name:"Tbilisi",fit:85,price:"€950"},{flag:"🇻🇳",name:"Da Nang",fit:82,price:"€1,100"},{flag:"🇲🇦",name:"Marrakesh",fit:78,price:"€1,200"}]} />}
+          previewContent={<DestinationFitList destinations={[{flag:"🇮🇳",name:"Goa",fit:94,price:"₹32,000"},{flag:"🇮🇳",name:"Jaipur",fit:89,price:"₹24,000"},{flag:"🇮🇳",name:"Varanasi",fit:85,price:"₹21,000"},{flag:"🇮🇳",name:"Munnar",fit:82,price:"₹29,000"},{flag:"🇮🇳",name:"Mumbai",fit:78,price:"₹27,000"}]} />}
           sourcesCount="47 filters · 200+ destinations ranked"
           cta="Vote Now"
         />
@@ -927,17 +927,17 @@ const phaseCardsConfig = {
       ),
     },
     {
-      title: "Found a ski resort in budget - added to itinerary.",
+      title: "Found a tea estate stay in budget - added to itinerary.",
       description: "Pre-Trip Suggestion Card",
       chatMessages: [
-        { name: "Jake", text: "Niseko!!!! 🎿" },
+        { name: "Jake", text: "Munnar!!!! 🌿" },
         { name: "Sam", text: "adding this rn" },
       ],
       renderCard: () => (
         <PreTripSuggestionCard
-          title="Found a ski resort in budget — added to itinerary."
+          title="Found a tea estate stay in budget — added to itinerary."
           subtitle="Matched against your stated budget range and Day 4 free slot."
-          previewContent="Niseko Grand Hirafu · Day 4 · Lift pass ¥8,500/day · Within your ¥10,000 activity budget"
+          previewContent="Munnar tea estate stay · Day 4 · Jeep ride ₹2,500 · Within your ₹3,000 activity budget"
           sourcesCount="8 resort booking sources"
           cta="View Update"
         />
@@ -953,7 +953,7 @@ const phaseCardsConfig = {
         <PreTripSuggestionCard
           title="Every restaurant has a vegan option. Checked."
           subtitle="Cross-referenced your itinerary against live menu data for each stop."
-          previewContent="Kyoya · Ain Soph Ripple · T's Tantan · Nagi Shokudo · + 8 more along your route"
+          previewContent="Greenr Cafe · Burma Burma · Sante Spa Cuisine · Cafe Turtle · + 8 more along your route"
           sourcesCount="Google Places · HappyCow · menus scanned"
           cta="See Restaurants"
         />
@@ -964,7 +964,7 @@ const phaseCardsConfig = {
       description: "Pre-Trip Warning Card",
       chatMessages: [
         { name: "Sam", text: "34%?? no thanks" },
-        { name: "Jake", text: "swap to LH1234" },
+        { name: "Jake", text: "swap to AI2456" },
       ],
       renderCard: () => (
         <PreTripSuggestionCard
@@ -972,7 +972,7 @@ const phaseCardsConfig = {
           subtitle="Based on 90-day historic data for this specific route and carrier."
           previewContent={<>
             <StatBadgeRow items={[{label:"Cancel rate",value:"34%"},{label:"Avg delay",value:"48 min"},{label:"On-time",value:"52%"}]} />
-            <div style={{marginTop:'5px',fontSize:'10px',color:'#484238',fontFamily:'"DM Sans",sans-serif'}}>2 better alternatives available: LH1234 (8% cancel) · BA456 (11% cancel)</div>
+            <div style={{marginTop:'5px',fontSize:'10px',color:'#484238',fontFamily:'"DM Sans",sans-serif'}}>2 better alternatives available: AI2456 (8% cancel) · 6E6213 (11% cancel)</div>
           </>}
           sourcesCount="FlightAware · 90 days of route data"
           cta="Compare Flights"
@@ -1002,14 +1002,14 @@ const phaseCardsConfig = {
       title: "New event announced - free slot in your itinerary.",
       description: "Pre-Trip Suggestion Card",
       chatMessages: [
-        { name: "Sam", text: "Primavera in Kyoto?? yes!!" },
+        { name: "Sam", text: "Dev Deepawali in Varanasi?? yes!!" },
         { name: "Jake", text: "Day 3 afternoon is free" },
       ],
       renderCard: () => (
         <PreTripSuggestionCard
           title="New event announced — free slot in your itinerary."
           subtitle="Detected from live event feeds matching your destination and travel dates."
-          previewContent="Primavera Sound Kyoto · Nov 7 · Free slot: Day 3 afternoon · Tickets from €60"
+          previewContent="Dev Deepawali · Varanasi · Nov 15 · Free slot: Day 3 evening · Boat seats from ₹600"
           sourcesCount="8 event calendar feeds"
           cta="Add to Plan"
         />
@@ -1019,14 +1019,14 @@ const phaseCardsConfig = {
       title: "Flight prices dropped. Good time to book.",
       description: "Pre-Trip Suggestion Card",
       chatMessages: [
-        { name: "Sam", text: "$318!! booking NOW 🚨" },
+        { name: "Sam", text: "₹5,400!! booking NOW 🚨" },
         { name: "Riya", text: "everyone do it rn" },
       ],
       renderCard: () => (
         <PreTripSuggestionCard
           title="Flight prices dropped. Good time to book."
           subtitle="Monitored across 3 booking platforms over the past 14 days."
-          previewContent="NYC → BCN: was $480 → now $318 (–34%) · Price windows typically last 3–5 days"
+          previewContent="DEL → GOI: was ₹8,200 → now ₹5,400 (–34%) · Price windows typically last 3–5 days"
           sourcesCount="Google Flights · Skyscanner · Kayak"
           cta="Book Now"
         />
@@ -1074,13 +1074,13 @@ const phaseCardsConfig = {
             previewContent={
               <>
                 <RestaurantPreview
-                  name="Torikado Alley Stalls"
+                  name="Paranthe Wali Gali"
                   rating="4.8"
                   distance="6 min walk"
-                  priceRange="¥900 avg"
+                  priceRange="₹250 avg"
                   tag="Late-night local pick"
                 />
-                <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Yakitori Row · 11 vendors · busiest with locals after 20:00</div>
+                <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Chandni Chowk lane · 9 iconic shops · busiest with locals after 20:00</div>
               </>
             }
             sourcesCount="3 local food blogs · 240 recent reviews"
@@ -1101,7 +1101,7 @@ const phaseCardsConfig = {
             subtitle="Nearest verified public facilities based on live open-hours, foot-access, and cleanliness reports."
             previewContent={
               <>
-                <MapsLinkButton label="Shibuya Stream Restrooms · 120 m · Level 2" />
+                <MapsLinkButton label="DLF Avenue Restrooms · 120 m · Lower Ground" />
                 <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Open now · Accessible stall available · 2 min queue estimate</div>
               </>
             }
@@ -1123,8 +1123,8 @@ const phaseCardsConfig = {
             subtitle="Picked from your radius, price mix, and stores with the strongest recent local footfall."
             previewContent={
               <>
-                <MapsLinkButton label="Cat Street Shops · 450 m · Harajuku" />
-                <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Vintage · sneakers · design stores · 18 top-rated stops in one stretch</div>
+                <MapsLinkButton label="Johari Bazaar · 450 m · Jaipur" />
+                <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Jewellery · juttis · block prints · 18 top-rated stops in one stretch</div>
               </>
             }
             sourcesCount="18 nearby stores compared"
@@ -1157,7 +1157,7 @@ const phaseCardsConfig = {
         <InTripSuggestionCard
           title="Help me do a food tour here."
           subtitle="Built as a walkable route using crowd timing, signature dishes, and stop-to-stop distance."
-          previewContent="Stop 1: Gyoza alley · Stop 2: standing sushi · Stop 3: taiyaki window · 42 min total walk"
+          previewContent="Stop 1: chaat lane · Stop 2: kebab corner · Stop 3: kulfi stall · 42 min total walk"
           sourcesCount="12 food stops ranked"
           cta="Start Tour"
         />
@@ -1175,8 +1175,8 @@ const phaseCardsConfig = {
           subtitle="Filtered for operator-direct pricing, local boarding points, and today's departure availability."
           previewContent={
             <>
-              <MapsLinkButton label="Sumida River Cruise Pier · 700 m · Direct counter" />
-              <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Operator price ¥1,200 · reseller avg ¥1,650 · next local-favorite departure 16:40</div>
+              <MapsLinkButton label="Gateway Ferry Wharf · 700 m · Direct counter" />
+              <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Operator price ₹260 · reseller avg ₹420 · next local-favorite departure 16:40</div>
             </>
           }
           sourcesCount="4 operators · direct ticket counters checked"
@@ -1199,7 +1199,7 @@ const phaseCardsConfig = {
       ),
     },
     {
-      title: "Tsukiji Market opens in 20 min - 3-min walk.",
+      title: "Crawford Market opens in 20 min - 3-min walk.",
       description: "In-Trip Suggestion Card",
       chatMessages: [
         { name: "Sam", text: "GO GO GO 🏃" },
@@ -1207,11 +1207,11 @@ const phaseCardsConfig = {
       ],
       renderCard: () => (
         <InTripSuggestionCard
-          title="Tsukiji Market opens in 20 min — 3-min walk."
+          title="Crawford Market opens in 20 min — 3-min walk."
           subtitle="Context-aware suggestion based on your location and time window."
           previewContent={<>
-            <MapsLinkButton label="Tsukiji Outer Market · 230 m · Chuo City, Tokyo" />
-            <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Open 05:30–14:00 · Best before 09:00 · Tuna auction tickets available</div>
+            <MapsLinkButton label="Crawford Market · 230 m · South Mumbai" />
+            <div style={{marginTop:'6px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Open 10:00–20:00 · Best before 13:00 · Fresh produce and snacks arriving now</div>
           </>}
           sourcesCount="4 sources · live hours verified"
           cta="Take Me There"
@@ -1242,13 +1242,13 @@ const phaseCardsConfig = {
       title: "Missed a stop. Adjusted rest of day.",
       description: "In-Trip Suggestion Card",
       chatMessages: [
-        { name: "Sam", text: "Yanaka walk sounds amazing" },
+        { name: "Sam", text: "Jal Mahal walk sounds amazing" },
       ],
       renderCard: () => (
         <InTripSuggestionCard
           title="Missed a stop. Adjusted rest of day."
           subtitle="Plan auto-updated based on your current location and time."
-          previewContent="Removed: teamLab Planets (60 min) → Added: Ueno Park + Yanaka evening walk"
+          previewContent="Removed: City Palace museum (60 min) → Added: Jal Mahal sunset + Bapu Bazaar walk"
           sourcesCount="Real-time itinerary sync"
           cta="View Updated Plan"
         />
@@ -1267,10 +1267,10 @@ const phaseCardsConfig = {
           subtitle="Context-aware suggestion generated from your location and tonight's schedule."
           previewContent={<>
             <div className="intrip-event-row">
-              <span className="intrip-event-name">Shinjuku Jazz Festival</span>
-              <span className="intrip-event-time">19:30–22:00</span>
+              <span className="intrip-event-name">Dashashwamedh Ghat Ganga Aarti</span>
+              <span className="intrip-event-time">19:00–19:45</span>
             </div>
-            <div style={{marginTop:'4px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Free entry · 0.8 km from current location · Outdoor stage</div>
+            <div style={{marginTop:'4px',fontSize:'10px',color:'#30413b',fontFamily:'"DM Sans",sans-serif'}}>Free entry · 0.8 km from current location · Riverside seating</div>
           </>}
           sourcesCount="14 local event sources"
           cta="Tell Me More"
@@ -1281,13 +1281,13 @@ const phaseCardsConfig = {
       title: "Flight delayed 2 hours. Here's what to do nearby.",
       description: "In-Trip Warning Card",
       chatMessages: [
-        { name: "Riya", text: "sky lounge it is 💆" },
-        { name: "Jake", text: "ramen then books 😂" },
+        { name: "Riya", text: "lounge it is 💆" },
+        { name: "Jake", text: "chaat then books 😂" },
       ],
       renderCard: () => (
         <InTripSuggestionCard
           title="Flight delayed 2 hours. Here's what to do nearby."
-          previewContent="Sky Lounge T3 (Day pass ¥2,200) · Matsuya Ramen (5 min walk) · Tsutaya Books (2 min walk)"
+          previewContent="Encalm Lounge T3 (Day pass ₹1,800) · Haldiram's (5 min walk) · WHSmith Books (2 min walk)"
           sourcesCount="Terminal 3 venue data · live delay feed"
           cta="Show Options"
           warning
@@ -1298,15 +1298,15 @@ const phaseCardsConfig = {
       title: "Flight cancelled. Next available options.",
       description: "In-Trip Warning Card",
       chatMessages: [
-        { name: "Sam", text: "JAL 18:40, booking it" },
+        { name: "Sam", text: "Air India 18:40, booking it" },
         { name: "Jake", text: "nightmare but sorted" },
       ],
       renderCard: () => (
         <InTripSuggestionCard
           title="Flight cancelled. Next available options."
           previewContent={<>
-            <FlightAlternativeRow airline="JAL" flightNo="823" time="18:40" duration="3h 10m" price="¥4,200" isRecommended={true} />
-            <FlightAlternativeRow airline="ANA" flightNo="756" time="19:20" duration="3h 25m" price="¥3,800" />
+            <FlightAlternativeRow airline="Air India" flightNo="2456" time="18:40" duration="3h 10m" price="₹4,200" isRecommended={true} />
+            <FlightAlternativeRow airline="IndiGo" flightNo="6213" time="19:20" duration="3h 25m" price="₹3,800" />
           </>}
           sourcesCount="3 airlines · live seat availability"
           cta="See Flights"
@@ -1319,14 +1319,14 @@ const phaseCardsConfig = {
       title: "Walking 3 hours. Cafe 4 minutes away.",
       description: "In-Trip Suggestion Card",
       chatMessages: [
-        { name: "Riya", text: "% Arabica is so good ☕" },
+        { name: "Riya", text: "Blue Tokai is so good ☕" },
         { name: "Sam", text: "my feet say yes" },
       ],
       renderCard: () => (
         <InTripSuggestionCard
           title="Walking 3 hours. Cafe 4 minutes away."
           subtitle="Proactive break suggestion based on your movement data and nearby options."
-          previewContent={<RestaurantPreview name="% Arabica Kyoto" rating="4.8" distance="280 m" priceRange="¥600 avg" tag="Local favourite" />}
+          previewContent={<RestaurantPreview name="Blue Tokai Khan Market" rating="4.8" distance="280 m" priceRange="₹600 avg" tag="Local favourite" />}
           sourcesCount="Activity tracker · 6 nearby cafes compared"
           cta="Take Me There"
         />
@@ -1336,14 +1336,14 @@ const phaseCardsConfig = {
       title: "This restaurant comes up in local picks near you.",
       description: "In-Trip Suggestion Card",
       chatMessages: [
-        { name: "Jake", text: "Ichiran solo booths!!" },
+        { name: "Jake", text: "Karim's near Jama Masjid!!" },
         { name: "Sam", text: "let's go 🍜" },
       ],
       renderCard: () => (
         <InTripSuggestionCard
           title="This restaurant comes up in local picks near you."
           subtitle="Surfaced from local food blogs, Google local guides, and recent reviews."
-          previewContent={<RestaurantPreview name="Ichiran Ramen Shibuya" rating="4.7" distance="0.4 km" priceRange="¥1,200 avg" tag="3 local food picks" />}
+          previewContent={<RestaurantPreview name="Karim's Jama Masjid" rating="4.7" distance="0.4 km" priceRange="₹1,200 avg" tag="3 local food picks" />}
           sourcesCount="Google reviews · 3 local food blogs"
           cta="See Details"
         />
@@ -1353,13 +1353,13 @@ const phaseCardsConfig = {
       title: "Weather turning. Outdoor activity may not work.",
       description: "In-Trip Warning Card",
       chatMessages: [
-        { name: "Riya", text: "teamLab actually 🎨" },
+        { name: "Riya", text: "City Palace actually 🎨" },
         { name: "Jake", text: "switching plans" },
       ],
       renderCard: () => (
         <InTripSuggestionCard
           title="Weather turning. Outdoor activity may not work."
-          previewContent="Rain from 15:00 · 3 indoor alternatives: teamLab (0.3 km) · Mori Art Museum (0.5 km) · Nezu Museum (0.8 km)"
+          previewContent="Rain from 15:00 · 3 indoor alternatives: City Palace (0.3 km) · Albert Hall Museum (0.5 km) · Jantar Mantar gallery (0.8 km)"
           sourcesCount="3 weather services · live forecast"
           cta="Find Alternatives"
           warning
@@ -1370,13 +1370,13 @@ const phaseCardsConfig = {
       title: "Unplanned spot nearby with strong reviews. Detour?",
       description: "In-Trip Suggestion Card",
       chatMessages: [
-        { name: "Sam", text: "vintage Tokyo, yes 🗼" },
+        { name: "Sam", text: "old city Varanasi, yes 🛕" },
       ],
       renderCard: () => (
         <InTripSuggestionCard
           title="Unplanned spot nearby with strong reviews. Detour?"
           subtitle="Discovered from Google Local Guides, travel blogs, and your activity pattern."
-          previewContent={<RestaurantPreview name="Yanaka Cemetery Walk" rating="4.6" distance="15 min walk" priceRange="Free entry" tag="Vintage Tokyo" />}
+          previewContent={<RestaurantPreview name="Assi Ghat Riverside Walk" rating="4.6" distance="15 min walk" priceRange="Free entry" tag="Old city favourite" />}
           sourcesCount="Google Local Guides · 5 travel blogs"
           cta="Let's Go"
         />
@@ -1400,13 +1400,13 @@ const phaseCardsConfig = {
       title: "Group split on dinner - two options near you.",
       description: "In-Trip Poll Card",
       chatMessages: [
-        { name: "Sam", text: "Sushi Den 🙋" },
+        { name: "Sam", text: "Karim's 🙋" },
         { name: "Jake", text: "voted!! 🍣" },
       ],
       renderCard: () => (
         <InTripPollCard
           title="Group split on dinner - two options near you."
-          options={["Sushi Den", "Spice Bazaar"]}
+          options={["Karim's", "Bukhara"]}
           subtext={["350 m away", "600 m away"]}
         />
       ),
@@ -1437,7 +1437,7 @@ const phaseCardsConfig = {
           kind="Next Trip Suggestion"
           accent="explore"
           subtitle="Matched from your group's pace, spend pattern, food preferences, and activity mix."
-          previewContent={<DestinationFitList destinations={[{flag:"🇰🇷",name:"Seoul",fit:91,price:"€1,150"},{flag:"🇹🇼",name:"Taipei",fit:88,price:"€980"},{flag:"🇵🇹",name:"Porto",fit:84,price:"€1,320"}]} />}
+          previewContent={<DestinationFitList destinations={[{flag:"🇮🇳",name:"Mumbai",fit:91,price:"₹18,000"},{flag:"🇮🇳",name:"Varanasi",fit:88,price:"₹16,000"},{flag:"🇮🇳",name:"Kerala",fit:84,price:"₹28,000"}]} />}
           sourcesCount="Trip history · 120+ destinations compared"
           cta="See Picks"
         />
@@ -1448,8 +1448,8 @@ const phaseCardsConfig = {
       title: "Trip done. Full expense report ready.",
       description: "Post-Trip Proactive Suggestion",
       chatMessages: [
-        { name: "Riya", text: "¥71k each, not bad!" },
-        { name: "Sam", text: "worth every yen 🙏" },
+        { name: "Riya", text: "₹18k each, not bad!" },
+        { name: "Sam", text: "worth every rupee 🙏" },
       ],
       renderCard: () => (
         <PostTripSuggestionCard
@@ -1457,7 +1457,7 @@ const phaseCardsConfig = {
           kind="Suggestion Card"
           accent="suggestion"
           subtitle="Compiled from receipts, card logs, and the shared group timeline."
-          previewContent="7 days · 4 people · ¥284,000 total · ¥71,000 avg / person"
+          previewContent="7 days · 4 people · ₹72,000 total · ₹18,000 avg / person"
           sourcesCount="36 receipts processed"
           cta="View Report"
         />
@@ -1488,8 +1488,8 @@ const phaseCardsConfig = {
       title: "Based on this trip, 3 destinations you'd love next.",
       description: "Post-Trip Proactive Suggestion",
       chatMessages: [
-        { name: "Riya", text: "Da Nang next 🌊" },
-        { name: "Jake", text: "or Tbilisi!!" },
+        { name: "Riya", text: "Goa next 🌊" },
+        { name: "Jake", text: "or Kerala!!" },
       ],
       renderCard: () => (
         <PostTripSuggestionCard
@@ -1497,7 +1497,7 @@ const phaseCardsConfig = {
           kind="Next Trip Suggestion"
           accent="explore"
           subtitle="Ranked by trip style match, pace, budget, and group preferences."
-          previewContent={<DestinationFitList destinations={[{flag:"🇵🇹",name:"Lisbon",fit:92,price:"€1,400"},{flag:"🇻🇳",name:"Da Nang",fit:88,price:"€1,100"},{flag:"🇬🇪",name:"Tbilisi",fit:86,price:"€950"}]} />}
+          previewContent={<DestinationFitList destinations={[{flag:"🇮🇳",name:"Goa",fit:92,price:"₹22,000"},{flag:"🇮🇳",name:"Kerala",fit:88,price:"₹30,000"},{flag:"🇮🇳",name:"Varanasi",fit:86,price:"₹17,000"}]} />}
           sourcesCount="140+ destinations compared"
           cta="Show Destinations"
         />
@@ -1517,7 +1517,7 @@ const phaseCardsConfig = {
           kind="Trip Summary"
           accent="suggestion"
           subtitle="Built from your shared location history and activity logs."
-          previewContent="Shibuya · Tsukiji · Harajuku · Kyoto · Nara · Osaka · Arashiyama +4 more"
+          previewContent="Delhi · Agra · Fatehpur Sikri · Jaipur · Varanasi · Mumbai · Goa +4 more"
           sourcesCount="11 stops · 7 days logged"
           cta="View Route Map"
         />
@@ -1537,7 +1537,7 @@ const phaseCardsConfig = {
           kind="Expense Insight"
           accent="finance"
           subtitle="Pulled from card statements and group receipts for Day 4."
-          previewContent="Dinner ¥8,400 · Taxi ¥2,100 · Museum ¥1,500 · Shopping ¥4,200"
+          previewContent="Dinner ₹2,400 · Taxi ₹900 · Monument tickets ₹1,000 · Shopping ₹3,200"
           sourcesCount="16 transactions on Day 4"
           cta="See Day 4"
         />
@@ -1657,6 +1657,15 @@ export default function HeroPhaseSection() {
           <br />
           Start to Finish.
         </h1>
+
+        <h4 className="hero-main-title app-title-font app-type-heading"
+          style={{
+            color: "#171717",
+            margin: "0 0 14px",
+            textAlign: "center",
+            alignSelf: "center",
+            fontStyle: "normal",
+          }}>Currently welcoming all travelers headed to India 🇮🇳. More destinations coming soon. 🌍</h4>
 
         <div
           className="hero-segment-wrap"
