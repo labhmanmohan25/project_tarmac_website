@@ -3,10 +3,12 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { SITE_LINKS } from "../lib/siteLinks";
 
-export default function Header({ transparent = false, dark = false }) {
+export default function Header({ transparent = false, dark = false, surface = "sand", waitlistStyle = "zap" }) {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const baseSurface = surface === "white" ? "255,255,255" : "238,235,230";
+  const isZapWaitlist = waitlistStyle === "zap";
 
   useEffect(() => {
     let frameId = null;
@@ -55,7 +57,7 @@ export default function Header({ transparent = false, dark = false }) {
           "background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
         background: transparent
           ? "transparent"
-          : scrolled ? "rgba(238,235,230,0.94)" : "rgba(238,235,230,0.74)",
+          : scrolled ? `rgba(${baseSurface},0.94)` : `rgba(${baseSurface},0.74)`,
         borderBottom: transparent
           ? "1px solid transparent"
           : scrolled ? "1px solid rgba(0,0,0,0.06)" : "1px solid transparent",
@@ -125,6 +127,34 @@ export default function Header({ transparent = false, dark = false }) {
           box-shadow: 0 10px 20px rgba(90, 69, 0, 0.32);
         }
 
+        .header-waitlist-link--zap {
+          min-height: 42px;
+          padding: 0 16px;
+          border-radius: 8px;
+          border: 1px solid transparent;
+          background: #ff5a00;
+          color: #fff;
+          font-family: "DM Sans", system-ui, sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+          text-transform: none;
+          box-shadow: 0 2px 8px rgba(255, 90, 0, 0.22);
+          transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, filter 0.2s ease;
+        }
+
+        .header-waitlist-link--zap:hover {
+          transform: translateY(-2px);
+          filter: none;
+          background: #e65200;
+          box-shadow: 0 8px 20px rgba(255, 90, 0, 0.38);
+        }
+
+        .header-waitlist-link--zap:active {
+          transform: translateY(0);
+          box-shadow: 0 2px 10px rgba(255, 90, 0, 0.28);
+        }
+
         .header-links-wrap {
           display: flex;
           align-items: center;
@@ -156,6 +186,33 @@ export default function Header({ transparent = false, dark = false }) {
           letter-spacing: 0.04em;
           text-transform: uppercase;
           box-shadow: 0 6px 12px rgba(90, 69, 0, 0.26);
+        }
+
+        .header-mobile-waitlist--zap {
+          min-height: 36px;
+          padding: 0 12px;
+          border-radius: 8px;
+          border: 1px solid transparent;
+          background: #ff5a00;
+          color: #fff;
+          font-family: "DM Sans", system-ui, sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+          text-transform: none;
+          box-shadow: 0 2px 8px rgba(255, 90, 0, 0.22);
+          transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        .header-mobile-waitlist--zap:hover {
+          transform: translateY(-2px);
+          background: #e65200;
+          box-shadow: 0 8px 20px rgba(255, 90, 0, 0.38);
+        }
+
+        .header-mobile-waitlist--zap:active {
+          transform: translateY(0);
+          box-shadow: 0 2px 10px rgba(255, 90, 0, 0.28);
         }
 
         .header-mobile-menu-btn {
@@ -302,10 +359,10 @@ export default function Header({ transparent = false, dark = false }) {
             href={SITE_LINKS.waitlistForm}
             target="_blank"
             rel="noreferrer"
-            className="header-waitlist-link"
+            className={`header-waitlist-link${isZapWaitlist ? " header-waitlist-link--zap" : ""}`}
             aria-label="Join waitlist"
           >
-            JOIN WAITLIST
+            {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
           </a>
 
           {/* Old bordered button styling intentionally removed in favor of plain text links. */}
@@ -337,10 +394,10 @@ export default function Header({ transparent = false, dark = false }) {
               href={SITE_LINKS.waitlistForm}
               target="_blank"
               rel="noreferrer"
-              className="header-mobile-waitlist"
+              className={`header-mobile-waitlist${isZapWaitlist ? " header-mobile-waitlist--zap" : ""}`}
               aria-label="Join waitlist"
             >
-              JOIN WAITLIST
+              {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
             </a>
 
             <button

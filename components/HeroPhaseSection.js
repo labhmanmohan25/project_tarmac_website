@@ -1627,7 +1627,7 @@ export default function HeroPhaseSection() {
           display: "flex",
           flexDirection: "column",
           flex: 1,
-          marginTop: "100px",
+          marginTop: "36px",
         }}
       >
         <h1
@@ -1658,14 +1658,14 @@ export default function HeroPhaseSection() {
           Start to Finish.
         </h1>
 
-        <h4 className="hero-main-title app-title-font app-type-heading"
+        {/* <h4 className="hero-main-title app-title-font app-type-heading"
           style={{
             color: "#171717",
             margin: "0 0 14px",
             textAlign: "center",
             alignSelf: "center",
             fontStyle: "normal",
-          }}>Currently welcoming all travelers headed to India 🇮🇳. More destinations coming soon. 🌍</h4>
+          }}>Currently welcoming all travelers headed to India 🇮🇳. More destinations coming soon. 🌍</h4> */}
 
         <div
           className="hero-segment-wrap"
