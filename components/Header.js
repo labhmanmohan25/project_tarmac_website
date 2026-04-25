@@ -376,7 +376,8 @@ export default function Header({ transparent = false, dark = false, surface = "s
           </button>
 
           {/* Old bordered button styling intentionally removed in favor of plain text links. */}
-          <span
+          {/* Vision: hidden while site defaults to B2B travel agents (page redirects home). */}
+          {/* <span
             className="header-text-link"
             onClick={() => router.push("/vision")}
             style={{
@@ -386,7 +387,7 @@ export default function Header({ transparent = false, dark = false, surface = "s
             }}
           >
             <span style={{ color: dark ? "rgba(255,255,255,0.92)" : "#2D2D2D" }}>Vision</span>
-          </span>
+          </span> */}
           <span
             className="header-text-link"
             onClick={() => router.push("/team")}
@@ -429,7 +430,7 @@ export default function Header({ transparent = false, dark = false, surface = "s
 
             {mobileMenuOpen ? (
               <div id="header-mobile-menu" className="header-mobile-menu" role="menu">
-                <button
+                {/* <button
                   type="button"
                   className="header-mobile-menu-item"
                   onClick={() => {
@@ -439,7 +440,7 @@ export default function Header({ transparent = false, dark = false, surface = "s
                   role="menuitem"
                 >
                   Vision
-                </button>
+                </button> */}
                 <button
                   type="button"
                   className="header-mobile-menu-item"
