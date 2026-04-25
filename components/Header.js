@@ -1,7 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { SITE_LINKS } from "../lib/siteLinks";
+import { useJoinWaitlist } from "./JoinWaitlistProvider";
 
 export default function Header({ transparent = false, dark = false, surface = "sand", waitlistStyle = "zap" }) {
   const router = useRouter();
@@ -9,6 +11,7 @@ export default function Header({ transparent = false, dark = false, surface = "s
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const baseSurface = surface === "white" ? "255,255,255" : "238,235,230";
   const isZapWaitlist = waitlistStyle === "zap";
+  const { openJoinWaitlist } = useJoinWaitlist();
 
   useEffect(() => {
     let frameId = null;
@@ -153,6 +156,14 @@ export default function Header({ transparent = false, dark = false, surface = "s
         .header-waitlist-link--zap:active {
           transform: translateY(0);
           box-shadow: 0 2px 10px rgba(255, 90, 0, 0.28);
+        }
+
+        button.header-waitlist-link,
+        button.header-mobile-waitlist {
+          font: inherit;
+          text-align: center;
+          -webkit-appearance: none;
+          appearance: none;
         }
 
         .header-links-wrap {
@@ -355,15 +366,14 @@ export default function Header({ transparent = false, dark = false, surface = "s
 
         {/* Vision + Team nav text links */}
         <div className="header-links-wrap">
-          <a
-            href={SITE_LINKS.waitlistForm}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            type="button"
             className={`header-waitlist-link${isZapWaitlist ? " header-waitlist-link--zap" : ""}`}
             aria-label="Join waitlist"
+            onClick={openJoinWaitlist}
           >
             {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
-          </a>
+          </button>
 
           {/* Old bordered button styling intentionally removed in favor of plain text links. */}
           <span
@@ -390,15 +400,17 @@ export default function Header({ transparent = false, dark = false, surface = "s
           </span>
 
           <div className="header-mobile-actions">
-            <a
-              href={SITE_LINKS.waitlistForm}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
               className={`header-mobile-waitlist${isZapWaitlist ? " header-mobile-waitlist--zap" : ""}`}
               aria-label="Join waitlist"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openJoinWaitlist();
+              }}
             >
               {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
-            </a>
+            </button>
 
             <button
               type="button"

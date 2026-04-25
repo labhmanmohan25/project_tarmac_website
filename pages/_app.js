@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from "react";
 import Script from "next/script";
 import CursorImage from "../components/CursorImage";
+import { JoinWaitlistProvider } from "../components/JoinWaitlistProvider";
 
 const ENABLE_BUTTER_CHICKEN_CURSOR = false;
 
@@ -31,7 +32,9 @@ export default function App({ Component, pageProps }) {
         `}
       </Script>
       {ENABLE_BUTTER_CHICKEN_CURSOR ? <CursorImage /> : null}
-      <Component {...pageProps} />
+      <JoinWaitlistProvider>
+        <Component {...pageProps} />
+      </JoinWaitlistProvider>
     </>
   );
 }

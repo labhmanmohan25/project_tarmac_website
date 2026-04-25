@@ -128,7 +128,7 @@ export default function Home() {
 
   const audienceOptions = [
     { value: "travelAgents", label: "Travel Agents" },
-    { value: "customers", label: "Customers" },
+    { value: "travelers", label: "Travelers" },
   ];
 
   const isTravelAgents = audience === "travelAgents";

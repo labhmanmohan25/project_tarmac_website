@@ -1,4 +1,6 @@
-import { SITE_LINKS } from "../lib/siteLinks";
+"use client";
+
+import { useJoinWaitlist } from "./JoinWaitlistProvider";
 
 const capabilityCards = [
   {
@@ -71,6 +73,8 @@ const outcomes = [
 // ];
 
 export default function TravelAgentsLanding() {
+  const { openJoinWaitlist } = useJoinWaitlist();
+
   return (
     <div className="zap-agents-page">
       <section className="zap-agents-hero">
@@ -79,12 +83,12 @@ export default function TravelAgentsLanding() {
             The <em>AI suite</em> built for travel agencies.
           </h1>
           <p className="zap-agents-hero-copy">
-          Tools for modern travel agencies. <br></br> Your clients get polished plans fast so you can handle more clients.
+          Tools for modern travel agencies. <br></br> Your clients get polished plans fast, so you can handle more clients.
           </p>
           <div className="zap-agents-hero-actions">
-            <a href={SITE_LINKS.waitlistForm} target="_blank" rel="noreferrer" className="zap-agents-btn-primary">
+            <button type="button" onClick={openJoinWaitlist} className="zap-agents-btn-primary">
               Join waitlist
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -147,9 +151,9 @@ export default function TravelAgentsLanding() {
                 <span>System for your agency team</span>
               </div>
               <div className="zap-agents-policy-actions">
-                <a href={SITE_LINKS.waitlistForm} target="_blank" rel="noreferrer" className="zap-agents-btn-primary">
+                <button type="button" onClick={openJoinWaitlist} className="zap-agents-btn-primary">
                   Join waitlist for early access
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -193,9 +197,9 @@ export default function TravelAgentsLanding() {
         <div className="zap-agents-container zap-agents-cta-inner">
           <h2>Go from AI experiments to real results.</h2>
           <p>Connect planning, standardize delivery, and grow your agency with AI itinerary workflows.</p>
-          <a href={SITE_LINKS.waitlistForm} target="_blank" rel="noreferrer" className="zap-agents-btn-primary">
+          <button type="button" onClick={openJoinWaitlist} className="zap-agents-btn-primary">
             Join waitlist
-          </a>
+          </button>
         </div>
       </section>
     </div>
