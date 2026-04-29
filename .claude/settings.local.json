@@ -4,7 +4,8 @@
       "WebFetch(domain:dribbble.com)",
       "Bash(npm run build)",
       "WebFetch(domain:docs.google.com)",
-      "Bash(wc -l /Users/manmohanlabh/Desktop/project_tarmac_website/components/*.js)"
+      "Bash(wc -l /Users/manmohanlabh/Desktop/project_tarmac_website/components/*.js)",
+      "Bash(python ~/.claude/skills/research/validate_json.py -f /Users/manmohanlabh/Desktop/tarmac_research/travel_agency_ai/fields.yaml -j /Users/manmohanlabh/Desktop/tarmac_research/travel_agency_ai/results/Activities_Tours_and_Experiences_Booking.json)"
     ]
   }
 }
