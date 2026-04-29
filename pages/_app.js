@@ -1,6 +1,4 @@
 import "../styles/globals.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from "react";
 import Script from "next/script";
 import CursorImage from "../components/CursorImage";
@@ -21,9 +19,9 @@ export default function App({ Component, pageProps }) {
     <>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-4Z96998NFF"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

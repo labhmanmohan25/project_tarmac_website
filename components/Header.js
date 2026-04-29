@@ -354,7 +354,7 @@ export default function Header({ transparent = false, dark = false, surface = "s
             style={{
               fontFamily: '"Montserrat", sans-serif',
               fontSize: "17px",
-              fontWeight: "390",
+              fontWeight: "400",
               color: dark ? "rgba(255,255,255,0.92)" : "#2D2D2D",
               letterSpacing: "0.11em",
               textTransform: "lowercase",
