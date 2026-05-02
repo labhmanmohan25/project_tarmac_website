@@ -10,12 +10,12 @@ export default function Vision() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/");
+    router.replace("/travel");
   }, [router]);
 
   return (
     <>
-      <SEO title="Tarmac" description="Tarmac" canonical="/" noindex />
+      <SEO title="Tarmac" description="Tarmac" canonical="/travel" noindex />
     </>
   );
 }

@@ -90,7 +90,7 @@ export default function Footer() {
           {/* Brand column */}
           <div>
             <Link
-              href="/"
+              href="/travel"
               style={{
                 display: "flex",
                 alignItems: "center",
