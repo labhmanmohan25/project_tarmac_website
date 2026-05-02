@@ -9,6 +9,8 @@ import LazySection from "./LazySection";
 import SEO from "./SEO";
 import SegmentedControl from "./SegmentedControl";
 import TravelAgentsLanding from "./TravelAgentsLanding";
+import TravelTechTrendsSection from "./TravelTechTrendsSection";
+import MapScrollPulseSection from "./MapScrollPulseSection";
 
 const HeroPhaseSection = dynamic(() => import("./HeroPhaseSection"), { ssr: true });
 const DestinationsSection = dynamic(() => import("./DestinationsSection"), { ssr: true });
@@ -291,6 +293,14 @@ export default function AudienceLanding() {
           </LazySection>
 
           <HomeHeroSection />
+
+          <LazySection minHeight={620} rootMargin="600px 0px">
+            <MapScrollPulseSection />
+          </LazySection>
+
+          <LazySection minHeight={420} rootMargin="600px 0px">
+            <TravelTechTrendsSection />
+          </LazySection>
 
           <LazySection minHeight={500} rootMargin="600px 0px">
             <DestinationsSection />

@@ -5,7 +5,7 @@ const phases = [
     number: "01",
     title: "Plan &\nBook Easily",
     description:
-      "Checks everyone's calendars, runs the group poll, and builds the plan without tab chaos. Book stays, activities, and transport in one thread.",
+      "AI agent checks everyone's calendars, runs the group poll, and builds the plan without tab chaos. Book stays, activities, and transport in one thread.",
   },
   {
     number: "02",

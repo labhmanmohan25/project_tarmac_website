@@ -57,7 +57,7 @@ export default function HomeHeroSection() {
             fontWeight: "520",
           }}
         >
-          One AI agent that <em className="hero-tagline-emphasis"><span className="hero-tagline-keyword">plans</span> the trip</em>,
+          One AI that <em className="hero-tagline-emphasis"><span className="hero-tagline-keyword">plans</span> the trip</em>,
           <br className="hero-tagline-break" />
           <em className="hero-tagline-emphasis"><span className="hero-tagline-keyword">navigates</span> the chaos</em>, and{" "}
           <em className="hero-tagline-emphasis"><span className="hero-tagline-keyword">settles</span> the bill</em>.

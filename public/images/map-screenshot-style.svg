@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8eef5"/>
+      <stop offset="100%" stop-color="#dce6ef"/>
+    </linearGradient>
+    <linearGradient id="park" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4e8d4"/>
+      <stop offset="100%" stop-color="#c5dfc5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#sky)"/>
+  <rect x="40" y="80" width="520" height="280" rx="4" fill="url(#park)" opacity="0.85"/>
+  <rect x="620" y="420" width="580" height="220" rx="4" fill="url(#park)" opacity="0.65"/>
+  <g fill="none" stroke="#f5f3ef" stroke-width="22" stroke-linecap="round">
+    <path d="M0 380 Q320 340 640 400 T1280 360"/>
+    <path d="M120 0 Q180 240 140 720"/>
+    <path d="M900 0 Q840 360 920 720"/>
+    <path d="M0 520 Q480 480 880 540 T1280 500"/>
+  </g>
+  <g fill="none" stroke="#cfd8e6" stroke-width="10" stroke-linecap="round">
+    <path d="M200 120 L1120 180"/>
+    <path d="M80 200 L600 580"/>
+    <path d="M700 100 L480 620"/>
+    <path d="M1000 200 L1080 680"/>
+  </g>
+  <g fill="none" stroke="#b8c4d4" stroke-width="5" opacity="0.9">
+    <path d="M0 180 H1280 M0 260 H1280 M0 440 H1280"/>
+    <path d="M260 0 V720 M440 0 V720 M780 0 V720"/>
+  </g>
+  <rect width="1280" height="720" fill="url(#sky)" opacity="0.08"/>
+</svg>
