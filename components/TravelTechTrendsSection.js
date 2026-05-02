@@ -1,3 +1,5 @@
+import MapScrollPulseSection from "./MapScrollPulseSection";
+
 const CARDS = [
   {
     id: "conversational",
@@ -32,7 +34,7 @@ function visualAriaLabel(visual) {
   if (visual === "pipeline") {
     return "Illustration: phone chat with a blue-bordered agent card showing search, compare, vote, and booking confirmed steps.";
   }
-  return "Illustration: map with business pins, geofences, traveler initials, and a location-aware notification.";
+  return "Tokyo map with animated place pins and a location-aware notification card.";
 }
 
 export default function TravelTechTrendsSection() {
@@ -235,26 +237,8 @@ export default function TravelTechTrendsSection() {
 
                   {card.visual === "map" ? (
                     <div className="tt-mock tt-mock-map" aria-hidden="true">
-                      <div className="tt-map-surface">
-                        <div className="tt-map-pin tt-map-pin-a">
-                          <span className="tt-map-geofence" />
-                          <span className="tt-map-pin-dot" />
-                        </div>
-                        <div className="tt-map-pin tt-map-pin-b">
-                          <span className="tt-map-geofence" />
-                          <span className="tt-map-pin-dot" />
-                        </div>
-                        <div className="tt-map-pin tt-map-pin-c">
-                          <span className="tt-map-geofence tt-map-geofence-sm" />
-                          <span className="tt-map-pin-dot" />
-                        </div>
-                        <div className="tt-map-pin tt-map-pin-d">
-                          <span className="tt-map-geofence" />
-                          <span className="tt-map-pin-dot" />
-                        </div>
-                        <span className="tt-map-traveler tt-map-traveler-m">M</span>
-                        <span className="tt-map-traveler tt-map-traveler-j">J</span>
-                        <span className="tt-map-traveler tt-map-traveler-s">S</span>
+                      <div className="tt-map-live-wrap">
+                        <MapScrollPulseSection embed />
                       </div>
                       <div className="tt-map-toast">
                         <p className="tt-map-toast-text">
@@ -837,116 +821,12 @@ export default function TravelTechTrendsSection() {
           font-family: var(--font-hero-subheading);
         }
 
-        .tt-map-surface {
+        .tt-map-live-wrap {
           flex: 1;
-          position: relative;
+          min-height: 0;
           margin: 12px 12px 0;
-          border-radius: 10px;
-          background-image: linear-gradient(
-              rgba(255, 255, 255, 0.35) 1px,
-              transparent 1px
-            ),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
-            linear-gradient(165deg, #e8efe8 0%, #d4ddd4 50%, #c5d4c5 100%);
-          background-size: 18px 18px, 18px 18px, auto;
-          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-          overflow: hidden;
-        }
-
-        .tt-map-pin {
-          position: absolute;
-          width: 44px;
-          height: 44px;
-          display: grid;
-          place-items: center;
-        }
-
-        .tt-map-pin-a {
-          top: 14%;
-          left: 18%;
-        }
-
-        .tt-map-pin-b {
-          top: 52%;
-          left: 42%;
-        }
-
-        .tt-map-pin-c {
-          top: 28%;
-          right: 16%;
-        }
-
-        .tt-map-pin-d {
-          bottom: 22%;
-          left: 28%;
-        }
-
-        .tt-map-geofence {
-          position: absolute;
-          width: 72px;
-          height: 72px;
-          border-radius: 50%;
-          border: 2px dashed rgba(44, 51, 39, 0.35);
-          pointer-events: none;
-        }
-
-        .tt-map-geofence-sm {
-          width: 56px;
-          height: 56px;
-        }
-
-        .tt-map-pin-dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: #ff4f00;
-          border: 2px solid #fff;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-          z-index: 1;
-        }
-
-        .tt-map-pin-b .tt-map-pin-dot {
-          background: #7c3aed;
-        }
-
-        .tt-map-pin-c .tt-map-pin-dot {
-          background: #0ea5e9;
-        }
-
-        .tt-map-pin-d .tt-map-pin-dot {
-          background: #16a34a;
-        }
-
-        .tt-map-traveler {
-          position: absolute;
-          width: 22px;
-          height: 22px;
-          border-radius: 50%;
-          display: grid;
-          place-items: center;
-          font-size: 9px;
-          font-weight: 800;
-          color: #fff;
-          border: 2px solid #fff;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        }
-
-        .tt-map-traveler-m {
-          background: #6366f1;
-          top: 38%;
-          left: 24%;
-        }
-
-        .tt-map-traveler-j {
-          background: #ec4899;
-          top: 62%;
-          right: 28%;
-        }
-
-        .tt-map-traveler-s {
-          background: #14b8a6;
-          bottom: 30%;
-          right: 18%;
+          display: flex;
+          flex-direction: column;
         }
 
         .tt-map-toast {

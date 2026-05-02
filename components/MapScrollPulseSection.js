@@ -136,6 +136,8 @@ function MapTipBubblePortal({ spot, clientX, clientY }) {
 export default function MapScrollPulseSection({
   mapImageSrc = MAP_IMAGE,
   mapAlt = "Tokyo area map",
+  /** When true, omit outer section layout and fill a parent (e.g. travel-tech card). */
+  embed = false,
 }) {
   const [mounted, setMounted] = useState(false);
   const [hoverTip, setHoverTip] = useState(null);
@@ -156,8 +158,14 @@ export default function MapScrollPulseSection({
     setHoverTip((cur) => (cur?.name === spotName ? null : cur));
   }, []);
 
+  const rootClass = `tokyo-gossip-map${embed ? " tokyo-gossip-map--embed" : ""}`;
+  const Root = embed ? "div" : "section";
+
   return (
-    <section className="tokyo-gossip-map" aria-label="Tokyo map with example place pins and messages">
+    <Root
+      className={rootClass}
+      {...(!embed ? { "aria-label": "Tokyo map with example place pins and messages" } : {})}
+    >
       <div
         className="tokyo-gossip-map__frame"
         style={{ cursor: MAP_WALK_CURSOR }}
@@ -393,6 +401,16 @@ export default function MapScrollPulseSection({
           box-sizing: border-box;
         }
 
+        .tokyo-gossip-map--embed {
+          max-width: none;
+          margin: 0;
+          flex: 1;
+          min-height: 0;
+          display: flex;
+          flex-direction: column;
+          align-self: stretch;
+        }
+
         .tokyo-gossip-map__frame {
           position: relative;
           width: 100%;
@@ -407,6 +425,13 @@ export default function MapScrollPulseSection({
             0 4px 12px rgba(0, 0, 0, 0.06),
             0 12px 32px rgba(0, 0, 0, 0.08),
             0 24px 48px rgba(0, 0, 0, 0.06);
+        }
+
+        .tokyo-gossip-map--embed .tokyo-gossip-map__frame {
+          flex: 1;
+          min-height: 200px;
+          border-radius: 10px;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
         }
 
         .tokyo-gossip-map__img {
@@ -595,6 +620,6 @@ export default function MapScrollPulseSection({
           }
         }
       `}</style>
-    </section>
+    </Root>
   );
 }

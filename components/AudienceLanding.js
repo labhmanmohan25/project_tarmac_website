@@ -294,9 +294,9 @@ export default function AudienceLanding() {
 
           <HomeHeroSection />
 
-          <LazySection minHeight={620} rootMargin="600px 0px">
+          {/* <LazySection minHeight={620} rootMargin="600px 0px">
             <MapScrollPulseSection />
-          </LazySection>
+          </LazySection> */}
 
           <LazySection minHeight={420} rootMargin="600px 0px">
             <TravelTechTrendsSection />
