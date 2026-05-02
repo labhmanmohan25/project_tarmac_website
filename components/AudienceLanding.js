@@ -268,7 +268,7 @@ export default function AudienceLanding() {
         jsonLd={jsonLd}
       />
 
-      <Header surface={isTravelAgents ? "white" : "sand"} />
+      <Header surface={isTravelAgents ? "white" : "sand"} showBookDemo={isDeepTravel} />
 
       {showAudienceSwitch ? (
         <div

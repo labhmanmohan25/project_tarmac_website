@@ -45,6 +45,10 @@ export default function TravelTechTrendsSection() {
       aria-label="Travel technology highlights"
     >
       <div className="travel-tech-inner">
+        <h2 className="travel-tech-section-heading">
+          Why tarmac is the new{" "}
+          <span className="travel-tech-heading-squiggle">way to travel</span>?
+        </h2>
         <div className="travel-tech-stack" role="list">
           {CARDS.map((card, index) => (
             <article
@@ -270,6 +274,28 @@ export default function TravelTechTrendsSection() {
         .travel-tech-inner {
           max-width: 1080px;
           margin: 0 auto;
+        }
+
+        .travel-tech-section-heading {
+          margin: 0 0 clamp(40px, 6vw, 72px);
+          padding: 0 clamp(12px, 3vw, 28px);
+          font-family: var(--font-hero-title);
+          font-style: normal;
+          font-weight: 500;
+          font-size: clamp(32px, 4.8vw, 48px);
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+          color: #faf9f6;
+          text-align: center;
+        }
+
+        .travel-tech-heading-squiggle {
+          text-decoration: underline;
+          text-decoration-style: wavy;
+          text-decoration-color: rgba(232, 212, 168, 0.92);
+          text-decoration-thickness: clamp(2px, 0.09em, 4px);
+          text-underline-offset: clamp(3px, 0.14em, 8px);
+          text-decoration-skip-ink: none;
         }
 
         .travel-tech-stack {

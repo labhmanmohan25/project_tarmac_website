@@ -2,16 +2,24 @@
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { SITE_LINKS } from "../lib/siteLinks";
 import HomeLogoLink from "./HomeLogoLink";
 import { useJoinWaitlist } from "./JoinWaitlistProvider";
 
-export default function Header({ transparent = false, dark = false, surface = "sand", waitlistStyle = "zap" }) {
+export default function Header({
+  transparent = false,
+  dark = false,
+  surface = "sand",
+  waitlistStyle = "zap",
+  showBookDemo = false,
+}) {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const baseSurface = surface === "white" ? "255,255,255" : "238,235,230";
   const isZapWaitlist = waitlistStyle === "zap";
   const { openJoinWaitlist } = useJoinWaitlist();
+  const showBookDemoCta = showBookDemo === true;
 
   useEffect(() => {
     let frameId = null;
@@ -156,6 +164,80 @@ export default function Header({ transparent = false, dark = false, surface = "s
         .header-waitlist-link--zap:active {
           transform: translateY(0);
           box-shadow: 0 2px 10px rgba(255, 90, 0, 0.28);
+        }
+
+        .header-cta-group-desktop {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .header-book-demo-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 38px;
+          padding: 0 16px;
+          border-radius: 999px;
+          border: 1px solid #5a4500;
+          background: transparent;
+          color: #1f1400;
+          text-decoration: none;
+          font-family: "Montserrat", sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
+          transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+        }
+
+        .header-book-demo-link:hover {
+          transform: translateY(-1px);
+          background: rgba(90, 69, 0, 0.06);
+        }
+
+        .header-book-demo-link--zap {
+          min-height: 42px;
+          padding: 0 16px;
+          border-radius: 8px;
+          border: 1px solid rgba(255, 90, 0, 0.5);
+          background: transparent;
+          color: #ff5a00;
+          font-family: "DM Sans", system-ui, sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+          text-transform: none;
+          box-shadow: none;
+          transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .header-book-demo-link--zap:hover {
+          transform: translateY(-2px);
+          background: rgba(255, 90, 0, 0.08);
+          border-color: #ff5a00;
+        }
+
+        .header-book-demo-link--zap:active {
+          transform: translateY(0);
+        }
+
+        .header-mobile-cta-group {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .header-mobile-book-demo {
+          min-height: 34px;
+          padding: 0 10px;
+          font-size: 10px;
+        }
+
+        .header-mobile-book-demo.header-book-demo-link--zap {
+          min-height: 36px;
+          padding: 0 12px;
+          font-size: 12px;
         }
 
         button.header-waitlist-link,
@@ -308,6 +390,10 @@ export default function Header({ transparent = false, dark = false, surface = "s
             font-size: 15px !important;
           }
 
+          .header-cta-group-desktop {
+            display: none;
+          }
+
           .header-waitlist-link {
             display: none;
           }
@@ -365,14 +451,35 @@ export default function Header({ transparent = false, dark = false, surface = "s
 
         {/* Vision + Team nav text links */}
         <div className="header-links-wrap">
-          <button
-            type="button"
-            className={`header-waitlist-link${isZapWaitlist ? " header-waitlist-link--zap" : ""}`}
-            aria-label="Join waitlist"
-            onClick={openJoinWaitlist}
-          >
-            {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
-          </button>
+          {showBookDemoCta ? (
+            <div className="header-cta-group-desktop">
+              <button
+                type="button"
+                className={`header-waitlist-link${isZapWaitlist ? " header-waitlist-link--zap" : ""}`}
+                aria-label="Join waitlist"
+                onClick={openJoinWaitlist}
+              >
+                {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
+              </button>
+              <a
+                href={SITE_LINKS.demoCalendar}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`header-book-demo-link${isZapWaitlist ? " header-book-demo-link--zap" : ""}`}
+              >
+                {isZapWaitlist ? "Book demo" : "BOOK DEMO"}
+              </a>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className={`header-waitlist-link${isZapWaitlist ? " header-waitlist-link--zap" : ""}`}
+              aria-label="Join waitlist"
+              onClick={openJoinWaitlist}
+            >
+              {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
+            </button>
+          )}
 
           <span
             className="header-text-link"
@@ -387,17 +494,42 @@ export default function Header({ transparent = false, dark = false, surface = "s
           </span>
 
           <div className="header-mobile-actions">
-            <button
-              type="button"
-              className={`header-mobile-waitlist${isZapWaitlist ? " header-mobile-waitlist--zap" : ""}`}
-              aria-label="Join waitlist"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                openJoinWaitlist();
-              }}
-            >
-              {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
-            </button>
+            {showBookDemoCta ? (
+              <div className="header-mobile-cta-group">
+                <button
+                  type="button"
+                  className={`header-mobile-waitlist${isZapWaitlist ? " header-mobile-waitlist--zap" : ""}`}
+                  aria-label="Join waitlist"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    openJoinWaitlist();
+                  }}
+                >
+                  {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
+                </button>
+                <a
+                  href={SITE_LINKS.demoCalendar}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`header-book-demo-link header-mobile-book-demo${isZapWaitlist ? " header-book-demo-link--zap" : ""}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {isZapWaitlist ? "Book demo" : "BOOK DEMO"}
+                </a>
+              </div>
+            ) : (
+              <button
+                type="button"
+                className={`header-mobile-waitlist${isZapWaitlist ? " header-mobile-waitlist--zap" : ""}`}
+                aria-label="Join waitlist"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openJoinWaitlist();
+                }}
+              >
+                {isZapWaitlist ? "Join waitlist" : "JOIN WAITLIST"}
+              </button>
+            )}
 
             <button
               type="button"
