@@ -870,15 +870,48 @@ export default function TravelTechTrendsSection() {
           .travel-tech-band,
           .travel-tech-band--reverse {
             flex-direction: column;
+            gap: clamp(28px, 6vw, 44px);
           }
 
           .travel-tech-band-visual {
-            min-height: 260px;
             order: -1;
+            flex: 0 0 auto;
+            min-height: unset;
+            overflow: visible;
+            align-content: center;
+          }
+
+          /* Map band — keep a sensible floor */
+          .travel-tech-band-visual:has(.travel-tech-frame--map) {
+            min-height: min(52vw, 280px);
+          }
+
+          /* Chat + pipeline: full-width card, phone ~width of card, box grows with phone */
+          .travel-tech-frame--chat,
+          .travel-tech-frame--pipeline {
+            width: 100%;
+            max-width: 100%;
+          }
+
+          .travel-tech-frame--chat .tt-phone-stage,
+          .travel-tech-frame--pipeline .tt-phone-stage {
+            width: 100%;
+            max-width: 100%;
+          }
+
+          .travel-tech-frame--chat .tt-phone-img,
+          .travel-tech-frame--pipeline .tt-phone-img {
+            width: 94%;
+            height: auto;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
           }
 
           .travel-tech-band-copy {
             order: 0;
+            flex: 0 0 auto;
           }
 
         }
