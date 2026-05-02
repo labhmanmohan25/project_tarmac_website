@@ -1,4 +1,4 @@
-import Link from "next/link";
+import HomeLogoLink from "./HomeLogoLink";
 import { SITE_LINKS } from "../lib/siteLinks";
 
 const footerColumns = [
@@ -46,18 +46,25 @@ export default function Footer() {
           
           .footer-column {
             flex-direction: row !important;
+            flex-wrap: wrap;
             gap: 24px;
-            align-items: flex-start;
+            align-items: baseline;
           }
           
           .footer-column h4 {
-            margin-bottom: 0 !important;
+            margin: 0 !important;
             white-space: nowrap;
           }
           
           .footer-column ul {
             flex-direction: row !important;
+            flex-wrap: wrap;
             gap: 16px !important;
+            align-items: baseline;
+          }
+          
+          .footer-column ul li {
+            margin: 0;
           }
           
           .footer-container {
@@ -89,8 +96,7 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Brand column */}
           <div>
-            <Link
-              href="/travel"
+            <HomeLogoLink
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -126,7 +132,7 @@ export default function Footer() {
               >
                 tarmac
               </span>
-            </Link>
+            </HomeLogoLink>
 
             <p
               className="app-type-body"

@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import HomeLogoLink from "./HomeLogoLink";
 import { useJoinWaitlist } from "./JoinWaitlistProvider";
 
 export default function Header({ transparent = false, dark = false, surface = "sand", waitlistStyle = "zap" }) {
@@ -327,8 +327,7 @@ export default function Header({ transparent = false, dark = false, surface = "s
       `}</style>
       <nav className="header-nav">
         {/* Logo */}
-        <Link
-          href="/travel"
+        <HomeLogoLink
           style={{
             display: "flex",
             alignItems: "center",
@@ -362,7 +361,7 @@ export default function Header({ transparent = false, dark = false, surface = "s
           >
             tarmac
           </span>
-        </Link>
+        </HomeLogoLink>
 
         {/* Vision + Team nav text links */}
         <div className="header-links-wrap">

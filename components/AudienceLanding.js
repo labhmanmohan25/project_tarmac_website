@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
+import { persistHomeRouteFromPathname } from "../lib/homeRoute";
 import Header from "./Header";
 import Footer from "./Footer";
 import HomeHeroSection from "./HomeHeroSection";
@@ -20,8 +21,8 @@ const AUDIENCE = {
 };
 
 const audienceOptions = [
-  { value: AUDIENCE.traveler, label: "Traveler" },
   { value: AUDIENCE.travelAgents, label: "Travel agencies" },
+  { value: AUDIENCE.traveler, label: "Traveler" },
 ];
 
 const BASE_JSON_LD = [
@@ -164,15 +165,43 @@ const AGENTS_PAGE_EXTRA_JSON_LD = [
   },
 ];
 
+const ROOT_PAGE_EXTRA_JSON_LD = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Tarmac — travelers & travel agencies",
+    url: "https://travelwithtarmac.com/",
+    description:
+      "Tarmac is an AI-first travel companion for travelers and an AI-powered suite for travel agencies. Explore both experiences on one page.",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Tarmac",
+      url: "https://travelwithtarmac.com",
+    },
+  },
+];
+
 export default function AudienceLanding() {
   const router = useRouter();
-  const isTravelAgents = router.pathname === "/agents";
+  const pathname = router.pathname;
+  const isRoot = pathname === "/";
+  const isDeepAgents = pathname === "/agents";
+  const isDeepTravel = pathname === "/travel";
+
+  const [rootAudience, setRootAudience] = useState(AUDIENCE.travelAgents);
+
+  const isTravelAgents =
+    isDeepAgents || (isRoot && rootAudience === AUDIENCE.travelAgents);
 
   const selectedAudience = isTravelAgents ? AUDIENCE.travelAgents : AUDIENCE.traveler;
+  const showAudienceSwitch = isRoot;
 
   const jsonLd = useMemo(() => {
-    if (isTravelAgents) {
+    if (isDeepAgents) {
       return [...AGENTS_PAGE_EXTRA_JSON_LD, ...BASE_JSON_LD];
+    }
+    if (isRoot) {
+      return [...ROOT_PAGE_EXTRA_JSON_LD, ...BASE_JSON_LD];
     }
     const mobileApp = BASE_JSON_LD.find((node) => node["@type"] === "MobileApplication");
     const rest = BASE_JSON_LD.filter((node) => node["@type"] !== "MobileApplication");
@@ -180,7 +209,12 @@ export default function AudienceLanding() {
       ? { ...mobileApp, url: "https://travelwithtarmac.com/travel" }
       : null;
     return [...TRAVEL_PAGE_EXTRA_JSON_LD, ...(mobileForTravel ? [mobileForTravel] : []), ...rest];
-  }, [isTravelAgents]);
+  }, [isDeepAgents, isRoot]);
+
+  useEffect(() => {
+    if (isDeepTravel) persistHomeRouteFromPathname("/travel");
+    else if (isDeepAgents) persistHomeRouteFromPathname("/agents");
+  }, [isDeepTravel, isDeepAgents]);
 
   useEffect(() => {
     document.body.classList.toggle("agents-mode-body", isTravelAgents);
@@ -191,6 +225,10 @@ export default function AudienceLanding() {
   }, [isTravelAgents]);
 
   function handleAudienceChange(value) {
+    if (isRoot) {
+      setRootAudience(value);
+      return;
+    }
     if (value === AUDIENCE.travelAgents) {
       router.push("/agents");
     } else {
@@ -202,32 +240,47 @@ export default function AudienceLanding() {
     <>
       <SEO
         title={
-          isTravelAgents
-            ? "Tarmac for Travel Agents | AI Itinerary Builder"
-            : "Tarmac | Your Live AI Travel Companion & In-Trip Guide"
+          isRoot
+            ? isTravelAgents
+              ? "Tarmac | AI for Travel Agencies & Travelers"
+              : "Tarmac | Your Live AI Travel Companion & In-Trip Guide"
+            : isTravelAgents
+              ? "Tarmac for Travel Agents | AI Itinerary Builder"
+              : "Tarmac | Your Live AI Travel Companion & In-Trip Guide"
         }
         description={
-          isTravelAgents
-            ? "Tarmac is building an AI-powered suite for travel agencies. Start with the AI itinerary builder and join the waitlist for early access."
-            : "One AI that plans the trip, navigates the chaos, and settles the bill. Meet Tarmac, the active travel companion that guides you in real-time while you explore."
+          isRoot
+            ? isTravelAgents
+              ? "Tarmac is building an AI-powered suite for travel agencies—start with the AI itinerary builder—and an active AI companion for travelers. Use the toggle above to explore either experience."
+              : "One AI that plans the trip, navigates the chaos, and settles the bill. Meet Tarmac, the active travel companion—and explore our AI workspace for travel agencies from the same page."
+            : isTravelAgents
+              ? "Tarmac is building an AI-powered suite for travel agencies. Start with the AI itinerary builder and join the waitlist for early access."
+              : "One AI that plans the trip, navigates the chaos, and settles the bill. Meet Tarmac, the active travel companion that guides you in real-time while you explore."
         }
         keywords={
           isTravelAgents
             ? "AI itinerary builder, travel agent software, travel agency AI, itinerary automation, AI travel planning tools"
             : "live AI travel companion, in-trip AI guide, real-time travel agent, AI travel assistant, active itinerary app, on-ground travel app, travel expense splitter"
         }
-        canonical={isTravelAgents ? "/agents" : "/travel"}
+        canonical={isRoot ? "/" : isTravelAgents ? "/agents" : "/travel"}
         jsonLd={jsonLd}
       />
 
       <Header surface={isTravelAgents ? "white" : "sand"} />
 
-      <div
-        className={`audience-switch-wrap ${isTravelAgents ? "audience-switch-wrap-agents" : ""}`}
-        aria-label="Choose travel agencies or traveler experience"
-      >
-        <SegmentedControl options={audienceOptions} selected={selectedAudience} onChange={handleAudienceChange} />
-      </div>
+      {showAudienceSwitch ? (
+        <div
+          className={`audience-switch-wrap ${isTravelAgents ? "audience-switch-wrap-agents" : ""}`}
+          aria-label="Choose travel agencies or traveler experience"
+        >
+          <SegmentedControl options={audienceOptions} selected={selectedAudience} onChange={handleAudienceChange} />
+        </div>
+      ) : (
+        <div
+          className={`audience-landing-header-gap${isTravelAgents ? " audience-landing-header-gap-agents" : ""}`}
+          aria-hidden="true"
+        />
+      )}
 
       {isTravelAgents ? (
         <TravelAgentsLanding />
@@ -275,6 +328,16 @@ export default function AudienceLanding() {
           margin-bottom: clamp(48px, 8vw, 96px);
         }
 
+        .audience-landing-header-gap {
+          margin-top: 98px;
+        }
+
+        .audience-landing-header-gap-agents {
+          background: #ffffff;
+          padding-bottom: 18px;
+          margin-bottom: 0;
+        }
+
         @media (max-width: 768px) {
           .audience-switch-wrap {
             margin-top: 84px;
@@ -283,6 +346,14 @@ export default function AudienceLanding() {
 
           .audience-switch-wrap-agents {
             margin-bottom: 0;
+            padding-bottom: 12px;
+          }
+
+          .audience-landing-header-gap {
+            margin-top: 84px;
+          }
+
+          .audience-landing-header-gap-agents {
             padding-bottom: 12px;
           }
 
